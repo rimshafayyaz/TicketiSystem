@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <title>Railway Mangement System</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Railway Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Search</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link " href="#" >
+                    Dropdown
+                  </a>
+                
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " id="log_in" data-toggle="Modal" data-target="#loginmodal" href="#" aria-disabled="true">Login</a>
+                </li>
+              </ul>
+
+            </div>
+          </nav>
+
+          <div class="jumbotron ">
+              <div class="container">
+              <div class="row">
+                <div class="  col-lg-6">
+              <h1 class="display-4">Welcome to Pakistan Railways</h1>
+            <p class="lead">Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</p>
+            <hr class="my-4">
+            <p>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="download.jpg" alt="">
+        </div>
+    </div>
+    </div>    
+</div>
+
+<!--
+
+    Modals
+-->
+
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header" id="clr2">
+                <h4 class="modal-title"> 
+                    Login
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+
+                </button>
+            </div>
+            <div class="modal-body" id="clr">
+                <form action="" id="clr1">
+                    <div class="form-group row">
+                        <div class="col-sm-3 offset-sm-1">
+                        <label for="namee" class=" col-form-label">Enter Name</label>
+                        </div>
+                        <div class="col-sm-5">
+                        <input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" >
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 offset-sm-1">
+                            <label for="passwordd" class="col-form-label">Enter Password</label>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="password" name="passwordd" id="passwordd" placeholder="Password">
+                        </div>
+                        
+                    </div>
+                    <div class="form-check ">
+                            <input type="checkbox" name="box" id="box" class="form-check-input">
+                            <label for="box" class="form-check-label mb-1">Remeber me</label>
+                    </div>
+                    <div class="form-row">
+                        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+  <!--
+      End of Modals
+  -->
+    <h1>About Us</h1>
+    
+    <p id="p1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+    <hr>
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>Complain Section</h1>
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Email address</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Your Complain</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <button type="button" class="btn btn-danger mt-3">Submit Complain</button>
+                        </div>
+                        </form>
+                </div>
+                <div class="col-lg-6 ">
+                    <h1><span class="fa fa-address-card"></span>Contact Info</h1>
+                    <span>Gmail:</span><p>pakrailways@foster.com</p>
+                    <span>Phone No:</span><span>+92345-2984137</span><br>
+                    <span>Telephone No:</span> <span>419037238</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery and JS bundle w/ Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+      $('#log_in').click(function(){
+                $('#loginModal').modal();
+
+            });
+</script>   
+</body>
+</html>
