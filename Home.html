@@ -8,10 +8,14 @@
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
         <link rel="stylesheet" href="styles.css">
+		<style>
+		
+		</style>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Railway Management System</a>
+    <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
+	    
+        <nav  class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
+            <a class="navbar-brand" href="#" >Railway Management System</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,16 +23,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Search</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link " href="#" >
-                    Dropdown
-                  </a>
+                  <a class="nav-link " href="places.html" >Famous Places</a>
                 
+                </li>
+				<li class="nav-item">
+                  <a class="nav-link" href="#">Register</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link " id="log_in" data-toggle="Modal" data-target="#loginmodal" href="#" aria-disabled="true">Login</a>
@@ -37,27 +42,34 @@
 
             </div>
           </nav>
+          
 
-          <div class="jumbotron ">
+          <div class="jumbotron " >
+		  
               <div class="container">
+
+		  
               <div class="row">
                 <div class="  col-lg-6">
-              <h1 class="display-4">Welcome to Pakistan Railways</h1>
+              <h1 class="welcome">Welcome to Pakistan Railways</h1>
             <p class="lead">Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</p>
             <hr class="my-4">
             <p>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</p>
         </div>
         <div class="col-lg-6">
-            <img src="download.jpg" alt="">
+            <img src="1abc.jpg" alt="">
         </div>
+		
     </div>
-    </div>    
+    </div>   
+	
 </div>
 
 <!--
 
     Modals
 -->
+<marquee style="font-family:Comic Sans MS; color: #FDFEFE" bgcolor="#72B6C3 " scrolldelay="90">Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</marquee>
 
 <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
@@ -77,7 +89,7 @@
                         <div class="col-sm-3 offset-sm-1">
                         <label for="namee" class=" col-form-label">Enter Name</label>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-5" >
                         <input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" >
                     </div>
                     </div>
@@ -86,7 +98,7 @@
                             <label for="passwordd" class="col-form-label">Enter Password</label>
                         </div>
                         <div class="col-sm-5">
-                            <input type="password" name="passwordd" id="passwordd" placeholder="Password">
+                            <input type="password" name="passwordd" id="passwordd" placeholder="Password" class=" form-control">
                         </div>
                         
                     </div>
@@ -94,12 +106,11 @@
                             <input type="checkbox" name="box" id="box" class="form-check-input">
                             <label for="box" class="form-check-label mb-1">Remeber me</label>
                     </div>
-                    <div class="form-row">
-                        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Login</button>
+                    <div  class="form-row">
+                        <button style="margin:5px; width:15%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+                        <button  style="margin:5px; width:15%" type="submit" class="btn btn-success "> <a href="passenger_home.html"> Login </a> </button>
+						
                     </div>
-
-
                 </form>
 
             </div>
@@ -109,18 +120,28 @@
 
 </div>
 
+
   <!--
       End of Modals
-  -->
-    <h1>About Us</h1>
+  --><about class="aboutus">
+      <h1>About Us:</h1>
     
-    <p id="p1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-    <hr>
+    <p id="p1">Pakistan Railways forms the life line of the country by catering to its needs for large scale movement of freight as well as passenger traffic. It not only contributes to its economic growth but also promotes national integration.
+
+Pakistan Railways endeavours to run the trains strictly in accordance to time table. The progressive freight train support organization operated by professional management and competent staff endeavours to provide reliable, competitive and economical service of recognized standards to its customers.
+
+Pakistan Railways provides an important mode of Transportation in the farthest corners of the country and brings them closer for Business, sightseeing, pilgrimage and education. It has been a great integrating force and forms the life line of the country by catering to its needs for large scale movement of people and freight.</p>
+    
+	<hr>
+     </about> 
+
+	
     <footer class="mt-5">
+	
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1>Complain Section</h1>
+				    <h1><span class="fa fa-question-circle"></span> Complain Section</h1>
                     <form>
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Email address</label>
@@ -134,10 +155,10 @@
                         </form>
                 </div>
                 <div class="col-lg-6 ">
-                    <h1><span class="fa fa-address-card"></span>Contact Info</h1>
-                    <span>Gmail:</span><p>pakrailways@foster.com</p>
-                    <span>Phone No:</span><span>+92345-2984137</span><br>
-                    <span>Telephone No:</span> <span>419037238</span>
+                    <h1><span class="fa fa-user"></span> Contact Info</h1>
+                    <p class="mt-5"><span><i class="fa fa-envelope" aria-hidden="true"></i>    Gmail : pakrailways@foster.com</span></p>
+                    <p class="mt-3"><span ><i class="fa fa-phone" aria-hidden="true"></i>  Phone No :+92345-2984137</span></p>
+                    <p class="mt-3"><span ><i class="fa fa-fax "></i>                      Telephone No :419037238</span></p>
                 </div>
             </div>
         </div>
