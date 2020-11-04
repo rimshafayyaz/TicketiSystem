@@ -24,8 +24,9 @@ footer{
 	font-size: 40px;
 	text-align: center;
 	line-height: 50px;
-	text-shadow: 2px 5px 0 rgba(0,0,0,0.2);
-}	
+	text-shadow: 2px 5px 0 rgba(0,0,0,0.23);
+}
+
 
 .btn-style
 {
@@ -48,9 +49,25 @@ aside{
 .pp{
   font-size: large;
 }
+
+.mainheading{
+
+	font-weight: 100;
+	text-transform: uppercase;
+	color: #72B6C3;
+	font-style: italic;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	font-size: 40px;
+	text-align: center;
+	line-height: 50px;
+	text-shadow: 2px 5px 0 rgba(0,0,0,0.1);}	
+
+
 .hh{
-  margin-top: 5px;
-  text-align: center;
+	font-weight: 100;
+    text-align: center;
+	font-size: 40px;
+	font-family:Georgia, serif;
 }
 .forr{
   margin-left: 200px;

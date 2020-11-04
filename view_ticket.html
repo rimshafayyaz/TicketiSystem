@@ -7,6 +7,32 @@
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 	  <link rel="stylesheet" href="styles.css">
+	      <style>
+  
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type=text],input[type=date], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+ .myDiv {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+
+</style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
@@ -21,7 +47,7 @@
                   <a class="nav-link" href="passenger_home.html">Home <span class="sr-only">(current)</span></a>
                 </li>
 				
-                <li class="nav-item active">
+                <li class="nav-item ">
                   <a class="nav-link" href="book_ticket.html">Book Ticket</a>
                 </li>
 				
@@ -30,7 +56,7 @@
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="#">Records</a>
+                  <a class="nav-link" href="all booking record.html">Records</a>
                 </li>
 				
 				<li class="nav-item">
@@ -46,16 +72,13 @@
           <div >
             <img class="d-block img-fluid" src="7a.jpg" alt="pizza">
         </div> 
-
-        <div class="jumbotron">
-            <h1>
-                Railway Details
-            </h1>
-            <hr>
-            <aside class="mt-2">
-                Book a ride for life from your home without any discomfort
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" ><h1 style="padding:15px 32px;"> <span class="badge badge-danger">Railway Details</span></h1>	</div>
+            <aside class="mt-0">
+                <h4 style="text-align:left; padding: 0px 45px; ">Book a ride for life from your home without any discomfort</h4>
             </aside>
-        </div>
+			<hr/>
+			<br/>
+       
 
         <div class="container">
             <div class="row">
@@ -76,25 +99,26 @@
             <hr>
         </div>
 
-        <div>
-            <h1 class="hh">Personal Info</h1>
-            <br>
-            <form>
+        <div class="myDiv">
+            <h1 class="hh"><b>Add Passenger</b></h1>
+            <form action="/action_page.php" >
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <small id="emailHelp" class="form-text text-muted">Enter your full name.</small>
+                  <label for="Name"><b>Name :</b></label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter your full name" >
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Age</label>
-                  <input type="number" placeholder="Enter your age" class="form-control" id="exampleInputPassword1">
+                  <label for="age"><b>Age :</b></label>
+                  <input type="number" placeholder="Enter your age" class="form-control" min="0"id="age">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">CNIC</label>
-                    <input type="number" placeholder="Enter your CNIC" class="form-control" id="exampleInputPassword1">
-                  </div>
+                    <label for="gender"><b>Gender :</b></label>
+                    <select name="gender" id="gender">
+					  <option value="male">Male</option>
+					  <option value="female">Female</option>
+					</select>
+                </div>
 
-                <button type="submit" class="btn btn-primary"><a id="ticket" class="lin" data-toggle="Modal" data-target="#Ticketmodal" href="#" aria-disabled="true">Confirm ticket</a></button>
+                <button  style="margin:5px; width:20% "type="submit" class="btn btn-success"><a id="ticket" class="lin" data-toggle="Modal" data-target="#Ticketmodal" href="#" aria-disabled="true">Confirm Ticket</a></button>
               </form>
         </div>
 
@@ -107,8 +131,7 @@
         <div class="modal-content">
             <div class="modal-header" id="clr2">
                 <h4 class="modal-title"> 
-                    Payment-Enter your credit details
-                    <hr>
+                    Payment-Enter Your Credit Details
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">
                     &times;
@@ -119,38 +142,52 @@
                 <form action="" id="clr1">
                     <div class="form-group row">
                         <div class="col-sm-3 offset-sm-1">
-                        <label for="namee" class=" col-form-label">Enter Name</label>
+                        <label for="number" class=" col-form-label"><b>Credit Card No. :</b></label>
                         </div>
-                        <div class="col-sm-5">
-                        <input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" >
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 offset-sm-1">
-                            <label for="passwordd" class="col-form-label">Enter Credit Card Number</label>
-                        </div>
-                        <div class="col-sm-5">
-                            <input class="form-control" type="text" name="passwordd" id="passwordd" placeholder="Enter credit card number">
-                        </div>
-                        
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-3 offset-sm-1">
-                            <label for="paswordd" class="col-form-label">Enter Credit Card Number</label>
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="password" class="form-control" name="paswordd" id="psswordd" placeholder="Enter credit card pin">
-                        </div>
-                        
-                    </div>
-                    <div class="form-row">
-                        <button type="button" class="btn btn-danger" class="close" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary"><a href="passenger_home.html" class="lin">Make payment</a></button>
 						
+                        <div class="col-sm-5">
+                        <input type="number" name="number" id="number" placeholder="xxxx xxxx xxxx xxxx" class=" form-control" >
+                        </div>
+                    </div>
+					
+                    <div class="form-group row">
+                        <div class="col-sm-3 offset-sm-1">
+                            <label for="username" class="col-form-label"><b>Username :</b></label>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="data" class="form-control" name="username" id="usename" placeholder="Enter username">
+                        </div>
                     </div>
 
-
+                    <div class="form-group row">
+                        <div class="col-sm-3 offset-sm-1">
+                            <label for="pin" class="col-form-label"><b>Pin Code :</b></label>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="number" class="form-control" name="pin" id="pin" placeholder="xxxx">
+                        </div>
+                    </div>
+					
+					<div class="form-group row"> 
+					    <div class="col-sm-3 offset-sm-1">
+                            <label for="pin" class="col-form-label"><b>Expiry Month & Year:</b></label>
+                        </div>
+                        <div class="col-sm-5">
+						    <input type="month" id="month" name="month" placeholder="Expiry Month"> 
+                        </div>
+                    </div>
+					
+					
+					<div class="form-group row">
+					    <div class="col-sm-6 offset-sm-6">
+                            <label for="pin" class="col-form-label"><b>Total amout to pay is _____ /-</b></label>
+                        </div>
+					</div>
+					
+					<div  class="form-row">
+		                  <button style="margin:5px; width:20%" type="button" class="btn btn-danger "><a> Close</a> </button>
+						  <button  style="margin:5px; width:20%" type="submit" class="btn btn-success "> <a  href="passenger_home.html" class="lin">Make Payment</a> </button>
+	                </div>
                 </form>
 
             </div>

@@ -28,15 +28,22 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">Search</a>
                 </li>
+				
                 <li class="nav-item ">
                   <a class="nav-link " href="places.html" >Famous Places</a>
                 
                 </li>
+				
 				<li class="nav-item">
-                  <a class="nav-link" href="#">Register</a>
+                  <a class="nav-link" href="registration_page.html">Register</a>
                 </li>
+				
                 <li class="nav-item">
                   <a class="nav-link " id="log_in" data-toggle="Modal" data-target="#loginmodal" href="#" aria-disabled="true">Login</a>
+                </li>
+				
+				<li class="nav-item">
+                  <a class="nav-link" href="#process">Contact</a>
                 </li>
               </ul>
 
@@ -44,32 +51,31 @@
           </nav>
           
 
-          <div class="jumbotron " >
-		  
-              <div class="container">
-
-		  
-              <div class="row">
-                <div class="  col-lg-6">
-              <h1 class="welcome">Welcome to Pakistan Railways</h1>
-            <p class="lead">Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</p>
-            <hr class="my-4">
-            <p>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</p>
-        </div>
-        <div class="col-lg-6">
-            <img src="1abc.jpg" alt="">
-        </div>
+          <div class="jumbotron "  style="background-color: #D6EAF8;">
+		        <div class="container" style="background-color: #D6EAF8;">
+                     <div class="row">
+                         <div class="  col-lg-6">
+						      <br/><br/>
+                              <h1 class="welcome">Welcome to Pakistan Railways</h1>
+                              <p class="lead">Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</p>
+                              <hr class="my-4">
+                              <p>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</p>
+                         </div>
+                         <div class="col-lg-6">
+						 <br/><br/>
+                             <img src="1abc.jpg" alt="">
+                         </div>
 		
-    </div>
-    </div>   
+                     </div>
+                </div>   
 	
-</div>
+           </div>
 
 <!--
 
     Modals
 -->
-<marquee style="font-family:Comic Sans MS; color: #FDFEFE" bgcolor="#72B6C3 " scrolldelay="90">Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</marquee>
+<marquee style="font-family:Comic Sans MS; color: #FDFEFE" bgcolor="#72B6C3 " scrolldelay="1">Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</marquee>
 
 <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
@@ -84,21 +90,28 @@
                 </button>
             </div>
             <div class="modal-body" id="clr">
-                <form action="" id="clr1">
+                <form action="" id="clr1" >
                     <div class="form-group row">
-                        <div class="col-sm-3 offset-sm-1">
-                        <label for="namee" class=" col-form-label">Enter Name</label>
+                        <div class="col-sm-2 offset-sm-1">
+                        <label for="namee" class=" col-form-label"><b>Username :</b></label>
                         </div>
                         <div class="col-sm-5" >
                         <input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" >
                     </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-3 offset-sm-1">
-                            <label for="passwordd" class="col-form-label">Enter Password</label>
+                        <div class="col-sm-2 offset-sm-1">
+                            <label for="passwordd" class="col-form-label"><b>Password : </b></label>
                         </div>
                         <div class="col-sm-5">
                             <input type="password" name="passwordd" id="passwordd" placeholder="Password" class=" form-control">
+                        </div>
+                        
+                    </div>
+					
+					<div class="form-group row" >
+                        <div class="col-sm-4 offset-sm-6">
+                            <label for="passwordd" class="col-form-label">Forgot Password?</label>
                         </div>
                         
                     </div>
@@ -124,7 +137,7 @@
   <!--
       End of Modals
   --><about class="aboutus">
-      <h1>About Us:</h1>
+      <h1 >About Us:</h1>
     
     <p id="p1">Pakistan Railways forms the life line of the country by catering to its needs for large scale movement of freight as well as passenger traffic. It not only contributes to its economic growth but also promotes national integration.
 
@@ -135,10 +148,11 @@ Pakistan Railways provides an important mode of Transportation in the farthest c
 	<hr>
      </about> 
 
-	
-    <footer class="mt-5">
-	
-        <div class="container">
+	<div >
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14145736.790339021!2d60.33490209405818!3d30.04979348328978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38db52d2f8fd751f%3A0x46b7a1f7e614925c!2sPakistan!5e0!3m2!1sen!2s!4v1604508018598!5m2!1sen!2s" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <footer class="mt-5" id="process">
+	    <div class="container">
             <div class="row">
                 <div class="col-lg-6">
 				    <h1><span class="fa fa-question-circle"></span> Complain Section</h1>
