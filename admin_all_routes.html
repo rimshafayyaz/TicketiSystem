@@ -2,7 +2,8 @@
 <meta charset="UTF-8">
 <html>
 <title>Railway Mangement System</title>
- 	
+        
+		
     <head>
         <title>Railway Management System</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -18,7 +19,7 @@ table.center {
 }
 </style>
     </head>
-    <body>
+    <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
         <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
             <a class="navbar-brand" href="#">Railway Management System</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,27 +29,27 @@ table.center {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="passenger_home.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-				
-                <li class="nav-item">
-                  <a class="nav-link" href="book_ticket.html">Book Ticket</a>
+                  <a class="nav-link" href="admin_add_train.html">Add Train </a>
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="#" >Train Timing</a>
+                  <a class="nav-link" href="admin_add_route.html">Add Route</a>
                 </li>
 				
-				<li class="nav-item" active>
-                  <a class="nav-link" href="all booking record.html">Records</a>
+                <li class="nav-item ">
+                  <a class="nav-link " href="admin_all_trains.html" >View Trains <span class="sr-only">(current)</span></a>
+                </li>
+				
+				<li class="nav-item active">
+                  <a class="nav-link" href="admin_all_routes.html">View Route</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="profile.html">Profile</a>
+                  <a class="nav-link" href="admin_booking_details.html">Booking Details</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="Home.html">Logout</a>
+                  <a class="nav-link" href="home.html">Logout</a>
                 </li>
 				
             </div>
@@ -58,23 +59,23 @@ table.center {
           <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img class="d-block img-fluid" src="7a.jpg" alt="pizza">
+                    <img class="d-block img-fluid" src="1b.jpg"alt="pizza">
                 </div> 
             </div>
           </div>
 		 
 		 
-          <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9"><h1 style="padding:15px 32px;" > <span class="badge badge-danger">All Booking History</span></h1>	</div>
-	      <hr/><br/>
+          <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9"><h1 ><span class="badge badge-danger">All Routes</span></h1>	</div>
+	      <br/>	<hr/><br/>
 		  
-		  <table  class="center" border="9" cellpadding="20" cellspacing="20" width="80%">
+		  <table  class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
         	<tr>
-        		<th>   Booking ID   </th>	
-        		<th>   Customer Name   </th>
-				<th>   Booking Date   </th>
-				<th>   Travel Date   </th>
-				<th>   Total Fair   </th>
-				<th>   View Ticket   </th>
+        		<th>   Sr. No   </th>	
+        		<th>   Route   </th>
+				<th>   Train Name  </th>
+				<th>   Train No.  </th>
+				<th>   Fare   </th>
+				<th>   Distance   </th>
 				
         	</tr>
         	<tr>
@@ -83,7 +84,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td>View</td>
+        		<td></td>
         	</tr>
         	<tr>
         		<th> 2 </th>
@@ -91,7 +92,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td>View</td>
+        		<td></td>
         	</tr>
         	<tr>
         		<th> 3 </th>
@@ -99,7 +100,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td>View  </td>
+        		<td></td>
         	</tr>
         	<tr>
         		<th> 4 </th>
@@ -107,7 +108,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td>View</td>
+        		<td></td>
         	</tr>
         	<tr>
         		<th> 5 </th>
@@ -115,36 +116,13 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td>View</td>
+        		<td></td>
         	</tr>	
-        <table>	
+        </table>	
+		
+		<br/><br/>
 	
 		
-		<footer class="mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1>Complain Section</h1>
-                    <form>
-                        <div class="form-group">
-                          <label for="exampleFormControlInput1">Email address</label>
-                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Your Complain</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            <button type="button" class="btn btn-danger mt-3">Submit Complain</button>
-                        </div>
-                        </form>
-                </div>
-                <div class="col-lg-6 ">
-                    <h1><span class="fa fa-address-card"></span>Contact Info</h1>
-                    <p class="mt-5"><span>Gmail:pakrailways@foster.com</span></p>
-                    <p class="mt-3"><span ><i class="fa fa-phone"></i>Phone No:</span><span>+92345-2984137</span></p>
-                    <p class="mt-3"><span ><i class="fa fa-fax "></i>Telephone No:</span> <span>419037238</span></p>
-                </div>
-            </div>
-        </div>
-    </footer>
+
     </body>
 </html>

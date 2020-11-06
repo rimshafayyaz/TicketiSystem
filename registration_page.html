@@ -34,6 +34,7 @@ input[type=radio], select, textarea {
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  
 }
 
 input[type=submit] {
@@ -49,41 +50,7 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-
-.container {
-  background-color: #D6EAF8 ;
-  border-radius: 20px;
-  padding: 50px;
-}
-
-.col-25 {
-  float: left;
-  width: 30%;
-  margin-top: 1px;
-}
-
-.col-75 {
-  float: left;
-  width: 70%;
-  margin-top: 1px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-    </style>
+ </style>
     </head>
 	
     <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
@@ -179,7 +146,7 @@ input[type=submit]:hover {
 				  <label for="name"><b>Full Name :</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="name" name="name" placeholder="Enter Name" required>
+				  <input type="text" id="name" name="name" placeholder="First Name & Last Name" required>
 				</div>
 			  </div>
 			  
@@ -188,7 +155,7 @@ input[type=submit]:hover {
 				  <label for="username"><b>Username :</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="username" name="username" placeholder="Enter Username" required>
+				  <input type="text" id="username" name="username" placeholder="Alphabets & Digits" required>
 				</div>
 			  </div>
 			  
@@ -197,7 +164,7 @@ input[type=submit]:hover {
 				  <label for="email"><b>Email:</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="email" name="email" placeholder="Enter Email" required>
+				  <input type="text" id="email" name="email" placeholder="Example@gmail.com" required>
 				</div>
 			  </div>
 			  
@@ -206,7 +173,7 @@ input[type=submit]:hover {
 				  <label for="Phone"><b>Phone No.:</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="phone" name="phone" placeholder="Enter Phone no." required>
+				  <input type="text" id="phone" name="phone" placeholder="xxxx-xxxxxxxx" required>
 				</div>
 			  </div>
 			  
@@ -215,7 +182,7 @@ input[type=submit]:hover {
 				  <label for="address"><b>Address:</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="address" name="address" placeholder="Enter Address">
+				  <input type="text" id="address" name="address" placeholder="Current Address Here . .">
 				</div>
 			  </div>
 			  
@@ -262,7 +229,7 @@ input[type=submit]:hover {
 				<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
 				<div class="row">
-				  <button  style="margin:5px; width:49%"type="button" class="btn btn-danger ">Cancel</button>
+				  <button  style="margin:5px; width:49%"type="reset" class="btn btn-danger " value="reset">Reset</button>
 				  <button  style="margin:5px; width:49%"type="submit" class="btn btn-success ">Sign Up</button>
 				</div>
         </div>
