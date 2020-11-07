@@ -47,7 +47,7 @@ input[type=text],input[type=date], select {
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="#" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.html" >Train Timing</a>
                 </li>
 				
 				<li class="nav-item">
@@ -68,12 +68,13 @@ input[type=text],input[type=date], select {
             <img class="d-block img-fluid" src="7a.jpg" alt="pizza">
         </div> 
 
-         <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" ><h1 style="padding:15px 32px;"> <span class="badge badge-danger">Railway Details</span></h1>	</div>
-            <aside class="mt-0">
-                <h4 style="text-align:left; padding: 0px 45px; ">Book a ride for life from your home without any discomfort</h4>
+         <hr/>
+		    <h1 class="mainheading">Railway Details</h1>
+		 <hr/><br/>
+			<aside class="mt-0">
+                <h4 style="text-align:center; padding: 0px 45px; ">Book a ride for life from your home without any discomfort</h4>
             </aside>
-			<hr/>
-			<br/>
+       
 
         <div class="container">
             <div class="row">
@@ -183,7 +184,8 @@ input[type=text],input[type=date], select {
 					
 					<div  class="form-row">
 		                  <button style="margin:5px; width:20%" type="button" class="btn btn-danger "><a> Close</a> </button>
-						  <button  style="margin:5px; width:20%" type="submit" class="btn btn-success "> <a  href="passenger_home.html" class="lin">Make Payment</a> </button>
+						  <button  style="margin:5px; width:20% "type="submit" class="btn btn-success"><a id="ticke"  class="lin" data-toggle="Modal" data-target="#Ticketreceipt" href="#" aria-disabled="true">Make Payment</a></button>
+                          
 	                </div>
                 </form>
 
@@ -193,6 +195,83 @@ input[type=text],input[type=date], select {
     </div>
 
 </div>
+
+<!--Ticket Receipt  -->
+
+<div  id="Ticketreceipt" class="modal fade" role="dialog">
+    <button type="button" class="close" data-dismiss="modal">
+                    &times;
+    </button>
+    <div class="modal-dialog modal-lg" role="content">
+	    <div   class="modal-content">
+		    <div  id="block1"  >
+            <div class="modal-header" id="clr2">
+                <h4 class="modal-title"> Ticket Receipt </h4>
+				
+            </div>
+            <div class="modal-body" id="clr">
+			    <div    class="container" style="background-color: #D6EAF8 ;border-radius: 10px;padding: 40px;">
+				    <div class="row">
+						<div class="col-lg-6">
+							<img src="1c.jpg" alt="Train image"  height="250px" width="300px">
+						</div>
+						<div class="col-lg-6">
+							<h3>Shalimar Express</h3>
+							<h5>Type:</h5>
+							<p class="pp">Middle class</p>
+							<h5>Travel:</h5>
+							<p class="pp">Lahore to Karachi</p> 
+							<h5>Fare:</h5>
+							<p class="pp">Rs-/1000</p>
+						
+						</div>
+					</div>
+					
+					<div style="text-align: right;">
+							<label for="number"><b>Booking ID :</b></label>
+							<input style="width:10%" type="number" id="name" name="name" required>
+					</div>
+                    <hr/>
+                    <div >
+						<h3 style="text-align: center;">Passenger Detail</h3>
+					</div>
+                    <table  class="center" border="9" cellpadding="10" cellspacing="20" width="100%">
+					<tr>
+						<th>   Sr. No   </th>	
+						<th>   Name  </th>
+						<th>   Age  </th>
+						<th>   Gender  </th>
+						<th>   Fare   </th>
+						
+					</tr>
+					<tr>
+						<th> 1 </th>
+						<td>  </td>
+						<td> </td>
+						<td>  </td>
+						<td> </td>
+					</tr>
+					
+				</table>
+                <br/>
+                    <div style="text-align: right;">
+								<label for="number"><b>Total Fare : ______ pkr</b></label>
+						</div>					
+					</div>				
+				</div>
+				
+            </div>
+			</div>
+			<div class="modal-footer"  id="clr2">
+                
+				 <input style=" width:10%" type="button" class="btn btn-danger " value="Print" onclick="printPage('block1');"></input>
+            </div>
+			
+        </div>
+    </div>
+	
+</div>
+
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -201,6 +280,30 @@ input[type=text],input[type=date], select {
                     $('#TicketModal').modal();
     
                 });
-            </script>
+    </script>
+	
+	<script>
+          $('#ticke').click(function(){
+                    $('#Ticketreceipt').modal();
+    
+                });
+    </script>
+	
+	<script>
+	function printPage(id)
+	{
+	   var html="<html>";
+	   html+= document.getElementById(id).innerHTML;
+	   html+="</html>";
+
+	   var printWin = window.open();
+	  
+	   printWin.document.write(html);
+	   printWin.document.close();
+	   printWin.focus();
+	   printWin.print();
+	   printWin.close();
+	}
+	</script>
     </body>
 </html>
