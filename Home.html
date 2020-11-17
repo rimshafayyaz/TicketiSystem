@@ -75,7 +75,7 @@
 
     Modals
 -->
-<marquee style="font-family:Comic Sans MS; color: #FDFEFE" bgcolor="#72B6C3 " scrolldelay="1">Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</marquee>
+<marquee style="font-family:Comic Sans MS; color: #FDFEFE" bgcolor="#72B6C3 " scrolldelay="1"><h4>Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</h4></marquee>
 
 <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
@@ -91,53 +91,36 @@
             </div>
             <div class="modal-body" id="clr">
                 <form action="" id="clr1" >
-                    <div class="form-group row">
-                        <div class="col-sm-2 offset-sm-1">
-                        <label for="namee" class=" col-form-label"><b>Username :</b></label>
-                        </div>
-                        <div class="col-sm-5" >
-                        <input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" >
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-2 offset-sm-1">
+                    <div class="mylogin">
+                        <div ><label for="namee" class=" col-form-label"><b>Username :</b></label></div>
+                        <div ><input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" ></div>
+						<div >
                             <label for="passwordd" class="col-form-label"><b>Password : </b></label>
                         </div>
-                        <div class="col-sm-5">
+						<div >
                             <input type="password" name="passwordd" id="passwordd" placeholder="Password" class=" form-control">
                         </div>
-                        
-                    </div>
-					
-					<div class="form-group row" >
-                        <div class="col-sm-4 offset-sm-6">
-                            <label for="passwordd" class="col-form-label">Forgot Password?</label>
+						<div style="text-align: right;">
+                            <label  for="password" class="col-form-label"><a href="#" > Forgot Password? </a></label>
                         </div>
-                        
-                    </div>
-                    <div class="form-check ">
+						<div class="form-check ">
                             <input type="checkbox" name="box" id="box" class="form-check-input">
                             <label for="box" class="form-check-label mb-1">Remeber me</label>
                     </div>
-                    <div  class="form-row">
-                        <button style="margin:5px; width:15%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-                        <button  style="margin:5px; width:15%" type="submit" class="btn btn-success "> <a href="passenger_home.html"> Login </a> </button>
-						
+						<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.html" > Login </a> </button>
                     </div>
                 </form>
-
             </div>
         </div>
-
     </div>
-
 </div>
-
 
   <!--
       End of Modals
   --><about class="aboutus">
       <h1 class="mainheading">About Us</h1>
+	  <hr/>
     
     <p id="p1">Pakistan Railways forms the life line of the country by catering to its needs for large scale movement of freight as well as passenger traffic. It not only contributes to its economic growth but also promotes national integration.
 

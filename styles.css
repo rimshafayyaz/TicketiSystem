@@ -39,6 +39,13 @@ footer{
   padding: 20px;
 }
 
+.mylogin {
+  border-radius: 5px;
+  background-color: #D6EAF8 ;
+  padding: 20px;
+}
+
+
 .col-25 {
   float: left;
   width: 30%;

@@ -121,13 +121,14 @@ input[type=text],input[type=date], select {
   
   
     <div  class="form-row">
-          <button  style="margin:5px; width:49%" type="submit" class="btn btn-success "> <a> Search </a> </button>
+          <button  style="margin:5px; width:49%"  type="button" class="btn btn-success "  onclick="asd()"> <a > Search </a> </button>
 		  <button style="margin:5px; width:49%" type="reset" class="btn btn-danger " value="reset"><a> Reset</a> </button>
 	</div>
 					
 	
   </form>
 </div>
+<form  id="asd" action="">
 <br/>	<hr/>
 <h1 class="mainheading">Available Trains</h1>
 <hr/>
@@ -229,6 +230,7 @@ input[type=text],input[type=date], select {
             </div>
         </div> 
 
+</form>
 
 
 
@@ -259,5 +261,18 @@ input[type=text],input[type=date], select {
             </div>
         </div>
     </footer>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+    <script type="text/javascript">
+		 
+		   window.onload=function(){
+		   document.getElementById('asd').style.display="none";
+		   }
+		function asd()
+		{
+			   
+			document.getElementById("asd").style.display="block";
+		}
+    </script>
     </body>
 </html>
