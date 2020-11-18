@@ -13,7 +13,7 @@
     <style>
 	
 	body{
-background-image:url(4.jpg);
+background-image:url(1bb.jpg);
 background-size: cover;
 font-family: arial;
 
@@ -67,7 +67,7 @@ input[type=submit]:hover {
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
             <div class="modal-header" id="clr2">
-                <h4 class="modal-title"> 
+                <h4 class="modal-title" style="font-family:Didot, serif; font-size: 30px;"> 
                     Login
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">
@@ -141,10 +141,11 @@ input[type=submit]:hover {
 		  
     <form action="action_page.php" style="border:1px solid #ccc;">
         <div class="container" style="background: transparent;background: rgba(72,168,179,0.5);">
-			<h1 class="mainheading">Sign Up</h1>
-			<p>Please fill in this form to create an account.</p>
-			<hr>
-
+			<h1 class="signupheading">Sign Up</h1>
+			<div class="signup">
+				<p>Please fill in this form to create an account.</p>
+				<hr>
+            
 			  <div class="row">
 				<div class="col-25">
 				  <label for="name"><b>Full Name :</b></label>
@@ -225,18 +226,21 @@ input[type=submit]:hover {
 				  <input type="password" id="re-password" name="re-password" placeholder="Repeat Password" required>
 				</div>
 			  </div> 
-			  
-			  <label>
-				  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-				</label>
-			  
-				<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
+			  <div class="row">
+				  <label>
+					  <input type="checkbox" checked="checked" name="remember" > <b>Remember me</b>
+				   </label>
+				   
+			  </div> 
+			   <div class="row">
+					<p><b>By creating an account you agree to our</b> <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+			   </div>	
 				<div class="row">
-				  <button  style="margin:5px; width:49%"type="reset" class="btn btn-danger " value="reset">Reset</button>
+				  <button  style="margin:5px; width:49% "type="reset" class="btn btn-danger " value="reset">Reset</button>
 				  <button  style="margin:5px; width:49%"type="submit" class="btn btn-success ">Sign Up</button>
 				</div>
-        </div>
+           </div>
+		</div>
     </form>
 	 <footer class="mt-5" id="process">
 	    <div class="container">

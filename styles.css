@@ -5,7 +5,7 @@ footer{
 }
 
 .aboutus{
-	font-family: Trebuchet MS, sans-serif;
+	font-family: Comic Sans MS, Comic Sans, cursive;
 }
 #clr2{
     background-color:  #72B6C3;
@@ -24,7 +24,7 @@ footer{
 	margin: 1em 0 0.5em 0;
 	font-weight: 100;
 	text-transform: uppercase;
-	color: #72B6C3;
+	color:#50AAB4 ;
 	font-style: italic;
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	font-size: 40px;
@@ -35,16 +35,26 @@ footer{
 
  .myDiv {
   border-radius: 5px;
-  background-color: #D6EAF8 ;
+  background-color: #D6EAF8 ; 
   padding: 20px;
 }
-
+.marque{
+	font-family:Comic Sans MS;
+	color: #FDFEFE;
+	
+}
 .mylogin {
   border-radius: 5px;
   background-color: #D6EAF8 ;
   padding: 20px;
+  font-family:Didot, serif; 
+  font-size: 20px;
 }
-
+.signup {
+  
+  font-family:Didot, serif; 
+  font-size: 20px;
+}
 
 .col-25 {
   float: left;
@@ -101,7 +111,19 @@ aside{
 
 	font-weight: 100;
 	text-transform: uppercase;
-	color: #72B6C3;
+	color: #50AAB4 ;
+	font-style: italic;
+	font-family: Comic Sans MS, Comic Sans, cursive;
+	font-size: 40px;
+	text-align: center;
+	line-height: 50px;
+	text-shadow: 2px 5px 0 rgba(0,0,0,0.1);}	
+
+.signupheading{
+
+	font-weight: 100;
+	text-transform: uppercase;
+	color: #50AAB4;
 	font-style: italic;
 	font-family: Comic Sans MS, Comic Sans, cursive;
 	font-size: 40px;
