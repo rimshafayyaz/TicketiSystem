@@ -9,7 +9,16 @@
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
         <link rel="stylesheet" href="styles.css">
 		<style>
+.wrap{
+	background-color:#FFFFFF;
+	padding:0 10px;
+	border:solid 1px;
+	-o-box-shadow: 10px 10px 5px #888;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 0px 0px 25px #666;
 
+}
 
 		</style>
     </head>
@@ -52,30 +61,39 @@
           </nav>
           
 
-          <div class="jumbotron"  style="background-color: #D6EAF8;">
-
-                     <div class="row">
-                         <div class="  col-lg-6">
-						      <br/><br/>
-                              <h1 class="welcome">Welcome to Pakistan Railways</h1>
-                              <p class="lead">Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</p>
-                              <hr class="my-4">
-                              <p>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</p>
-                         </div>
+        <div class="jumbotron"  style="background-color: #D6EAF8;">
+            <div class="row">
+                <div class="  col-lg-6">
+					  <br/><h1 class="welcome">Welcome to Pakistan Railways</h1>
+					<div >
+							<div  Style="float:right;">
+							<hr />
+							<marquee behavior="scroll" id="marq"  scrollamount=3 direction="up" height="190px" onmouseover="nestop()" onmouseout="nestrt()">
+								<div>
+									<p class="lead"><b>Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</b></p>
+									<hr class="my-4">
+									<p><b>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</b></p>
+								</div>
+							</marquee>
+							</div>
+				    </div>
+                              
+                </div>
                          <div class="col-lg-6">
 						 <br/>
                              <img src="1abc.jpg" alt="">
                          </div>
 		
-                     </div> 
+            </div> 
 	
-           </div>
+        </div>
 
 <!--
 
     Modals
 -->
-<marquee class="marque" bgcolor="#50AAB4 "  scrolldelay="1"><h4>Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</h4></marquee>
+<marquee class="marque" bgcolor="#50AAB4 "  scrolldelay="1"><h5>Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</h5></marquee>
+
 
 <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
