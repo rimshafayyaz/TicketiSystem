@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,27 +43,27 @@ input[type=text],input[type=month], select {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="passenger_home.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="passenger_home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link" href="book_ticket.html">Book Ticket</a>
+                  <a class="nav-link" href="book_ticket.php">Book Ticket</a>
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="traintiming.html" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.php" >Train Timing</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="all booking record.html">Records</a>
+                  <a class="nav-link" href="all booking record.php">Records</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="profile.html">Profile</a>
+                  <a class="nav-link" href="profile.php">Profile</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="Home.html">Logout</a>
+                  <a class="nav-link" href="Home.php">Logout</a>
                 </li>
 				
             </div>
@@ -305,3 +309,12 @@ input[type=text],input[type=month], select {
 	</script>
     </body>
 </html>
+
+<?php
+
+if(isset($_SESSION['error']))
+{
+session_destroy();
+}
+
+?>

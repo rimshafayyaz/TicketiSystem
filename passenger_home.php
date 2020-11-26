@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -20,27 +24,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="passenger_home.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="passenger_home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link" href="book_ticket.html">Book Ticket</a>
+                  <a class="nav-link" href="book_ticket.php">Book Ticket</a>
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="traintiming.html" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.php" >Train Timing</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="All Booking Record.html">Records</a>
+                  <a class="nav-link" href="All Booking Record.php">Records</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="profile.html">Profile</a>
+                  <a class="nav-link" href="profile.php">Profile</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="home.html">Logout</a>
+                  <a class="nav-link" href="home.php">Logout</a>
                 </li>
               </ul>
 
@@ -237,3 +241,12 @@
         </script>
     </body>
 </html>
+
+<?php
+
+if(isset($_SESSION['error']))
+{
+session_destroy();
+}
+
+?>

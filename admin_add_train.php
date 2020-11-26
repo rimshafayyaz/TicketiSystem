@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -74,27 +78,27 @@ input[type=submit]:hover {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="admin_add_train.html">Add Train </a>
+                  <a class="nav-link" href="admin_add_train.php">Add Train </a>
                 </li>
 				
                 <li class="nav-item">
-                  <a class="nav-link" href="admin_add_route.html">Add Route</a>
+                  <a class="nav-link" href="admin_add_route.php">Add Route</a>
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="admin_all_trains.html" >View Trains <span class="sr-only">(current)</span></a>
+                  <a class="nav-link " href="admin_all_trains.php" >View Trains <span class="sr-only">(current)</span></a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="admin_all_routes.html">View Route</a>
+                  <a class="nav-link" href="admin_all_routes.php">View Route</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="admin_booking_details.html">Booking Details</a>
+                  <a class="nav-link" href="admin_booking_details.php">Booking Details</a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="home.html">Logout</a>
+                  <a class="nav-link" href="home.php">Logout</a>
                 </li>
 				
             </div>
@@ -180,15 +184,17 @@ input[type=submit]:hover {
 				<div class="row">
 				  <button  style="margin:5px; width:49%"type="reset" class="btn btn-danger " value="reset">Reset</button>
 				  <button  style="margin:5px; width:49%"type="submit" class="btn btn-success ">Add Route</button>
-				</div>
-				
-				
-				
-		</div>
-		
+				</div>	
+		</div>	
     </form>
-		  	  
-		  
-
     </body>
 </html>
+
+<?php
+
+if(isset($_SESSION['error']))
+{
+session_destroy();
+}
+
+?>

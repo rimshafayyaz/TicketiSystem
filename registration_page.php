@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -94,7 +98,7 @@ input[type=submit]:hover {
                             <label for="box" class="form-check-label mb-1">Remeber me</label>
                     </div>
 						<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.html" > Login </a> </button>
+                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.php" > Login </a> </button>
                     </div>
                     
                 </form>
@@ -116,17 +120,17 @@ input[type=submit]:hover {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Search</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link " href="places.html" >Famous Places</a>
+                  <a class="nav-link " href="places.php" >Famous Places</a>
                 
                 </li>
 				<li class="nav-item" active>
-                  <a class="nav-link active" href="registration_page.html">Register</a>
+                  <a class="nav-link active" href="registration_page.php">Register</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link " id="log_in" data-toggle="Modal" data-target="#loginmodal" href="#" aria-disabled="true">Login</a>
@@ -279,3 +283,12 @@ input[type=submit]:hover {
 </script> 
     </body>
 </html>
+
+<?php
+
+if(isset($_SESSION['error']))
+{
+session_destroy();
+}
+
+?>

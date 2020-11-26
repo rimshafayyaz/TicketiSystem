@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -33,19 +37,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Search</a>
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="places.html" >Famous Places</a>
+                  <a class="nav-link " href="places.php" >Famous Places</a>
                 
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="registration_page.html">Register</a>
+                  <a class="nav-link" href="registration_page.php">Register</a>
                 </li>
 				
                 <li class="nav-item">
@@ -126,7 +130,7 @@
                             <label for="box" class="form-check-label mb-1">Remeber me</label>
                     </div>
 						<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.html" > Login </a> </button>
+                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.php" > Login </a> </button>
                     </div>
                 </form>
             </div>
@@ -190,3 +194,12 @@ Pakistan Railways provides an important mode of Transportation in the farthest c
 </script>   
 </body>
 </html>
+
+<?php
+
+if(isset($_SESSION['error']))
+{
+session_destroy();
+}
+
+?>

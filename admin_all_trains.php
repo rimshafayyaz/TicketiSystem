@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
@@ -29,27 +33,27 @@ table.center {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="admin_add_train.html">Add Train </a>
+                  <a class="nav-link" href="admin_add_train.php">Add Train </a>
                 </li>
 				
                 <li class="nav-item">
-                  <a class="nav-link" href="admin_add_route.html">Add Route</a>
+                  <a class="nav-link" href="admin_add_route.php">Add Route</a>
                 </li>
 				
-                <li class="nav-item ">
-                  <a class="nav-link " href="admin_all_trains.html" >View Trains <span class="sr-only">(current)</span></a>
-                </li>
-				
-				<li class="nav-item">
-                  <a class="nav-link" href="admin_all_routes.html">View Route</a>
-                </li>
-				
-				<li class="nav-item active">
-                  <a class="nav-link" href="admin_booking_details.html">Booking Details</a>
+                <li class="nav-item active">
+                  <a class="nav-link " href="admin_all_trains.php" >View Trains <span class="sr-only">(current)</span></a>
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="home.html">Logout</a>
+                  <a class="nav-link" href="admin_all_routes.php">View Route</a>
+                </li>
+				
+				<li class="nav-item">
+                  <a class="nav-link" href="admin_booking_details.php">Booking Details</a>
+                </li>
+				
+				<li class="nav-item">
+                  <a class="nav-link" href="home.php">Logout</a>
                 </li>
 				
             </div>
@@ -59,27 +63,27 @@ table.center {
           <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img class="d-block img-fluid" src="5a.jpg"alt="pizza">
+                    <img class="d-block img-fluid" src="1e.jpg"alt="pizza">
                 </div> 
             </div>
           </div>
+  <br/>
 		 
-		 <br/>
-		  <h1 class="mainheading">Booking Details</h1>
-	     <hr/><br/>
+		  <h1 class="mainheading">All Trains Record</h1>
+	    	<hr/><br/>
 		  
-		  <table  class="center" border="9" cellpadding="20" cellspacing="100" width="80%">
+		  <table  class="center" border="9" cellpadding="20" cellspacing="40" width="80%">
         	<tr>
-        		<th>   Sr. No   </th>
-                <th>   Passenger Name  </th>				
-        		<th>   Train   No &  Name</th>
-				<th>   Age   </th>
-				<th>   Gender   </th>
-				<th>   Date   </th>
-				<th>   Fare  </th>
-				<th>   Travel(From & To) City  </th>
-				<th>   Status   </th>
-				<th>   Cancel  </th>
+        		<th>   Sr. No   </th>	
+        		<th>   Train Name   </th>
+				<th>   Train No.   </th>
+				<th>   From City   </th>
+				<th>   To City   </th>
+				<th>   Departure Time   </th>
+				<th>   Arrival Time   </th>
+				<th>   Travel time   </th>
+				<th>   Distance   </th>
+				<th>   Image  </th>
 				
         	</tr>
         	<tr>
@@ -92,7 +96,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-				<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
+				<td colspan = 1><img src="1.jpg" alt="" border=3 height=100 width=100></img></td>
         	</tr>
         	<tr>
         		<th> 2 </th>
@@ -104,7 +108,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
+        		<td colspan = 1><img src="2.jpg" alt="" border=3 height=100 width=100></img></td>
         	</tr>
         	<tr>
         		<th> 3 </th>
@@ -116,7 +120,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
+        		<td colspan = 1><img src="3.jpg" alt="" border=3 height=100 width=100></img></td>
         	</tr>
         	<tr>
         		<th> 4 </th>
@@ -128,7 +132,7 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
+        		<td colspan = 1><img src="5.jpg" alt="" border=3 height=100 width=100></img></td>
         	</tr>
         	<tr>
         		<th> 5 </th>
@@ -140,13 +144,18 @@ table.center {
 				<td> </td>
         		<td>  </td>
 				<td> </td>
-        		<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
+        		<td colspan = 1><img src="6.jpg" alt="" border=3 height=100 width=100></img></td>
         	</tr>	
-        <table>	
+        </table>	
 		<br/>
-		<br/>
-	
-		
-
     </body>
 </html>
+
+<?php
+
+if(isset($_SESSION['error']))
+{
+session_destroy();
+}
+
+?>
