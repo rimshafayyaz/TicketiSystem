@@ -122,9 +122,11 @@ input[type=submit]:hover {
                 <li class="nav-item ">
                   <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
+                <!--
                 <li class="nav-item">
                   <a class="nav-link" href="#">Search</a>
                 </li>
+				-->
                 <li class="nav-item ">
                   <a class="nav-link " href="places.php" >Famous Places</a>
                 
