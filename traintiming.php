@@ -114,12 +114,13 @@ input[type=text],input[type=date], select {
 <table  class="center" border="9" cellpadding="20" cellspacing="100" width="80%">
         	<tr>
         		<th>   Sr. No   </th>	
-        		<th>   Station Name  </th>
-				<th>   Arrival Time  </th>
+        		<th>   Train Name  </th>
+        		<th>   Route  </th>
 				<th>   Departure Time  </th>
+				<th>   Arrival Time  </th>
 				
         	</tr>
-        	<tr>
+        	<!-- <tr>
         		<th> 1 </th>
         		<td>  </td>
 				<td> </td>
@@ -148,7 +149,42 @@ input[type=text],input[type=date], select {
         		<td>  </td>
 				<td> </td>
         		<td>  </td>
-        	</tr>	
+        	</tr>	 -->
+
+          <?php
+			$username = "root"; 
+			$password = ""; 
+			$database = "myrailway"; 
+			
+			// CREATE CONNECTION
+
+			$mysqli = new mysqli("localhost", $username, $password, $database); 
+
+			$query = "SELECT TrainName,CONCAT(FromStation,' TO ',ToStation),Departuretime,AraivalTime FROM route ";
+
+			if($result = $mysqli->query($query))
+			{
+        $i = 1;
+				while ($row = $result->fetch_assoc())
+				{
+					$trainname = $row["TrainName"];
+					$route = $row["CONCAT(FromStation,' TO ',ToStation)"];
+					$Departuretime = $row["Departuretime"];
+					$AraivalTime = $row["AraivalTime"];
+
+					echo '<tr> 
+                <td>'.$i.'</td> 
+								<td>'.$trainname.'</td> 
+								<td>'.$route.'</td> 
+                <td>'.$AraivalTime.'</td> 
+								<td>'.$Departuretime.'</td> 
+              </tr>';
+              
+        $i++;
+				}
+				$result->free();
+			}
+		?>
         </table>	
 		
 		<br/>

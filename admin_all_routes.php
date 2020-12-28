@@ -71,58 +71,70 @@ table.center {
 		  <h1 class="mainheading">All Routes Record</h1>
 	      <hr/><br/>
 		  
-		  <table  class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
+		<table  class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
         	<tr>
-        		<th>   Sr. No   </th>	
-        		<th>   Route   </th>
-				<th>   Train Name  </th>
-				<th>   Train No.  </th>
-				<th>   Fare   </th>
+        		<th>   Route ID   </th>	
+        		<th>   Train Name   </th>
+				<th>   Route  </th>
+				<th>   Business Class Fare  </th>
+				<th>   Economical Class Fare   </th>
+				<th>   Standard Class Fare   </th>
+				<th>   Departure Time   </th>
+				<th>   Arrival Time   </th>
 				<th>   Distance   </th>
 				
         	</tr>
-        	<tr>
-        		<th> 1 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-        	</tr>
-        	<tr>
-        		<th> 2 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-        	</tr>
-        	<tr>
-        		<th> 3 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-        	</tr>
-        	<tr>
-        		<th> 4 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-        	</tr>
-        	<tr>
-        		<th> 5 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-        	</tr>	
-        </table>	
-		<br/><br/>
+        	
+			<?php
+				$username = "root"; 
+				$password = ""; 
+				$database = "myrailway"; 
+				
+				// CREATE CONNECTION
+
+				$mysqli = new mysqli("localhost", $username, $password, $database); 
+
+				//	check connection
+				if ($mysqli->connect_error) 
+				{
+					die("Connection failed: " . $conn->connect_error);
+				}
+
+				$query = "SELECT RouteID,TrainName,CONCAT(FromStation,' to ',ToStation),BusinessClassFare,EconomicalClassFare,StandardClassFare,ArrivalTime,Departuretime,TotalDistance FROM route";
+
+				if($result = $mysqli->query($query))
+				{
+					while ($row = $result->fetch_assoc())
+					{
+						$RouteID = $row["RouteID"];
+						$trainname = $row["TrainName"];
+						$Route = $row["CONCAT(FromStation,' to ',ToStation)"];
+						$BusinessClassFare = $row["BusinessClassFare"];
+						$EconomicalClassFare = $row["EconomicalClassFare"];
+						$StandardClassFare = $row["StandardClassFare"];
+						$ArrivalTime = $row["ArrivalTime"];
+						$Departuretime = $row["Departuretime"];
+						$TotalDistance = $row["TotalDistance"];
+
+						echo '<tr> 
+									<td>'.$RouteID.'</td> 
+									<td>'.$trainname.'</td> 
+									<td>'.$Route.'</td> 
+									<td>'.$BusinessClassFare.'</td> 
+									<td>'.$EconomicalClassFare.'</td> 
+									<td>'.$StandardClassFare.'</td> 
+									<td>'.$ArrivalTime.'</td> 
+									<td>'.$Departuretime.'</td> 
+									<td>'.$TotalDistance.'</td> 
+								</tr>';
+					}
+					$result->free();
+				}
+			?>
+		</table>
+		<br/>
+		<br/>
+		<br/>
     </body>
 </html>
 

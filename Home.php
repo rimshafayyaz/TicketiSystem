@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ session_start();
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
         <link rel="stylesheet" href="styles.css">
+
 		<style>
 .wrap{
 	background-color:#FFFFFF;
@@ -39,11 +41,9 @@ session_start();
                 <li class="nav-item active">
                   <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
-				<!--
                 <li class="nav-item">
                   <a class="nav-link" href="#">Search</a>
                 </li>
-				-->
 				
                 <li class="nav-item ">
                   <a class="nav-link " href="places.php" >Famous Places</a>
@@ -114,27 +114,25 @@ session_start();
                 </button>
             </div>
             <div class="modal-body" id="clr">
-                <form action="" id="clr1" >
-                    <div class="mylogin" >
-                        <div ><label for="namee" class=" col-form-label"><b>Username :</b></label></div>
-                        <div ><input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" ></div>
+											
+				<form id="login" action="passenger_home.php" onsubmit="return validate()" method="post" name="login" id="clr1" >
+					<div class="mylogin" >
+						<div ><label for="namee" class=" col-form-label"><b>Username :</b></label></div>
+						<div ><input type="text " name="username" id="username" placeholder="username" class=" form-control" ></div>
 						<div >
-                            <label for="passwordd" class="col-form-label"><b>Password : </b></label>
-                        </div>
+							<label for="passwordd" class="col-form-label"><b>Password : </b></label>
+						</div>
 						<div >
-                            <input type="password" name="passwordd" id="passwordd" placeholder="Password" class=" form-control">
-                        </div>
+							<input type="password" name="pw" id="pw" placeholder="Password" maxlength="30" class=" form-control">
+						</div>
 						<div style="text-align: right;">
-                            <label  for="password" class="col-form-label"><a href="#" > Forgot Password? </a></label>
-                        </div>
-						<div class="form-check ">
-                            <input type="checkbox" name="box" id="box" class="form-check-input">
-                            <label for="box" class="form-check-label mb-1">Remeber me</label>
-                    </div>
+							<label  for="password" class="col-form-label"><a href="#" > Forgot Password? </a></label>
+						</div>
+						
 						<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.php" > Login </a> </button>
-                    </div>
-                </form>
+						<button  style=" width:49.5%" type="submit" value="Submit" name="submit" id="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  > Login </a> </button>
+					</div>
+				</form>
             </div>
         </div>
     </div>

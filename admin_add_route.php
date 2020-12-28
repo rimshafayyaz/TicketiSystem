@@ -1,5 +1,37 @@
 <?php
 session_start();
+$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+if (isset($_POST['submit']))
+{
+
+
+$trainname=$_POST['trainname'];
+$fromstation=$_POST['fromstation'];
+$tostation=$_POST['tostation'];
+$businessclassfare=$_POST['businessclassfare'];
+$economicalclassfare=$_POST['economicalclassfare'];
+$standardclassfare=$_POST['standardclassfare'];
+$arrivaltime=$_POST['arrivaltime'];
+$departuretime=$_POST['departuretime'];
+$totaldistance=$_POST['totaldistance'];
+$sql = "INSERT INTO route (trainname,fromstation,tostation, businessclassfare, economicalclassfare, standardclassfare,arrivaltime,departuretime, totaldistance ) VALUES ( '$trainname', '$fromstation','$tostation', '$businessclassfare',  '$economicalclassfare',  '$standardclassfare','$arrivaltime','$departuretime', '$totaldistance');";
+	if(mysqli_query($conn, $sql))
+{  
+	$message = "You have been successfully registered";
+}
+else
+{  
+	$message = "Could not insert record"; 
+}
+
+
+	echo "<script type='text/javascript'>alert('$message');</script>";
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +52,7 @@ session_start();
   box-sizing: border-box;
 }
 
-input[type=text] , input[type=number] ,select, textarea {
+input[type=text] , input[type=number], input[type=time] ,select, textarea {
 
   width: 100%;
   padding: 12px 20px;
@@ -93,7 +125,7 @@ input[type=submit]:hover {
             </div>
           </nav>
 		  
-	<form action="action_page.php" style="border:1px solid #ccc ">
+	<form action="admin_add_route.php" name="admin_add_route" method="post" style="border:1px solid #ccc ">
         <div class="container">
 			<br/>
 			<h1 class="mainheading">Add New Route</h1>
@@ -104,16 +136,17 @@ input[type=submit]:hover {
 				  <label for="text"><b>Select Train:</b></label>
 				</div>
 				<div class="col-75">
-				  <select id="Train" name="Train">
-					  <option value="Karachi Express">Karachi Express</option>
-					  <option value="Shalimar Express">Shalimar Express</option>
-					  <option value="Karakoram Express">Karakoram Express</option>
-					  <option value="Tezgam Express">Tezgam Express</</option>
-					  <option value="Bahawalpur Express">Bahawalpur Express</option>
-					  <option value="Badin Express">Badin Express</option>
-					  <option value="Badar Express">Badar Express</option>
-					  <option value="Chenab Express">Chenab Express</option>
-				  </select>
+				  <select id="trainname" name="trainname">
+					<option disabled selected>-- Select Train --</option>
+					<?php
+						$records = mysqli_query($conn, "SELECT TrainName From trains");  // Use select query here 
+
+						while($data = mysqli_fetch_array($records))
+						{
+							echo "<option value='". $data['TrainName'] ."'>" .$data['TrainName'] ."</option>";  // displaying data in option menu
+						}	
+					?>  
+				    </select>
 				</div>
 			  </div>
 			  
@@ -122,8 +155,18 @@ input[type=submit]:hover {
 				  <label for="city"><b>From(Source):</b></label>
 				</div>
 				<div class="col-75">
-				    <input type="text" id="phone" name="phone" placeholder="Source City Name" required>
-				</div>
+				    <select id="fromstation" name="fromstation">
+					<option disabled selected>-- Select City --</option>
+					<?php
+						$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
+
+						while($data = mysqli_fetch_array($records))
+						{
+							echo "<option value='". $data['StationName'] ."'>" .$data['StationName'] ."</option>";  // displaying data in option menu
+						}	
+					?>  
+				    </select>
+					</div>
 			  </div>
 			  
 			  <div class="row">
@@ -131,34 +174,84 @@ input[type=submit]:hover {
 				  <label for="City"><b>To(Destination) :</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="phone" name="phone" placeholder="Destination City Name" required>
+				  <select id="tostation" name="tostation">
+					<option disabled selected>-- Select City --</option>
+					<?php
+						$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
+
+						while($data = mysqli_fetch_array($records))
+						{
+							echo "<option value='". $data['StationName'] ."'>" .$data['StationName'] ."</option>";  // displaying data in option menu
+						}	
+					?>  
+				    </select>
+					</div>
+			  </div>
+			  
+			  
+			  <div class="row">
+				<div class="col-25">
+				  <label for="number"><b>Business Class Fare :</b></label>
+				</div>
+				<div class="col-75">
+				  <input type="number" id="businessclassfare" name="businessclassfare" placeholder="Fare in Ruppee">
+				</div>
+			  </div>
+
+			  <div class="row">
+				<div class="col-25">
+				  <label for="number"><b>Economical Class Fare :</b></label>
+				</div>
+				<div class="col-75">
+				  <input type="number" id="economicalclassfare" name="economicalclassfare" placeholder="Fare in Ruppee">
+				</div>
+			  </div>		
+
+			  <div class="row">
+				<div class="col-25">
+				  <label for="number"><b>Standard Class Fare :</b></label>
+				</div>
+				<div class="col-75">
+				  <input type="number" id="standardclassfare" name="standardclassfare" placeholder="Fare in Ruppee">
+				</div>
+			  </div>
+
+               <div class="row">
+				<div class="col-25">
+				  <label for="text"><b>Arrival Time :</b></label>
+				</div>
+				<div class="col-75">
+				  <input type="time" id="arrivaltime" name="arrivaltime"  required>
 				</div>
 			  </div>
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="text"><b>Distance</b></label>
+				  <label for="City"><b>Departure Time :</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="phone" name="phone" placeholder="Distance in km/hr" required>
+				  <input type="time" id="departuretime" name="departuretime"  required>
 				</div>
 			  </div>
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="number"><b>Fare</b></label>
+				  <label for="text"><b>Distance :</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="number" id="address" name="address" placeholder="Fare in Ruppee">
+				  <input type="number" id="totaldistance" name="totaldistance" placeholder="Distance in km/hr" required>
 				</div>
 			  </div>
 			  
 				<div class="row">
-				  <button  style="margin:5px; width:49%"type="reset" class="btn btn-danger " value="reset">Reset</button>
-				  <button  style="margin:5px; width:49%"type="submit" class="btn btn-success ">Add Route</button>
+				  <button style=" width:49.5%"  class="btn btn-warning " TYPE="Reset" value="Reset" id="reset">Reset</button>
+				  <button  style=" width:49.5%" TYPE="Submit" value="Submit" name="submit" id="submit"  onclick="if(!this.form.tc.checked){alert('You must agree to the terms first.');return false}" class="btn btn-success ">  Add Route</button>
+					
 				</div>		
 		</div>	
+		
     </form>
+
  </body>
 </html>
 

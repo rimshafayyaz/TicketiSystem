@@ -9,12 +9,12 @@ session_start();
         
 		
     <head>
-        <title>Railway Management System</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-      <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-	  <link rel="stylesheet" href="styles.css">
+		<title>Railway Management System</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+		<link rel="stylesheet" href="styles.css">
     <style>
   
 table.center {
@@ -71,83 +71,69 @@ table.center {
 		 
 		  <h1 class="mainheading">All Trains Record</h1>
 	    	<hr/><br/>
-		  
-		  <table  class="center" border="9" cellpadding="20" cellspacing="40" width="80%">
-        	<tr>
-        		<th>   Sr. No   </th>	
-        		<th>   Train Name   </th>
-				<th>   Train No.   </th>
-				<th>   From City   </th>
-				<th>   To City   </th>
-				<th>   Departure Time   </th>
-				<th>   Arrival Time   </th>
-				<th>   Travel time   </th>
-				<th>   Distance   </th>
-				<th>   Image  </th>
-				
-        	</tr>
-        	<tr>
-        		<th> 1 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-				<td colspan = 1><img src="1.jpg" alt="" border=3 height=100 width=100></img></td>
-        	</tr>
-        	<tr>
-        		<th> 2 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td colspan = 1><img src="2.jpg" alt="" border=3 height=100 width=100></img></td>
-        	</tr>
-        	<tr>
-        		<th> 3 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td colspan = 1><img src="3.jpg" alt="" border=3 height=100 width=100></img></td>
-        	</tr>
-        	<tr>
-        		<th> 4 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td colspan = 1><img src="5.jpg" alt="" border=3 height=100 width=100></img></td>
-        	</tr>
-        	<tr>
-        		<th> 5 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td></td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td colspan = 1><img src="6.jpg" alt="" border=3 height=100 width=100></img></td>
-        	</tr>	
-        </table>	
-		<br/>
+		 
+				  <table  class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
+					<tr>
+						<!-- <th>   Sr. No   </th>	 -->
+						<th>   Train No.   </th>
+						<th>   Train Name   </th>
+						<th>   From Station   </th>
+						<th>   To Station   </th>
+						<th>   Distance   </th>
+						<th>   Business Seats   </th>
+						<th>   Economical Seats   </th>
+						<th>   Standard Seats   </th>
+						<!-- <th>   Image  </th> -->
+						
+					</tr>
+					
+						<?php
+							$username = "root"; 
+							$password = ""; 
+							$database = "myrailway"; 
+							
+							// CREATE CONNECTION
+
+							$mysqli = new mysqli("localhost", $username, $password, $database); 
+                            
+							//	check connection
+							if ($mysqli->connect_error) 
+							{
+								die("Connection failed: " . $conn->connect_error);
+							} 
+							
+							$query = "SELECT TrainNo,TrainName,FromStation,ToStation,TotalDistance,BusinessSeats,StandardSeats,EconomicalSeats FROM trains)";
+
+							if($result = $mysqli->query($query))
+							{
+								while ($row = $result->fetch_assoc())
+								{
+									$TrainNo = $row["TrainNo"];
+									$TrainName = $row["TrainName"];
+									$FromStation = $row["FromStation"];
+									$ToStation = $row["ToStation"];
+									$TotalDistance = $row["TotalDistance"];
+									$BusinessSeats = $row["BusinessSeats"];
+									$StandardSeats = $row["StandardSeats"];
+									$EconomicalSeats = $row["EconomicalSeats"];
+									//$Img = $row["Img"];
+
+									echo '<tr> 
+												<td>'.$TrainNo.'</td> 
+												<td>'.$TrainName.'</td> 
+												<td>'.$FromStation.'</td> 
+												<td>'.$ToStation.'</td> 
+												<td>'.$TotalDistance.'</td> 
+												<td>'.$BusinessSeats.'</td> 
+												<td>'.$StandardSeats.'</td>
+												<td>'.$EconomicalSeats.'</td> 
+												
+											</tr>';
+								}
+								$result->free();
+							}
+						?>
+				</table>
     </body>
 </html>
 

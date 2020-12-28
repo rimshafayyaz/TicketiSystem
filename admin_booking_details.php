@@ -119,10 +119,10 @@ input[type=text],input[type=date], select {
                         <img src="10.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
 				
-                          <h5 class="card-title">Karakoram Express</h5>
-                          <p class="card-text"><h6>Type:</h6> Low class</p>
-                          <p class="card-text"><h6>Travel:</h6> Lahore to Karachi</p>
-                          <p class="card-text"><h6>Fare:</h6> Rs-/4000</p>
+                          <h5 class="card-title">Akbar Express</h5>
+                          <p class="card-text"><h6>Type:</h6> Business class</p>
+                          <p class="card-text"><h6>Travel:</h6> Quetta TO Jacobabad Junction</p>
+                          <p class="card-text"><h6>Fare:</h6> Rs-/2850</p>
                           
                         </div>
                      </div>

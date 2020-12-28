@@ -79,14 +79,14 @@ input[type=text],input[type=date], select {
 		  <table  class="center" border="9" cellpadding="20" cellspacing="20" width="80%">
         	<tr>
         		<th>   Booking ID   </th>	
-        		<th>   Customer Name   </th>
+        		<th>   Passenger Name   </th>
 				<th>   Booking Date   </th>
 				<th>   Travel Date   </th>
-				<th>   Total Fair   </th>
+				<th>   Total Fare   </th>
 				<th>   View Ticket   </th>
 				
         	</tr>
-        	<tr>
+        	<!-- <tr>
         		<th> 1 </th>
         		<td>  </td>
 				<td> </td>
@@ -125,7 +125,48 @@ input[type=text],input[type=date], select {
         		<td>  </td>
 				<td> </td>
         		<td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-        	</tr>	
+        	</tr>	 -->
+
+        <?php
+            $username = "root"; 
+            $password = ""; 
+            $database = "myrailway"; 
+            
+            // CREATE CONNECTION
+
+            $mysqli = new mysqli("localhost", $username, $password, $database); 
+
+            //	check connection
+            if ($mysqli->connect_error) 
+            {
+              die("Connection failed: " . $conn->connect_error);
+            }
+
+            $query = "SELECT BookingID,NameOfPassenger,BookingDate,TravelingDate,TotalFare FROM bookings";
+
+            if($result = $mysqli->query($query))
+            {
+              while ($row = $result->fetch_assoc())
+              {
+                $BookingID = $row["BookingID"];
+                $NameOfPassenger = $row["NameOfPassenger"];
+                $BookingDate = $row["BookingDate"];
+                $TravelingDate = $row["TravelingDate"];
+                $StatusofBooking = $row["StatusofBooking"];
+                $TotalFare = $row["TotalFare"];
+
+                echo '<tr> 
+                      <td>'.$BookingID.'</td> 
+                      <td>'.$NameOfPassenger.'</td> 
+                      <td>'.$BookingDate.'</td> 
+                      <td>'.$TravelingDate.'</td> 
+                      <td>'.$TotalFare.'</td> 
+                      <td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
+                    </tr>';
+              }
+              $result->free();
+            }
+			    ?>
         <table>	
 
 		

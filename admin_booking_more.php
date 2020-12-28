@@ -74,19 +74,23 @@ table.center {
 		  
 		  <table  class="center" border="9" cellpadding="20" cellspacing="100" width="80%">
         	<tr>
-        		<th>   Sr. No   </th>
-                <th>   Passenger Name  </th>				
-        		<th>   Train   No &  Name</th>
-				<th>   Age   </th>
+        		<th>   Booking ID   </th>
+				<th>   User Name   </th>
+                <th>   Passenger Name  </th>	
 				<th>   Gender   </th>
-				<th>   Date   </th>
-				<th>   Fare  </th>
+				<th>   Age   </th>			
+        		<th>   Train   No &  Name	</th>
+        		<th>   Class Of Seat	 </th>
+				<th>   Booking Date   </th>
+				<th>   Total Booked Seates   </th>
 				<th>   Travel(From & To) City  </th>
+				<th>   Traveling Date  </th>
 				<th>   Status   </th>
+				<th>   Total Fare  </th>
 				<th>   Cancel  </th>
 				
         	</tr>
-        	<tr>
+        	<!-- <tr>
         		<th> 1 </th>
         		<td>  </td>
 				<td> </td>
@@ -145,7 +149,62 @@ table.center {
         		<td>  </td>
 				<td> </td>
         		<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
-        	</tr>	
+        	</tr>	 -->
+			<?php
+				$username = "root"; 
+				$password = ""; 
+				$database = "myrailway"; 
+				
+				// CREATE CONNECTION
+
+				$mysqli = new mysqli("localhost", $username, $password, $database); 
+
+				//	check connection
+				if ($mysqli->connect_error) 
+				{
+					die("Connection failed: " . $conn->connect_error);
+				}
+
+				$query = "SELECT B.BookingID,B.Username,B.NameOfPassenger,B.Gender,B.Age,CONCAT(B.TrainNo,'  &  ',T.TrainName),B.SeatClass,B.BookingDate,B.TotalBookedSeats,CONCAT(B.FromStation,' TO ',B.ToStation),B.TravelingDate,B.StatusofBooking,B.TotalFare FROM bookings B INNER JOIN trains T ON B.TrainNo=T.TrainNo";
+
+				if($result = $mysqli->query($query))
+				{
+					while ($row = $result->fetch_assoc())
+					{
+						$BookingID = $row["BookingID"];
+						$Username = $row["Username"];
+						$NameOfPassenger = $row["NameOfPassenger"];
+						$Gender = $row["Gender"];
+						$Age = $row["Age"];
+						$train = $row["CONCAT(B.TrainNo,'  &  ',T.TrainName)"];
+						$SeatClass = $row["SeatClass"];
+						$BookingDate = $row["BookingDate"];
+						$TotalBookedSeats = $row["TotalBookedSeats"];
+						$route = $row["CONCAT(B.FromStation,' TO ',B.ToStation)"];
+						$TravelingDate = $row["TravelingDate"];
+						$StatusofBooking = $row["StatusofBooking"];
+						$TotalFare = $row["TotalFare"];
+
+						echo '<tr> 
+									<td>'.$BookingID.'</td> 
+									<td>'.$Username.'</td> 
+									<td>'.$NameOfPassenger.'</td> 
+									<td>'.$Gender.'</td> 
+									<td>'.$Age.'</td> 
+									<td>'.$train.'</td> 
+									<td>'.$SeatClass.'</td> 
+									<td>'.$BookingDate.'</td> 
+									<td>'.$TotalBookedSeats.'</td> 
+									<td>'.$route.'</td> 
+									<td>'.$TravelingDate.'</td> 
+									<td>'.$StatusofBooking.'</td> 
+									<td>'.$TotalFare.'</td> 
+									<td ><button  style ="width:100%" type="submit" class="btn btn-danger">Cancel</button></td>
+								</tr>';
+					}
+					$result->free();
+				}
+			?>
         <table>	
 		<br/>
 		<br/>

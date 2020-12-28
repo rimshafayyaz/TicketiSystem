@@ -119,6 +119,20 @@ session_start();
 					  <option value="female">Female</option>
 					</select>
                 </div>
+				
+				<div class="form-group">
+                    <label for="gender"><b>Ticket Class :</b></label>
+                    <select name="gender" id="gender">
+					  <option value="male">Economical</option>
+					  <option value="female">Standard</option>
+					  <option value="female">Business</option>
+					</select>
+                </div>
+				
+				<div class="form-group">
+                  <label for="age"><b>No. of Seats :</b></label>
+                  <input type="number" placeholder="Total Seats" class="form-control" min="0"id="age">
+                </div>
 
                 <button  style="margin:5px; width:20% "type="submit" class="btn btn-success"><a style="color:#ffffff; text-decoration:none; " id="ticket" class="lin" data-toggle="Modal" data-target="#Ticketmodal" href="#" aria-disabled="true">Confirm Ticket</a></button>
               </form>
