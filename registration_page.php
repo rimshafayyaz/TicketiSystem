@@ -40,6 +40,35 @@ else
 	echo "<script type='text/javascript'>alert('$message');</script>";
 
 }
+
+
+
+
+
+
+
+if (isset($_POST['submit']))
+{
+	$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+$Username=$_POST['Username'];
+$Passwords=$_POST['Passwords'];
+$sql = "SELECT * FROM user_login WHERE Username = '$Username' AND Passwords = '$Passwords';";
+$sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL query" '.$sql);
+		$user = mysqli_fetch_assoc($sql_result);
+		if(!empty($user)){
+			$_SESSION['user_info'] = $user['Username'];
+			$message='Logged in successfully';
+			header("location:passenger_home.php");
+		}
+		else{
+			$message = 'Wrong email or password.';
+		}
+	echo "<script type='text/javascript'>alert('$message');</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -113,50 +142,42 @@ else
     </head>
 	
     <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
-	    <div id="loginModal" class="modal fade" role="dialog">
-			<div class="modal-dialog modal-lg" role="content">
-				<div class="modal-content">
-					<div class="modal-header" id="clr2">
-						<h4 class="modal-title" style="font-family:Didot, serif; font-size: 30px;"> 
-							Login
-						</h4>
-						<button type="button" class="close" data-dismiss="modal">
-							&times;
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header" id="clr2">
+                <h4 class="modal-title" style="font-family:Didot, serif; font-size: 30px;" > 
+                    Login
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
 
-						</button>
-					</div>
-					<div class="modal-body" id="clr">
-						<form action="" id="clr1" >
-							<div class="mylogin">
-								<div ><label for="namee" class=" col-form-label"><b>Username :</b></label></div>
-								<div ><input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" ></div>
-								<div >
-									<label for="passwordd" class="col-form-label"><b>Password : </b></label>
-								</div>
-								<div >
-									<input type="password" name="passwordd" id="passwordd" placeholder="Password" class=" form-control">
-								</div>
-								<div style="text-align: right;">
-									<label  for="password" class="col-form-label"><a href="#" > Forgot Password? </a></label>
-								</div>
-								<div class="form-check ">
-									<input type="checkbox" name="box" id="box" class="form-check-input">
-									<label for="box" class="form-check-label mb-1">Remeber me</label>
-							</div>
-								<button  style="width:49.5%;" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a style="color:#ffffff; text-decoration:none;"> Close </a> </button>
-								<button  style="width:49.5%;" type="submit" class="btn btn-success " > <a style="color:#ffffff;   text-decoration:none; "  href="passenger_home.php" > Login Test</a> </button>
-							</div>
-							
-						</form>
-
-					</div>
+                </button>
+            </div>
+            <div class="modal-body" id="clr">
+			    	
+				<form id="clr1" action="registration_page.php"  method="post" name="login">
+				<div class="mylogin">
+				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
+				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>
+				<div >
+					<label for="Password" class="col-form-label"><b>Password : </b></label>
 				</div>
-
-			</div>
-
-		</div>
-
-
+				<div >
+					<input type="password" id="Passwords" size="30" maxlength="30" name="Passwords" placeholder="-- Password Here --" class=" form-control"/>
+				</div>
+				
+				<br/>
+				<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+				<INPUT style=" width:49.5%" class="btn btn-success " TYPE="Submit" value="Login" name="submit" id="submit" class="button">
+				</div>
+				</form>
+					
+                
+            </div>
+        </div>
+    </div>
+</div>
 			<nav  class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
 					<a class="navbar-brand" href="#" >Railway Management System</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

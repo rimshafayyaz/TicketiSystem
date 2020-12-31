@@ -1,5 +1,27 @@
 <?php
 session_start();
+if (isset($_POST['submit']))
+{
+	$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+$Username=$_POST['Username'];
+$Passwords=$_POST['Passwords'];
+$sql = "SELECT * FROM user_login WHERE Username = '$Username' AND Passwords = '$Passwords';";
+$sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL query" '.$sql);
+		$user = mysqli_fetch_assoc($sql_result);
+		if(!empty($user)){
+			$_SESSION['user_info'] = $user['Username'];
+			$message='Logged in successfully';
+			header("location:passenger_home.php");
+		}
+		else{
+			$message = 'Wrong email or password.';
+		}
+	echo "<script type='text/javascript'>alert('$message');</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +49,7 @@ session_start();
                 <li class="nav-item ">
                   <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Search</a>
-                </li>
+                
                 <li class="nav-item active">
                   <a class="nav-link " href="places.php" >
                     Famous Places
@@ -57,7 +77,7 @@ session_start();
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
             <div class="modal-header" id="clr2">
-                <h4 class="modal-title" style="font-family:Didot, serif; font-size: 30px;"> 
+                <h4 class="modal-title" style="font-family:Didot, serif; font-size: 30px;" > 
                     Login
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">
@@ -66,34 +86,28 @@ session_start();
                 </button>
             </div>
             <div class="modal-body" id="clr">
-                <form action="" id="clr1" >
-                    <div class="mylogin">
-                        <div ><label for="namee" class=" col-form-label"><b>Username :</b></label></div>
-                        <div ><input type="text " name="namee" id="namee" placeholder="Name" class=" form-control" ></div>
-						<div >
-                            <label for="passwordd" class="col-form-label"><b>Password : </b></label>
-                        </div>
-						<div >
-                            <input type="password" name="passwordd" id="passwordd" placeholder="Password" class=" form-control">
-                        </div>
-						<div style="text-align: right;">
-                            <label  for="password" class="col-form-label"><a href="#" > Forgot Password? </a></label>
-                        </div>
-						<div class="form-check ">
-                            <input type="checkbox" name="box" id="box" class="form-check-input">
-                            <label for="box" class="form-check-label mb-1">Remeber me</label>
-                    </div>
-						<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-                        <button  style=" width:49.5%" type="submit" class="btn btn-success "> <a style="color:#ffffff; text-decoration:none; "  href="passenger_home.php" > Login </a> </button>
-                    </div>
-                    
-                </form>
-
+			    	
+				<form id="clr1" action="places.php"  method="post" name="login">
+				<div class="mylogin">
+				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
+				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>
+				<div >
+					<label for="Password" class="col-form-label"><b>Password : </b></label>
+				</div>
+				<div >
+					<input type="password" id="Passwords" size="30" maxlength="30" name="Passwords" placeholder="-- Password Here --" class=" form-control"/>
+				</div>
+				
+				<br/>
+				<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+				<INPUT style=" width:49.5%" class="btn btn-success " TYPE="Submit" value="Login" name="submit" id="submit" class="button">
+				</div>
+				</form>
+					
+                
             </div>
         </div>
-
     </div>
-
 </div>
 
 

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -54,8 +51,16 @@ session_start();
 <!--
     Carousel
 -->
-         
-          <div id="mycarousel" class="carousel slide" data-ride="carousel">
+
+			  <div class="col-md-12 menu mycss">
+			
+						<div class="list-group homelist">
+				<?php 
+						session_start();
+						if($_SESSION['sid']==session_id())
+						{
+				    ?>
+         <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <img class="d-block img-fluid" src="1f.jpg" alt="pizza">
@@ -192,6 +197,28 @@ session_start();
             </div>
 
           </div>
+		  
+		  
+		  
+		 
+				<?php 
+				     	}
+						else
+						{
+							header("location:Home.php");
+						}
+					?>
+			</div>
+			
+							  </div>
+         
+  
+		  
+		  
+		  
+		  
+		  
+		  
 		  
 	<footer class="mt-5">
 	

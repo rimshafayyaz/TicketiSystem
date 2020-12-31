@@ -56,7 +56,7 @@ input[type=text],input[type=date], select {
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="traintiming.php" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.php" >Train Schedule</a>
                 </li>
 				
 				<li class="nav-item">
