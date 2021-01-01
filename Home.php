@@ -107,9 +107,11 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 				    </div>
                               
                 </div>
+				
                          <div class="col-lg-6">
-						 <br/>
-                             <img src="1abc.jpg" alt="">
+						 <br/><div class="slider">
+							<img src="train2.gif" width="100%" />
+						</div>
                          </div>
 		
             </div> 

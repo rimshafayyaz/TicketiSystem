@@ -1,6 +1,16 @@
 <?php
 session_start();
 ?>
+<?php
+
+$db = mysqli_connect("localhost","root","","myrailway");  // database connection
+
+if(!$db)
+{
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+?>
 
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -68,72 +78,54 @@ table.center {
             </div>
           </div>
   <br/>
-		 
-		  <h1 class="mainheading">All Trains Record</h1>
+		
+
+
+<h1 class="mainheading">All Trains Record</h1>
 	    	<hr/><br/>
-		 
-				  <table  class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
-					<tr>
-						<!-- <th>   Sr. No   </th>	 -->
-						<th>   Train No.   </th>
-						<th>   Train Name   </th>
-						<th>   From Station   </th>
-						<th>   To Station   </th>
-						<th>   Distance   </th>
-						<th>   Business Seats   </th>
-						<th>   Economical Seats   </th>
-						<th>   Standard Seats   </th>
-						<!-- <th>   Image  </th> -->
-						
-					</tr>
-					
-						<?php
-							$username = "root"; 
-							$password = ""; 
-							$database = "myrailway"; 
-							
-							// CREATE CONNECTION
 
-							$mysqli = new mysqli("localhost", $username, $password, $database); 
-                            
-							//	check connection
-							if ($mysqli->connect_error) 
-							{
-								die("Connection failed: " . $conn->connect_error);
-							} 
-							
-							$query = "SELECT TrainNo,TrainName,FromStation,ToStation,TotalDistance,BusinessSeats,StandardSeats,EconomicalSeats FROM trains)";
+<table class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
+  <tr>
+    <th>   Train No.   </th>
+	<th>   Train Name   </th>
+	<th>   From Station   </th>
+	<th>   To Station   </th>
+	<th>   Distance   </th>
+	<th>   Business Seats   </th>
+	<th>   Economical Seats   </th>
+	<th>   Standard Seats   </th>
+	<th>   Image   </th>
+  </tr>
 
-							if($result = $mysqli->query($query))
-							{
-								while ($row = $result->fetch_assoc())
-								{
-									$TrainNo = $row["TrainNo"];
-									$TrainName = $row["TrainName"];
-									$FromStation = $row["FromStation"];
-									$ToStation = $row["ToStation"];
-									$TotalDistance = $row["TotalDistance"];
-									$BusinessSeats = $row["BusinessSeats"];
-									$StandardSeats = $row["StandardSeats"];
-									$EconomicalSeats = $row["EconomicalSeats"];
-									//$Img = $row["Img"];
+<?php
 
-									echo '<tr> 
-												<td>'.$TrainNo.'</td> 
-												<td>'.$TrainName.'</td> 
-												<td>'.$FromStation.'</td> 
-												<td>'.$ToStation.'</td> 
-												<td>'.$TotalDistance.'</td> 
-												<td>'.$BusinessSeats.'</td> 
-												<td>'.$StandardSeats.'</td>
-												<td>'.$EconomicalSeats.'</td> 
-												
-											</tr>';
-								}
-								$result->free();
-							}
-						?>
-				</table>
+ // Using database connection file here
+
+$records = mysqli_query($db,"select * from trains"); // fetch data from database
+
+while($data = mysqli_fetch_array($records))
+{
+?>
+  <tr>
+    <td><?php echo $data['TrainNo']; ?></td>
+    <td><?php echo $data['TrainName']; ?></td>
+	<td><?php echo $data['FromStation']; ?></td>
+    <td><?php echo $data['ToStation']; ?></td>
+	<td><?php echo $data['TotalDistance']; ?></td>
+    <td><?php echo $data['BusinessSeats']; ?></td>
+	<td><?php echo $data['EconomicalSeats']; ?></td>
+    <td><?php echo $data['StandardSeats']; ?></td>
+	
+    <td><img src="<?php echo $data['Img']; ?>" width="100" height="100"></td>
+  </tr>	
+<?php
+}
+?>
+
+</table>
+
+<?php mysqli_close($db);  // close connection ?>
+			  
     </body>
 </html>
 
@@ -145,3 +137,62 @@ session_destroy();
 }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									
