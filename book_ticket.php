@@ -1,4 +1,26 @@
 <?php
+$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+
+$dbhost = 'localhost';
+$dbname = 'myrailway';
+$dbuser = 'root';
+$dbpass = '';
+
+try {
+	$db = new PDO("mysql:host={$dbhost};dbname={$dbname}",$dbuser,$dbpass);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+
+catch(PDOException $e) {
+	echo "Connection error: ".$e->getMessage();
+}
+?>
+
+<?php
 session_start();
 ?>
 
@@ -15,6 +37,18 @@ session_start();
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 	    <link rel="stylesheet" href="styles.css">
+		
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+		
+
+		<!--Scripts -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/ GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+			 
 	  
     <style>
   
@@ -51,7 +85,7 @@ input[type=text],input[type=date], select {
                   <a class="nav-link" href="passenger_home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
 				
-                <li class="nav-item active">
+                <li class="nav-item active ">
                   <a class="nav-link" href="book_ticket.php">Book Ticket</a>
                 </li>
 				
@@ -70,11 +104,79 @@ input[type=text],input[type=date], select {
 				<li class="nav-item">
                   <a class="nav-link" href="Home.php">Logout</a>
                 </li>
-				
+				<li class="nav-item">
+                  <?php
+                echo '<a class="nav-link text-danger"> <b>'.$_SESSION["Username"].' </b></a>';
+                  ?>
+                </li>
+			</ul>	
             </div>
           </nav>
 		  
+<?php 
+
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+
+if(isset($_POST['submit']))
+{ 
+	$FromStation=test_input($_POST['FromStation']); 
+	$ToStation=test_input($_POST['ToStation']); 
+
+    $statement = $db->prepare("SELECT * FROM route WHERE FromStation=? AND ToStation=? ");
+	$statement->execute(array($FromStation,$ToStation));
+
+?>	
+
+	 
+			  <div class="col-md-12 forminput">
+			  <br/><br/><br/>
+			  <h1 class="mainheading">Available Trains</h1>
+	           <hr/>
+
+				<table  class="table table-bordered">
+					<thead>
+                                    <th>id</th>     
+                                    <th>Train Name</th> 
+									<th>From & To</th> 
+									<th>Arrive & Depart Time</th> 
+                                    <th>Business Fare</th>
+                                    <th>Standard Fare</th>
+									<th>Economical Fare</th>
+                                    <th>View</th>
+                               </thead>  
+<?php 
+	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($result as $row) { 
+
+?>
+					<tr>
+						<td ><?php echo $row['id'] ?> </td>
+						<td><?php echo $row['TrainName'] ?> </td>
+						<td><?php echo $row['FromStation']?></td>
+						<td><?php echo $row['ToStation']?></td>
+						<td><?php echo $row['ArrivalTime']?></td>
+						<td><?php echo $row['DepartureTime']?></td>
+						<td><?php echo $row['TotalDistance']?></td>
+						<td><a > <input type="button" name="view" value="View" id="<?php echo $row["id"]; ?>" class="btn btn-info view_data" /></a></td>
+					</tr>
+<?php } ?>			
+				</table>
+				 
+				<div class="container" id="train_detail">  
+						  </div>
+		
+
 		  
+		
+<?php 
+
+}else {  
+?>	
           <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
@@ -89,152 +191,84 @@ input[type=text],input[type=date], select {
                 <h4 style="text-align:left; padding: 0px 45px; ">Enter following details to search the required train:</h4>
           </aside>
 	      	<br/>
+			
+			</table>
+			</div>
+			<div class="myDiv" >
+				<form  class="form-horizontal forminput" action="" method="post">
+				    <div class="form-group">
+					  <label class="col-sm-3 control-label"  for="traintiming"><b>Select From Station:</b></label>
+					   <div class="text-center" >
+					  <select class="form-control forminp" id="FromStation" name="FromStation">
+						<option disabled selected>-- Select City --</option>
+						<?php
+							$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
+
+							while($data = mysqli_fetch_array($records))
+							{
+								echo "<option value='". $data['StationName'] ."'>" .$data['StationName'] ."</option>";  // displaying data in option menu
+							}	
+						?>  
+						</select>
+						</div>
+						<label class="col-sm-3 control-label"  for="traintiming"><b>Select To Name:</b></label>
+					   <div class="text-center" >
+					  <select class="form-control forminp" id="ToStation" name="ToStation">
+						<option disabled selected>-- Select City --</option>
+						<?php
+							$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
+
+							while($data = mysqli_fetch_array($records))
+							{
+								echo "<option value='". $data['StationName'] ."'>" .$data['StationName'] ."</option>";  // displaying data in option menu
+							}	
+						?>  
+						</select>
+						
+					</div>
+							<label class="col-sm-3 control-label" for="Date"><b>Date :</b></label>
+							</br>
+							<div class="text-center" >
+							<input class="form-control forminp" type="date" placeholder="Date" min="2018-10-30" max="" required name="t1" >
+							</div>
+							<br></br>
+					</div>
+				
+					<div class="form-group">
+						<div class="text-center">
+						  <button style=" width:39%"  class="btn btn-warning " TYPE="Reset" value="Reset" id="reset">Reset</button>
+						  <input style="margin:5px; width:39%"  class="btn btn-danger " type="submit" value="Submit" name="submit" />
+						</div>
+					</div>
+				</form>
+			</div>
+				
+
+                
+		<?php } ?>  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+
 
          
 
-		<div class="myDiv" >
-		  <form action="/action_page.php"  >
-			<label for="fname"><b>From City :</b></label>
-			<select id="fromcity" name="fromcity">
-			  <option value="Lahore">Lahore</option>
-			  <option value="Karachi">Karachi</option>
-			  <option value="Islamabad">Islamabad</option>
-			  <option value="Rawalpindi">Rwalpindi</option>
-			  <option value="Queta">Queta</option>
-			  <option value="Peshawar">Peshawar</option>
-			  <option value="Bahawalpur">Bahawalpur</option>
-			  <option value="Okara">Okara</option>
-			</select>
-
-			<label for="lname"><b>To City :</b></label>
-			<select id="fromcity" name="fromcity">
-			  <option value="Karachi">Karachi</option>
-			  <option value="Lahore">Lahore</option>
-			  <option value="Islamabad">Islamabad</option>
-			  <option value="Rawalpindi">Rwalpindi</option>
-			  <option value="Queta">Queta</option>
-			  <option value="Peshawar">Peshawar</option>
-			  <option value="Bahawalpur">Bahawalpur</option>
-			  <option value="Okara">Okara</option>
-			</select>
-			
-			<label for="Date"><b>Date :</b></label>
-			</br>
-			<input type="date" placeholder="Date" min="2018-10-30" max="" required name="t1" >
-			<br></br>
-		  
-		  
-			<div  class="form-row">
-				  <button  style="margin:5px; width:49%"  type="button" class="btn btn-success "  onclick="asd()"> <a > Search </a> </button>
-				  <button style="margin:5px; width:49%" type="reset" class="btn btn-danger " value="reset"><a> Reset</a> </button>
-			</div>
-							
-			
-		  </form>
-		</div>
-<form  id="asd" action="">
-<br/>	<hr/>
-<h1 class="mainheading">Available Trains</h1>
-<hr/>
-
-</div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="5.jpg" alt="Train image"  height="270px" width="320px">
-                </div>
-                <div class="col-lg-6">
-                    <h1>Karachi Express</h1>
-                    <h5>Type:</h5>
-                    <p class="pp">Middle class</p>
-                    <h5>Travel:</h5>
-                    <p class="pp">Lahore to Karachi</p> 
-                    <h5>Fare:</h5>
-                    <p class="pp">Rs-/4000</p>
-                
-                </div>
-				<div class="col-lg-2">
-                    <a href="view_ticket.php" class="btn btn-primary">Book Now</a>
-                
-                </div>
-            </div>
-        </div>
 
 
-		   <br/>	<hr/><br/>
-		   
-		   <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="1c.jpg" alt="Train image"  height="270px" width="320px">
-                </div>
-               <div class="col-lg-6">
-                    <h1>Shalimar Express</h1>
-                    <h5>Type:</h5>
-                    <p class="pp">Middle class</p>
-                    <h5>Travel:</h5>
-                    <p class="pp">Lahore to Karachi</p> 
-                    <h5>Fare:</h5>
-                    <p class="pp">Rs-/1000</p>
-                
-                </div>
-				<div class="col-lg-2">
-                    <a href="view_ticket.php" class="btn btn-primary">Book Now</a>
-                
-                </div>
-            </div>
-        </div>
-		
-
-		   <br/>	<hr/><br/>
-		 <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="2d.jpg" alt="Train image"  height="270px" width="320px">
-                </div>
-               <div class="col-lg-6">
-                    <h1>Karakoram Express</h1>
-                    <h5>Type:</h5>
-                    <p class="pp">Low class</p>
-                    <h5>Travel:</h5>
-                    <p class="pp">Lahore to Karachi</p> 
-                    <h5>Fare:</h5>
-                    <p class="pp">Rs-/4000</p>
-                
-                </div>
-				<div class="col-lg-2">
-                    <a href="view_ticket.php" class="btn btn-primary">Book Now</a>
-                
-                </div>
-            </div>
-        </div>  
-		   
-		   
-		   <br/>	<hr/><br/>
-		   
-		    <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="2c.jpg" alt="Train image"  height="270px" width="320px">
-                </div>
-               <div class="col-lg-6">
-                    <h1>Tezgam Express</h1>
-                    <h5>Type:</h5>
-                    <p class="pp">First class</p>
-                    <h5>Travel:</h5>
-                    <p class="pp">Lahore to Karachi</p> 
-                    <h5>Fare:</h5>
-                    <p class="pp">Rs-/4000</p>
-                
-                </div>
-				<div class="col-lg-2">
-                    <a href="view_ticket.php" class="btn btn-primary">Book Now</a>
-                
-                </div>
-            </div>
-        </div> 
-
-</form>
 
 
 
@@ -278,6 +312,29 @@ input[type=text],input[type=date], select {
 			document.getElementById("asd").style.display="block";
 		}
     </script>
+<script>
+ $(document).ready(function(){
+
+      $(document).on('click', '.view_data', function(){  
+           var id = $(this).attr("id");  
+           if(id != '')  
+           {  
+                $.ajax({  
+                     url:"select.php",  
+                     method:"POST",  
+                     data:{id:id},  
+                     success:function(data){  
+                          $('#train_detail').html(data);  
+                          
+                     }  
+                });  
+           }            
+      }); 
+
+ 
+ }); 
+
+ </script>
     </body>
 </html>
 

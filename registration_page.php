@@ -118,15 +118,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 			  
 			}
 
-			input[type=submit] {
-			  background-color: #4CAF50;
-			  color: white;
-			  padding: 12px 20px;
-			  border: none;
-			  border-radius: 4px;
-			  cursor: pointer;
-			  float: right;
-			}
+			
 
 			input[type=submit]:hover {
 			  background-color: #45a049;
@@ -135,6 +127,34 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 
 			input[type=reset]:hover {
 			  background-color: #45a049;
+			}
+			
+			
+			  .alert {
+			  background-color: #f44336;
+			  color: white;
+			  opacity: 1;
+			  transition: opacity 0.6s;
+			  margin-bottom: 15px;
+			}
+
+			.alert.success {background-color: #4CAF50;}
+			.alert.info {background-color: #ff9900;}
+			.alert.warning {background-color: #ff9800;}
+
+			.closebtn {
+			  margin-left: 15px;
+			  color: white;
+			  font-weight: bold;
+			  float: right;
+			  font-size: 22px;
+			  line-height: 20px;
+			  cursor: pointer;
+			  transition: 0.3s;
+			}
+
+			.closebtn:hover {
+			  color: black;
 			}
 			 </style>
 
@@ -168,8 +188,10 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 				</div>
 				
 				<br/>
-				<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-				<INPUT style=" width:49.5%" class="btn btn-success " TYPE="Submit" value="Login" name="submit" id="submit" class="button">
+				<div class="text-center">
+				<button style=" width:40%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+				<INPUT style=" width:40%" class="btn btn-success " TYPE="Submit" value="Login" name="submit" id="submit" class="button">
+				</div>
 				</div>
 				</form>
 					
@@ -189,16 +211,14 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 						<li class="nav-item ">
 						  <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
 						</li>
-						<!--
-						<li class="nav-item">
-						  <a class="nav-link" href="#">Search</a>
-						</li>
-						-->
+						<li class="nav-item ">
+                        <a class="nav-link" href="search_train.php">Search</a>
+                        </li>
 						<li class="nav-item ">
 						  <a class="nav-link " href="places.php" >Famous Places</a>
 						
 						</li>
-						<li class="nav-item" active>
+						<li class="nav-item active" >
 						  <a class="nav-link active" href="registration_page.php">Register</a>
 						</li>
 						<li class="nav-item">
@@ -218,9 +238,13 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 				<div class="container" style="background: transparent;background: rgba(72,168,179,0.5);">
 					<h1 class="signupheading">Sign Up</h1>
 					<div class="signup">
-
-						<p>Please fill in this form to create an account.</p>
-						<hr>
+					<hr/>
+                        <div class="alert info">
+						<span class="closebtn">&times;</span>  
+						<strong>Info!</strong> Please fill in this form to create an account!!!
+						</div>
+						
+						
 					
 					  <div class="row">
 						<div class="col-25">
@@ -308,11 +332,10 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 					   <div class="row">
 							<p><b>By creating an account you agree to our</b> <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 					   </div>	
-						<div class="row">
-							<button style=" width:49.5%"  class="btn btn-warning " TYPE="Reset" value="Reset" id="reset">Reset</button>
-							<button  style=" width:49.5%" TYPE="Submit" value="Submit" name="submit" id="submit"  onclick="if(!this.form.tc.checked){alert('You must agree to the terms first.');return false}" class="btn btn-success ">  Signup</button>
-							
-				        </div>
+						   <div class="text-center">
+								<button style=" width:49.5%"  class="btn btn-warning " TYPE="Reset" value="Reset" id="reset">Reset</button>
+								<button  style=" width:49.5%" TYPE="Submit" value="Submit" name="submit" id="submit"  onclick="if(!this.form.tc.checked){alert('You must agree to the terms first.');return false}" class="btn btn-success ">  Signup</button>
+						</div>
 				
 				    </div>
 				</div>
@@ -347,7 +370,18 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 			</footer>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
 
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
 		<script>
 			  $('#log_in').click(function(){
 						$('#loginModal').modal();

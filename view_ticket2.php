@@ -78,7 +78,7 @@ session_start();
 			<aside class="mt-0">
                 <h4 style="text-align:center; padding: 0px 45px; ">Book a ride for life from your home without any discomfort</h4>
             </aside>
-       
+   
 
         <div class="container">
             <div class="row">
@@ -86,7 +86,7 @@ session_start();
                     <img src="1c.jpg" alt="Train image"  height="350px" width="460px">
                 </div>
                 <div class="col-lg-6">
-                    <h1><u>Shalimar Express</u></h1>
+                    echo '<a class="nav-link text-danger"> <b>'.$_SESSION["TrainName"].' </b></a>';
                     <h3>Type:</h3>
                     <p class="pp">Middle class</p>
                     <h3>Travel:</h3>
@@ -323,6 +323,30 @@ session_start();
 	   printWin.close();
 	}
 	</script>
+	
+	<script>
+ $(document).ready(function(){
+
+      $(document).on('click', '.view_data', function(){  
+           var id = $(this).attr("id");  
+           if(id != '')  
+           {  
+                $.ajax({  
+                     url:"select.php",  
+                     method:"POST",  
+                     data:{id:id},  
+                     success:function(data){  
+                          $('#train_detail').html(data);  
+                          
+                     }  
+                });  
+           }            
+      }); 
+
+ 
+ }); 
+
+ </script>
     </body>
 </html>
 

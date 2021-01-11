@@ -46,11 +46,11 @@ input[type=text],input[type=date], select {
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="#" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.php" >Train Schedule</a>
                 </li>
 				
-				<li class="nav-item" active>
-                  <a class="nav-link" href="all booking record.php">Records</a>
+				<li class="nav-item active">
+                  <a class="nav-link" href="all booking record.php">Records </a>
                 </li>
 				
 				<li class="nav-item">
@@ -61,6 +61,12 @@ input[type=text],input[type=date], select {
                   <a class="nav-link" href="Home.php">Logout</a>
                 </li>
 				
+				<li class="nav-item">
+                  <?php
+                echo '<a class="nav-link text-danger"> <b>'.$_SESSION["Username"].' </b></a>';
+                  ?>
+                </li>
+				</ul>
             </div>
           </nav>
 		  
@@ -86,46 +92,6 @@ input[type=text],input[type=date], select {
 				<th>   View Ticket   </th>
 				
         	</tr>
-        	<!-- <tr>
-        		<th> 1 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-        	</tr>
-        	<tr>
-        		<th> 2 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-				<td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-        	</tr>
-        	<tr>
-        		<th> 3 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-        	</tr>
-        	<tr>
-        		<th> 4 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-        	</tr>
-        	<tr>
-        		<th> 5 </th>
-        		<td>  </td>
-				<td> </td>
-        		<td>  </td>
-				<td> </td>
-        		<td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-        	</tr>	 -->
 
         <?php
             $username = "root"; 
@@ -152,7 +118,6 @@ input[type=text],input[type=date], select {
                 $NameOfPassenger = $row["NameOfPassenger"];
                 $BookingDate = $row["BookingDate"];
                 $TravelingDate = $row["TravelingDate"];
-                $StatusofBooking = $row["StatusofBooking"];
                 $TotalFare = $row["TotalFare"];
 
                 echo '<tr> 

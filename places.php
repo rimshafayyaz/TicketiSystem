@@ -49,6 +49,9 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                 <li class="nav-item ">
                   <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
+				<li class="nav-item ">
+				<a class="nav-link" href="search_train.php">Search</a>
+				</li>
                 
                 <li class="nav-item active">
                   <a class="nav-link " href="places.php" >
@@ -99,8 +102,10 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 				</div>
 				
 				<br/>
-				<button style=" width:49.5%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
-				<INPUT style=" width:49.5%" class="btn btn-success " TYPE="Submit" value="Login" name="submit" id="submit" class="button">
+				<div class="text-center">
+				<button style=" width:40%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+				<INPUT style=" width:40%" class="btn btn-success " TYPE="Submit" value="Login" name="submit" id="submit" class="button">
+				</div>
 				</div>
 				</form>
 					
@@ -170,7 +175,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                           <p class="card-text"><h6>Timings:</h6> 8:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 12:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 4:00pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="search_train.php" class="btn btn-primary">Check Details</a>
                     
                       </div>
                     </div>
@@ -183,7 +188,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                           <p class="card-text"><h6>Timings:</h6> 6:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 1:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 7:30pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="search_train.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                       </div>
@@ -196,7 +201,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                           <p class="card-text"><h6>Timings:</h6> 9:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 11:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 2:25pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="search_train.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                         </div>
@@ -214,7 +219,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                           <p class="card-text"><h6>Timings:</h6> 5:50am</p>
                           <p class="card-text"><h6>Timings:</h6> 2:30pm</p>
                           <p class="card-text"><h6>Timings:</h6> 9:00pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="search_train.php" class="btn btn-primary">Check Details</a>
                     
                       </div>
                     </div>
@@ -227,7 +232,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                           <p class="card-text"><h6>Timings:</h6> 10:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 4:30pm</p>
                           <p class="card-text"><h6>Timings:</h6> 6:30pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="search_train.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                       </div>
@@ -240,7 +245,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
                           <p class="card-text"><h6>Timings:</h6> 9:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 11:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 2:25pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="search_train.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                         </div>

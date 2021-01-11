@@ -14,7 +14,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 $user = mysqli_fetch_assoc($sql_result);
 		if(!empty($user)){
 			$_SESSION['user_info'] = $user['Username'];
-			$message='User logged in successfully';
+			$message='Logged in successfully';
 			  $_SESSION["Username"] = $user["Username"];
               echo $user["Username"];
 			header("location:passenger_home.php");
@@ -29,34 +29,63 @@ $user = mysqli_fetch_assoc($sql_result);
 		
 }
 ?>
-
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<html>
-    <head>
-        <title>Railway Mangement System</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-      <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-        <link rel="stylesheet" href="styles.css">
-		<style>
-.wrap{
-	background-color:#FFFFFF;
-	padding:0 10px;
-	border:solid 1px;
-	-o-box-shadow: 10px 10px 5px #888;
-	-moz-box-shadow: 10px 10px 5px #888;
-	-webkit-box-shadow: 10px 10px 5px #888;
-	box-shadow: 0px 0px 25px #666;
+<html lang="en">
 
+    <head>
+
+        <!--Meta Data -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>RailMaster | SearchTrains </title>
+        <!--Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+         <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+       <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+    <style type="text/css">
+    body {
+    background-image: url(1a.jpg);
+    -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+  }
+  .alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
 }
 
-		</style>
-    </head>
-    <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
-	    
-        <nav  class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #6699ff;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+  </style> 
+
+    <body>
+	<nav  class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
             <a class="navbar-brand" href="#" >Railway Management System</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -64,10 +93,10 @@ $user = mysqli_fetch_assoc($sql_result);
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item ">
                   <a class="nav-link" href="Home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" href="search_train.php">Search</a>
                 </li>
 				
@@ -91,44 +120,24 @@ $user = mysqli_fetch_assoc($sql_result);
 
             </div>
           </nav>
-          
+	<br/><br/><br/>
+    <div class="site-wrapper">
+      <h1 class="mainheading">Search Train</h1>
+        <div class="input-field col s40">
+			<input type="text" name="search_text" id="search_text" class="form-control" placeholder="-- Search Train --" />
+			<br/>
+			
+	<div class="alert info">
+	<span class="closebtn">&times;</span>  
+	<strong>Warning!</strong> For booking you need to login to the system!!!
+	</div>
 
-        <div class="jumbotron"  style="background-color: #D6EAF8;">
-            <div class="row">
-                <div class="  col-lg-6">
-					  <br/><h1 class="welcome">Welcome to Pakistan Railways</h1>
-					<div >
-							<div  Style="float:right;">
-							<hr />
-							<marquee behavior="scroll" id="marq"  scrollamount=3 direction="up" height="190px" onmouseover="nestop()" onmouseout="nestrt()">
-								<div>
-									<p class="lead"><b>Welocme to Pakistan Railway Management System You can book your advance tickets here as well as you can look for any train to any given station at any given time.</b></p>
-									<hr class="my-4">
-									<p><b>Enjoy your journey with us and hope you contribute towards becoming a better Pakistani</b></p>
-								</div>
-							</marquee>
-							</div>
-				    </div>
-                              
-                </div>
-				
-                         <div class="col-lg-6">
-						 <br/><div class="slider">
-							<img src="train2.gif" width="100%" />
-						</div>
-                         </div>
-		
-            </div> 
-	
+         </div>
+         <div class="container">
+            <h3>Search Result</h3>
+         <div id="result"></div>
         </div>
-
-<!--
-
-    Modals
--->
-<marquee class="marque" bgcolor="#50AAB4 "  scrolldelay="1"><h5>Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</h5></marquee>
-
-
+    </div>
 <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
@@ -143,7 +152,7 @@ $user = mysqli_fetch_assoc($sql_result);
             </div>
             <div class="modal-body" id="clr">
 			    	
-				<form id="clr1" action="Home.php"  method="post" name="login">
+				<form id="clr1" action="search_train.php"  method="post" name="login">
 				<div class="mylogin">
 				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
 				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>
@@ -167,26 +176,6 @@ $user = mysqli_fetch_assoc($sql_result);
         </div>
     </div>
 </div>
-
-  <!--
-      End of Modals
-  --><about class="aboutus">
-      <h1 class="mainheading">About Us</h1>
-	  <hr/>
-    
-    <p id="p1">Pakistan Railways forms the life line of the country by catering to its needs for large scale movement of freight as well as passenger traffic. It not only contributes to its economic growth but also promotes national integration.
-
-Pakistan Railways endeavours to run the trains strictly in accordance to time table. The progressive freight train support organization operated by professional management and competent staff endeavours to provide reliable, competitive and economical service of recognized standards to its customers.
-
-Pakistan Railways provides an important mode of Transportation in the farthest corners of the country and brings them closer for Business, sightseeing, pilgrimage and education. It has been a great integrating force and forms the life line of the country by catering to its needs for large scale movement of people and freight.</p>
-    
-	<hr>
-     </about> 
-
-	<div >
-		  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2054307.817490307!2d70.3224257437878!3d30.25868053810176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38db52d2f8fd751f%3A0x46b7a1f7e614925c!2sPakistan!5e0!3m2!1sen!2sus!4v1604577758887!5m2!1sen!2sus"width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    </div>
-	
     <footer class="mt-5" id="process">
 	    <div class="container">
             <div class="row">
@@ -213,25 +202,54 @@ Pakistan Railways provides an important mode of Transportation in the farthest c
             </div>
         </div>
     </footer>
-    <!-- jQuery and JS bundle w/ Popper.js -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        
+    </body>
+</html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
 <script>
       $('#log_in').click(function(){
                 $('#loginModal').modal();
 
             });
-</script>  
+</script> 
+<script>
+    $(document).ready(function () {
 
+        load_data();
 
-</body>
-</html>
-
-<?php
-
-if(isset($_SESSION['error']))
-{
-session_destroy();
-}
-
-?>
+        function load_data(query)
+        {
+            $.ajax({
+                url: "fetchtrain.php",
+                method: "POST",
+                data: {query: query},
+                success: function (data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+        $('#search_text').keyup(function () {
+            var search = $(this).val();
+            if (search != '')
+            {
+                load_data(search);
+            } else
+            {
+                load_data();
+            }
+        });
+    });
+</script>

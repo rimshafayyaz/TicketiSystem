@@ -20,6 +20,9 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
+			  
+			     
+				
                 <li class="nav-item active">
                   <a class="nav-link" href="passenger_home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -29,7 +32,7 @@
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="traintiming.php" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.php" >Train Schedule</a>
                 </li>
 				
 				<li class="nav-item">
@@ -41,7 +44,14 @@
                 </li>
 				
 				<li class="nav-item">
-                  <a class="nav-link" href="home.php">Logout</a>
+				 <a class="nav-link" href="home.php">Logout</a>
+                </li>
+				
+				<li class="nav-item">
+                  <?php
+                session_start();
+                echo '<a class="nav-link text-danger"> <b>'.$_SESSION["Username"].' </b></a>';
+                  ?>
                 </li>
               </ul>
 
@@ -55,11 +65,7 @@
 			  <div class="col-md-12 menu mycss">
 			
 						<div class="list-group homelist">
-				<?php 
-						session_start();
-						if($_SESSION['sid']==session_id())
-						{
-				    ?>
+	
          <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
@@ -201,13 +207,7 @@
 		  
 		  
 		 
-				<?php 
-				     	}
-						else
-						{
-							header("location:Home.php");
-						}
-					?>
+			]
 			</div>
 			
 							  </div>

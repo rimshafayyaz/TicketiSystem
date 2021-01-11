@@ -82,7 +82,13 @@ input[type=text],input[type=date], select {
 				<li class="nav-item">
                   <a class="nav-link" href="Home.php">Logout</a>
                 </li>
-				
+				<li class="nav-item">
+                  <?php
+                session_start();
+                echo '<a class="nav-link text-danger"> <b>'.$_SESSION["Username"].' </b></a>';
+                  ?>
+                </li>
+			</ul>	
             </div>
           </nav>
 		  
@@ -174,7 +180,7 @@ if(isset($_POST['submit']))
 ?>
 					<tr>
 						<td><?php echo $row['TrainName'] ?>  </td>
-						<td><?php echo $row['RouteID'] ?> </td>
+						<td><?php echo $row['id'] ?> </td>
 						<td><?php echo $row['FromStation'] ?> </td>
 						<td><?php echo $row['ToStation'] ?> </td>
 						<td><?php echo $row['ArrivalTime'] ?>  </td>
@@ -186,17 +192,20 @@ if(isset($_POST['submit']))
 				
 			
 <?php 
-} 
+} ?>
+</table>
+</div>
+<?php
 }else {  
 ?>		
-			</table>
-			</div>
+			
 			<div class="myDiv" >
 				<form  class="form-horizontal forminput" action="" method="post">
 				    <div class="form-group">
+
 					  <label class="col-sm-3 control-label"  for="traintiming"><b>Select Train Name:</b></label>
-					   <div class="col-sm-8" >
-					  <select class="form-control forminp" id="sel1" name="TrainName">
+					   <div   class="text-center">
+					   <select  class="form-control forminp" id="sel1" name="TrainName">
 					    <option value="">-- Select Train --</option>
 					  
 					  <?php
@@ -216,7 +225,7 @@ if(isset($_POST['submit']))
 					</div>
 				
 					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-10">
+						<div class="text-center">
 						  <button style=" width:39%"  class="btn btn-warning " TYPE="Reset" value="Reset" id="reset">Reset</button>
 						  <input style="margin:5px; width:39%"  class="btn btn-danger " type="submit" value="Submit" name="submit" />
 						</div>
@@ -230,7 +239,32 @@ if(isset($_POST['submit']))
 			  </div>
 
     </body>
-	
+	<footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>Complain Section</h1>
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Email address</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Your Complain</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <button type="button" class="btn btn-danger mt-3">Submit Complain</button>
+                        </div>
+                        </form>
+                </div>
+                <div class="col-lg-6 ">
+                    <h1><span class="fa fa-address-card"></span>Contact Info</h1>
+                    <p class="mt-5"><span>Gmail:pakrailways@foster.com</span></p>
+                    <p class="mt-3"><span ><i class="fa fa-phone"></i>Phone No:</span><span>+92345-2984137</span></p>
+                    <p class="mt-3"><span ><i class="fa fa-fax "></i>Telephone No:</span> <span>419037238</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </html>
 
 <?php

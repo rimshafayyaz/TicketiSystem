@@ -1,6 +1,56 @@
 <?php
 session_start();
+if (isset($_SESSION["Username"]))
+{
+	$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+
+
+$sql = "SELECT * FROM customers WHERE username = '".$_SESSION["Username"]."'";
+$sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL query" '.$sql);
+$user = mysqli_fetch_assoc($sql_result);
+		if(!empty($user)){
+			  $_SESSION["username"] = $user["username"];
+			  $_SESSION["name"] = $user["name"];
+			  $_SESSION["email"] = $user["email"];
+			  $_SESSION["phoneno"] = $user["phoneno"];
+			  $_SESSION["address"] = $user["address"];
+			  $_SESSION["gender"] = $user["gender"];
+			  $_SESSION["age"] = $user["age"];
+		}
+		else{
+			$message = 'Not updated.';
+		}		
+}
 ?>
+<?php
+
+if (isset($_POST['changepw'])){
+	$connect = mysqli_connect("localhost","root","","myrailway");
+	if(!$connect){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+$Username=$_POST['Username'];
+$opw=$_POST['opw'];
+$npw=$_POST['npw'];
+
+		$sql2 ="UPDATE user_login SET Passwords= '$npw' WHERE Username= '$Username' AND Passwords='$opw';";
+		$query2 = mysqli_query ($connect, $sql2) or die ('request "Could not execute SQL query" '.$sql2);
+		if(mysqli_query($query2))
+		{  
+			echo "<script type='text/javascript'>alert('Password changed successfully');</script>";
+		}
+		else
+		{  
+			echo "<script type='text/javascript'>alert('Password changed successfully');</script>"; 
+		}  
+}
+?>
+
 
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -78,7 +128,7 @@ input[type=submit]:hover {
                 </li>
 				
                 <li class="nav-item ">
-                  <a class="nav-link " href="traintiming.php" >Train Timing</a>
+                  <a class="nav-link " href="traintiming.php" >Train Schedule</a>
                 </li>
 				
 				<li class="nav-item">
@@ -92,50 +142,63 @@ input[type=submit]:hover {
 				<li class="nav-item">
                   <a class="nav-link" href="home.php">Logout</a>
                 </li>
+				
+				<li class="nav-item">
+                  <?php
+                echo '<a class="nav-link text-danger"> <b>'.$_SESSION["Username"].' </b></a>';
+                  ?>
+                </li>
               </ul>
 
             </div>
           </nav>
-		  
-    <form action="action_page.php" style="border:1px solid #ccc ">
+		  <br/>
+		  <br/>
+		 
+    
         <div class="container">
-			<br/>
-			<h1 class="mainheading">Profile Setting</h1>
+			<h1 class="mainheading">Profile </h1>
 			<hr>
-
+    <div class="text-right">
+	<button  style="width:20%; align:center;  "type="button " class="btn btn-info "><a  style="color:#ffffff; text-decoration:none; " id="change" class="aside" data-toggle="Modal" data-target="#passwordmodal" aria-disabled="true">Change Password</a></button>
+    </div> 
 			  <div class="row">
 				<div class="col-25">
 				  <label for="name"><b>Full Name :</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="name" name="name" placeholder="Enter Name" required>
+				  <?php
+                
+                echo '<label class= "masthead-brand text-danger"> <b>'.$_SESSION["name"].'</b></label>';
+                  ?>
+
 				</div>
 			  </div>
 			  
-			  <div class="row">
-				<div class="col-25">
-				  <label for="username"><b>Username :</b></label>
-				</div>
-				<div class="col-75">
-				  <input type="text" id="username" name="username" placeholder="Enter Username" required>
-				</div>
-			  </div>
 			  
 			  <div class="row">
 				<div class="col-25">
 				  <label for="email"><b>Email:</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="email" name="email" placeholder="Enter Email" required>
+				 <?php
+                
+                echo '<label class= "masthead-brand text-danger"> <b>'.$_SESSION["email"].'</b></label>';
+                  ?>
+
 				</div>
 			  </div>
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="Phone"><b>Phone No.:</b></label>
+				  <label for="phoneno"><b>Phone No.:</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="phone" name="phone" placeholder="Enter Phone no." required>
+				  <?php
+                
+                echo '<label class= "masthead-brand text-danger"> <b>'.$_SESSION["phoneno"].'</b></label>';
+                  ?>
+
 				</div>
 			  </div>
 			  
@@ -144,28 +207,46 @@ input[type=submit]:hover {
 				  <label for="address"><b>Address:</b></label>
 				</div>
 				<div class="col-75">
-				  <input type="text" id="address" name="address" placeholder="Enter Address">
+				  <?php
+                
+                echo '<label class= "masthead-brand text-danger"><b> '.$_SESSION["address"].'</b></label>';
+                  ?>
+
 				</div>
 			  </div>
 			  
-				<div class="row">
-				  <button  style="margin:5px; width:49%"type="button" class="btn btn-danger ">Cancel</button>
-				  <button  style="margin:5px; width:49%"type="submit" class="btn btn-success ">Save Changes</button>
+			  <div class="row">
+				<div class="col-25">
+				  <label for="gender"><b>Gender:</b></label>
 				</div>
-				
-				<div class="row">
-				  <button  style="margin:5px; width:100% "type="button " class="btn btn-info "><a  style="color:#ffffff; text-decoration:none; " id="ticket" class="lin" data-toggle="Modal" data-target="#Ticketmodal" aria-disabled="true">Change Password</a></button>
- 
+				<div class="col-75">
+				  <?php
+                
+                echo '<label class= "masthead-brand text-danger"> <b>'.$_SESSION["gender"].'</b></label>';
+                  ?>
+
 				</div>
-				
+			  </div>
+			  
+			  <div class="row">
+				<div class="col-25">
+				  <label for="age"><b>Age:</b></label>
+				</div>
+				<div class="col-75">
+				  <?php
+                
+                echo '<label class= "masthead-brand text-danger"><b> '.$_SESSION["age"].'</b></label>';
+                  ?>
+
+				</div>
+			  </div>
+
 		</div>
-		
-    </form>
 	
 		
   
        		
-<div id="TicketModal" class="modal fade" role="dialog">
+<div id="passwordmodal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
             <div class="modal-header" id="clr2">
@@ -178,14 +259,24 @@ input[type=submit]:hover {
                 </button>
             </div>
             <div class="modal-body" id="clr">
-                <form action="" id="clr1">
+                <form action="#passwordmodal" id="clr1" method="post">
+				    <div class="form-group row">
+                        <div class="col-sm-3 offset-sm-1">
+                        <label for="Username" class=" col-form-label"><b>Username :</b></label>
+                        </div>
+						
+                        <div class="col-sm-5">
+                        <input type="text" name="Username"   class=" form-control" >
+                        </div>
+                    </div>
+					
                     <div class="form-group row">
                         <div class="col-sm-3 offset-sm-1">
                         <label for="password" class=" col-form-label"><b>Old Password :</b></label>
                         </div>
 						
                         <div class="col-sm-5">
-                        <input type="password" name="number" id="number"  class=" form-control" >
+                        <input type="password" name="opw"   class=" form-control" >
                         </div>
                     </div>
 					
@@ -194,23 +285,16 @@ input[type=submit]:hover {
                             <label for="password" class="col-form-label"><b>New Password :</b></label>
                         </div>
                         <div class="col-sm-5">
-                            <input type="password" class="form-control" name="username" id="usename" >
+                            <input type="password" class="form-control" name="npw" >
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-sm-3 offset-sm-1">
-                            <label for="password" class="col-form-label"><b>Confirm Password :</b></label>
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="password" class="form-control" name="pin" id="pin">
-                        </div>
-                    </div>
+                    
 					
 					
 					<div  class="form-row">
 		                  <button style="margin:5px; width:20%" type="button" class="btn btn-danger " class="close"><a> Close</a> </button>
-						  <button  style="margin:5px; width:20%" type="submit" class="btn btn-success "> <a  style="color:#ffffff; text-decoration:none; " href="profile.php" class="lin">Update</a> </button>
+						  <button  style="margin:5px; width:20%" type="submit" name="changepw" class="btn btn-success "> Change Password</button>
 	                </div>
 					
                 </form>
@@ -250,8 +334,8 @@ input[type=submit]:hover {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>	
     <script>
-          $('#ticket').click(function(){
-                    $('#TicketModal').modal();
+          $('#change').click(function(){
+                    $('#passwordmodal').modal();
     
                 });
             </script>
