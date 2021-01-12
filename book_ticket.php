@@ -155,14 +155,15 @@ if(isset($_POST['submit']))
 
 ?>
 					<tr>
-						<td ><?php echo $row['id'] ?> </td>
-						<td><?php echo $row['TrainName'] ?> </td>
-						<td><?php echo $row['FromStation']?></td>
-						<td><?php echo $row['ToStation']?></td>
-						<td><?php echo $row['ArrivalTime']?></td>
-						<td><?php echo $row['DepartureTime']?></td>
-						<td><?php echo $row['TotalDistance']?></td>
-						<td><a > <input type="button" name="view" value="View" id="<?php echo $row["id"]; ?>" class="btn btn-info view_data" /></a></td>
+						 
+                                    <td><?php echo $row["id"]; ?></td>
+                                    <td><?php echo $row["TrainName"]; ?></td> 
+									<td><?php echo $row["FromStation"]; ?> to <?php echo $row["ToStation"]; ?>  </td>
+                                    <td><?php echo $row["ArrivalTime"]; ?> to <?php echo $row["DepartureTime"]; ?>  </td>
+									<td><?php echo $row["BusinessClassFare"]; ?></td> 
+									<td><?php echo $row["StandardClassFare"]; ?></td> 
+									<td><?php echo $row["EconomicalClassFare"]; ?></td> 
+									<td><input type="button" name="view" value="View" id="<?php echo $row["id"]; ?>" class="btn btn-info view_data" /></td>
 					</tr>
 <?php } ?>			
 				</table>

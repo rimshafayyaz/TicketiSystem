@@ -41,106 +41,53 @@
       echo $output;  
  } 
  
- ?>
- <?php
-if(!$conn){  
-	echo "<script type='text/javascript'>alert('Database failed');</script>";
-      die('Could not connect: '.mysqli_connect_error()); 
+	if(!$conn){  
+		echo "<script type='text/javascript'>alert('Database failed');</script>";
+		  die('Could not connect: '.mysqli_connect_error()); 
 
-    //   $bussavailable = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility");
-  
-}
+		//   $bussavailable = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility");
+	  
+	}
 
-if (isset($_POST['submit']))
-{
-$name=$_POST['name'];
-$age=$_POST['age'];
-$gender=$_POST['gender'];
-$stype=$_POST['stype'];
-$seat=$_POST['seat'];
-$bdate=$_POST['bdate'];
-$tdate=$_POST['tdate'];
+	if (isset($_POST['submit']))
+	{
+		$name=$_POST['name'];
+		$age=$_POST['age'];
+		$gender=$_POST['gender'];
+		$stype=$_POST['stype'];
+		$seat=$_POST['seat'];
+		$bdate=$_POST['bdate'];
+		$tdate=$_POST['tdate'];
 
 
-$username=$_SESSION["Username"];
-$id= $trainname;
-$FromStation= $fromstation;
-$ToStation= $tostation;
-// $TrainName=$_POST['TrainName'];
-// $travel=$_POST['travel'];
-$fare=$totalfare;
-$tfare = $fare*$seat;
-// $bresult = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility WHERE TrainName = 'trainname'");
-// $bussavailable = $bresult->fetch()['available_seats'];
-$sql = "INSERT INTO bookings (Username,NameOfPassenger,TrainName,FromStation,ToStation, Age,Gender,SeatClass,BookingDate,TravelingDate,TotalFare, TotalBookedSeats) VALUES ('$username','$name','$id','$FromStation', '$ToStation','$age', '$gender','$stype','$bdate','$tdate','$tfare','$seat');";
-    if(mysqli_query($conn, $sql))
-{  
-    $message = "You have been successfully registered";
-}
-else
-{  
-    $message = "query issue"; 
-} 
-echo "<script type='text/javascript'>alert('$message');</script>";
+		$username='rimsha12';
+		$id= $trainname;
+		$FromStation= $fromstation;
+		$ToStation= $tostation;
+		// $TrainName=$_POST['TrainName'];
+		// $travel=$_POST['travel'];
+		$fare=$totalfare;
+		$tfare = $fare*$seat;
+		// $bresult = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility WHERE TrainName = 'trainname'");
+		// $bussavailable = $bresult->fetch()['available_seats'];
+		$sql = "INSERT INTO bookings (Username,NameOfPassenger,TrainName,FromStation,ToStation, Age,Gender,SeatClass,BookingDate,TravelingDate,TotalFare, TotalBookedSeats) VALUES ('$username','$name','$id','$FromStation', '$ToStation','$age', '$gender','$stype','$bdate','$tdate','$tfare','$seat');";
+			if(mysqli_query($conn, $sql))
+		{  
+			$message = "You have been successfully registered";
+		}
+		else
+		{  
+			$message = "query issue"; 
+		} 
+		echo "<script type='text/javascript'>alert('$message');</script>";
 
-$bussavailable = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility");
-$ecoavailable = mysqli_query($conn,"select EconomicalAvailableseats from seatavailablility");
-$standavailable = mysqli_query($conn,"select StandardAvailableseats from seatavailablility");
-if($stype == 'Business')
-{
- if($bussavailable > $seat){
-     $sql1 = "UPDATE seatavailablility SET BusinessAvailableseats = BusinessAvailableseats-'$seat' , BusinessBookedseats=BusinessBookedseats+'$seat' WHERE TrainName='$trainname' AND BusinessAvailableseats>'$seat'";
-	    if(mysqli_query($conn, $sql1))
-        {  
-            $message = " bussy seat mill gaeee";
-        }
-        else
-        {  
-            $message = " busy seat ni hoiiiii"; 
-        }
-
-}else
-{
-    $message = " Bussinuss Seats are not available anymore.";
-}
-
-echo "<script type='text/javascript'>alert('$message');</script>";
-
-}
-elseif($stype == 'Economical')
-{
-    $sql1 = "UPDATE seatavailablility SET EconomicalAvailableseats = EconomicalAvailableseats-'$seat' , EconomicalBookedseats=EconomicalBookedseats+'$seat' WHERE TrainName='trainname'";
-	if(mysqli_query($conn, $sql1))
-{  
-	$message = "ecoo seat mill gaeee";
-}
-else
-{  
-	$message = "ecoo seat ni hoiiiii"; 
-}
-
-	echo "<script type='text/javascript'>alert('$message');</script>";
-}
-else
-{
-    $sql1 = "UPDATE seatavailablility SET StandardAvailableseats = StandardAvailableseats-'$seat' , StandardBookedseats=StandardBookedseats+'$seat' WHERE TrainName='trainname'";
-	if(mysqli_query($conn, $sql1))
-{  
-	$message = "stand seat mill gaeee";
-}
-else
-{  
-	$message = "stand seat ni hoiiiii"; 
-}
-
-    echo "<script type='text/javascript'>alert('$message');</script>";
-    
-}
-}
-else
-{
-    $message = "if m ni jaa raha"; 
-}
+	}
+	else
+	{
+		{$message = "if m ni jaa raha"; }
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		
+	}
 
 ?>
  <!DOCTYPE html>
@@ -155,7 +102,7 @@ else
 	    <link rel="stylesheet" href="styles.css">
 	  </head>
  
-<form  method="post" >
+<form  name="book_ticket" method="post" >
         <div class="myDiv">
             <h1 class="hh"><b>Add Passenger</b></h1>
                 <div class="form-group">
@@ -212,8 +159,8 @@ else
                 </div>
 
                 <!-- <button  style=" width:49.5%" TYPE="Submit" value="Submit" name="submit" id="submit"  class="btn btn-success ">  Signup</button> -->
-                <!-- <button  style="margin:5px; width:20% " TYPE="Submit" value="Submit" name="submit" id="submit"  class="btn btn-success "> Donee </button>		 -->	 
-                <button  style="margin:5px; width:20% "type="submit"  class="btn btn-success"><a style="color:#ffffff; text-decoration:none; " id="submit" class="lin" data-toggle="Modal" data-target="#Ticketmodal" href="#" aria-disabled="true">Confirm Ticket</a></button>
+                 <button  style="margin:5px; width:20% " TYPE="submit" value="submit" name="submit" id="submit"  class="btn btn-success "> Donee </button>		 
+                <!--<button  style="margin:5px; width:20% "type="submit"  class="btn btn-success"><a style="color:#ffffff; text-decoration:none; " id="submit" class="lin" data-toggle="Modal" data-target="#Ticketmodal" href="#" aria-disabled="true">Confirm Ticket</a></button> -->	
               
         </div>
 		 </form> 
@@ -324,32 +271,16 @@ else
 						<div >
 							<h3 style="text-align: center;">Passenger Detail</h3>
 						</div>
-						<table  class="center" border="9" cellpadding="10" cellspacing="20" width="100%">
-						<tr>
-							<th>   Sr. No   </th>	
-							<th>   Name  </th>
-							<th>   Age  </th>
-							<th>   Gender  </th>
-							<th>   Booked Seats  </th>
-							<th>   Total Fare   </th>
-							
-						</tr>
-						<tr>
-							<th> 1 </th>
-                            <td><?php echo $name; ?></td>
-                            <td><?php echo $age; ?></td>
-                            <td><?php echo $gender; ?></td>
-                            <td><?php echo $seat; ?></td>
-                            <td><?php echo $tfare; ?></td>
-                            
-							
-						</tr>
+						    <?php echo $name; ?>
+                            <?php echo $age; ?>
+                            <?php echo $gender; ?>
+                            <?php echo $seat; ?>
+                            <?php echo $tfare; ?>
 						
-					</table>
 					<br/>
                     <div style="text-align: right;">
 								<label for="number"><b>Total Fare : </b></label>
-                                <td><?php echo $tfare; ?></td>
+                                <?php echo $tfare; ?>
                                 <label for="number"><b> pkr</b></label>
 						</div>					
 					</div>
