@@ -40,6 +40,7 @@ $user = mysqli_fetch_assoc($sql_result);
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
         <link rel="stylesheet" href="styles.css">
+		<SCRIPT src="validationlogin.js"></SCRIPT>
 		<style>
 .wrap{
 	background-color:#FFFFFF;
@@ -143,7 +144,7 @@ $user = mysqli_fetch_assoc($sql_result);
             </div>
             <div class="modal-body" id="clr">
 			    	
-				<form id="clr1" action="Home.php"  method="post" name="login">
+				<form id="clr1" action="Home.php"  method="post" name="login" onsubmit="return validatelogin()">
 				<div class="mylogin">
 				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
 				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>

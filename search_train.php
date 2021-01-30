@@ -44,6 +44,7 @@ $user = mysqli_fetch_assoc($sql_result);
          <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
        <link rel="stylesheet" href="styles.css">
+	   <SCRIPT src="validationlogin.js"></SCRIPT>
 
     </head>
 
@@ -152,7 +153,7 @@ $user = mysqli_fetch_assoc($sql_result);
             </div>
             <div class="modal-body" id="clr">
 			    	
-				<form id="clr1" action="search_train.php"  method="post" name="login">
+				<form id="clr1" action="search_train.php"  method="post" name="login" onsubmit="return validatelogin()">
 				<div class="mylogin">
 				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
 				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>

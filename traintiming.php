@@ -157,7 +157,7 @@ if(isset($_POST['submit']))
 	<div>
 	<br/>
 	<br/>
-	<h1 class="mainheading">Train Timing</h1>
+	<h1 class="mainheading">Train Route Timming</h1>
 				<table  class="center" border="9" cellpadding="10"  width="90%">
 				  
 					<tr>

@@ -1,4 +1,26 @@
 <?php
+$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+
+$dbhost = 'localhost';
+$dbname = 'myrailway';
+$dbuser = 'root';
+$dbpass = '';
+
+try {
+	$db = new PDO("mysql:host={$dbhost};dbname={$dbname}",$dbuser,$dbpass);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+
+catch(PDOException $e) {
+	echo "Connection error: ".$e->getMessage();
+}
+?>
+
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -10,6 +32,19 @@ session_start();
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 	    <link rel="stylesheet" href="styles.css">
+		
+				
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+		
+
+		<!--Scripts -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/ GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		
 <style>
   
 table.center {
@@ -78,64 +113,66 @@ input[type=text],input[type=date], select {
                 </div> 
             </div>
           </div>
-		  <hr/> 
+		  <hr/>
+<?php 
+
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+$username= $_SESSION["Username"];
+    $statement = $db->prepare("SELECT id,NameOfPassenger,Gender,Age,TrainName,SeatClass,TotalBookedSeats,FromStation,ToStation,TravelingDate,TotalFare FROM bookings WHERE Username = '$username';");
+$statement->execute(array($username));
+?>			  
 		  <h1 class="mainheading">All Booking History</h1>
 	      <hr/><br/>
 		  
-		  <table  class="center" border="9" cellpadding="20" cellspacing="20" width="80%">
+		  <table  class="center" border="9" cellpadding="13"  width="90%">
         	<tr>
-        		<th>   Booking ID   </th>	
+        		<th>   Booking Id   </th>	
         		<th>   Passenger Name   </th>
-				<th>   Booking Date   </th>
+				<th>   Gender   </th>
+				<th>   Age  </th>
+				<th>   Train Name   </th>
+				<th>   Travel Class   </th>
+				<th>   Total Seats   </th>
+				<th>   Travel   </th>
 				<th>   Travel Date   </th>
 				<th>   Total Fare   </th>
-				<th>   View Ticket   </th>
 				
         	</tr>
+<?php 
+	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($result as $row) { 
 
-        <?php
-            $username = "root"; 
-            $password = ""; 
-            $database = "myrailway"; 
-            
-            // CREATE CONNECTION
+?>
+					<tr>
+						 
+                                    <td><?php echo $row["id"]; ?></td>
+                                    <td><?php echo $row["NameOfPassenger"]; ?></td> 
+									<td><?php echo $row["Gender"]; ?></td>
+                                    <td><?php echo $row["Age"]; ?> </td>
+									<td><?php echo $row["TrainName"]; ?></td> 
+									<td><?php echo $row["SeatClass"]; ?></td> 
+									<td><?php echo $row["TotalBookedSeats"]; ?></td> 
+									<td><?php echo $row["FromStation"]; ?> to <?php echo $row["ToStation"]; ?>  </td>
+									<td><?php echo $row["TravelingDate"]; ?></td> 
+									<td><?php echo $row["TotalFare"]; ?></td> 
+					</tr>   
+<?php
+} ?>			
+				</table>
 
-            $mysqli = new mysqli("localhost", $username, $password, $database); 
 
-            //	check connection
-            if ($mysqli->connect_error) 
-            {
-              die("Connection failed: " . $conn->connect_error);
-            }
 
-            $query = "SELECT BookingID,NameOfPassenger,BookingDate,TravelingDate,TotalFare FROM bookings";
+    </body>
 
-            if($result = $mysqli->query($query))
-            {
-              while ($row = $result->fetch_assoc())
-              {
-                $BookingID = $row["BookingID"];
-                $NameOfPassenger = $row["NameOfPassenger"];
-                $BookingDate = $row["BookingDate"];
-                $TravelingDate = $row["TravelingDate"];
-                $TotalFare = $row["TotalFare"];
+	
+</html>
 
-                echo '<tr> 
-                      <td>'.$BookingID.'</td> 
-                      <td>'.$NameOfPassenger.'</td> 
-                      <td>'.$BookingDate.'</td> 
-                      <td>'.$TravelingDate.'</td> 
-                      <td>'.$TotalFare.'</td> 
-                      <td> <button  style ="width:100%" type="submit" class="btn btn-info">View</button></td>
-                    </tr>';
-              }
-              $result->free();
-            }
-			    ?>
-        <table>	
-
-		
-		<footer class="mt-5">
+ <footer class="mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -161,8 +198,9 @@ input[type=text],input[type=date], select {
             </div>
         </div>
     </footer>
-    </body>
-</html>
+
+
+
 
 <?php
 

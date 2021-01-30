@@ -84,6 +84,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
         <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 	    <link rel="stylesheet" href="styles.css">
 		<SCRIPT src="validationregistration.js"></SCRIPT>
+		<SCRIPT src="validationlogin.js"></SCRIPT>
         <style>
 	
 			body{
@@ -176,7 +177,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
             </div>
             <div class="modal-body" id="clr">
 			    	
-				<form id="clr1" action="registration_page.php"  method="post" name="login">
+				<form id="clr1" action="registration_page.php"  method="post" name="login" onsubmit="return validatelogin()">
 				<div class="mylogin">
 				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
 				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>

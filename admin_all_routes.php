@@ -1,5 +1,7 @@
+
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +17,19 @@ session_start();
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
 	  <link rel="stylesheet" href="styles.css">
+	  
+	  
+	  
+        <!--Meta Data -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>RailMaster | SearchTrains </title>
+        <!--Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+         <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+       
     <style>
   
 table.center {
@@ -68,73 +83,21 @@ table.center {
             </div>
           </div>
 		 
-		  <h1 class="mainheading">All Routes Record</h1>
-	      <hr/><br/>
+		 <form  class="form-horizontal forminput" action="" method="post">
+		 <div class="site-wrapper">
+      <h1 class="mainheading">All Routes Record</h1>
+        <div class="input-field col s40">
+			<input type="text" name="search_text" id="search_text" class="form-control" placeholder="-- Search Route --" />
+			<br/>
+         </div>
+         <div class="container">
+            <h3>Search Result</h3>
+         <div id="result"></div>
+        </div>
+    </div>
+</form>
 		  
-		<table  class="center" border="9" cellpadding="20" cellspacing="60" width="80%">
-        	<tr>
-        		<th>   Route ID   </th>	
-        		<th>   Train Name   </th>
-				<th>   Route  </th>
-				<th>   Business Class Fare  </th>
-				<th>   Economical Class Fare   </th>
-				<th>   Standard Class Fare   </th>
-				<th>   Departure Time   </th>
-				<th>   Arrival Time   </th>
-				<th>   Distance   </th>
-				
-        	</tr>
-        	
-			<?php
-				$username = "root"; 
-				$password = ""; 
-				$database = "myrailway"; 
-				
-				// CREATE CONNECTION
-
-				$mysqli = new mysqli("localhost", $username, $password, $database); 
-
-				//	check connection
-				if ($mysqli->connect_error) 
-				{
-					die("Connection failed: " . $conn->connect_error);
-				}
-
-				$query = "SELECT RouteID,TrainName,CONCAT(FromStation,' to ',ToStation),BusinessClassFare,EconomicalClassFare,StandardClassFare,ArrivalTime,Departuretime,TotalDistance FROM route";
-
-				if($result = $mysqli->query($query))
-				{
-					while ($row = $result->fetch_assoc())
-					{
-						$RouteID = $row["RouteID"];
-						$trainname = $row["TrainName"];
-						$Route = $row["CONCAT(FromStation,' to ',ToStation)"];
-						$BusinessClassFare = $row["BusinessClassFare"];
-						$EconomicalClassFare = $row["EconomicalClassFare"];
-						$StandardClassFare = $row["StandardClassFare"];
-						$ArrivalTime = $row["ArrivalTime"];
-						$Departuretime = $row["Departuretime"];
-						$TotalDistance = $row["TotalDistance"];
-
-						echo '<tr> 
-									<td>'.$RouteID.'</td> 
-									<td>'.$trainname.'</td> 
-									<td>'.$Route.'</td> 
-									<td>'.$BusinessClassFare.'</td> 
-									<td>'.$EconomicalClassFare.'</td> 
-									<td>'.$StandardClassFare.'</td> 
-									<td>'.$ArrivalTime.'</td> 
-									<td>'.$Departuretime.'</td> 
-									<td>'.$TotalDistance.'</td> 
-								</tr>';
-					}
-					$result->free();
-				}
-			?>
-		</table>
-		<br/>
-		<br/>
-		<br/>
+		
     </body>
 </html>
 
@@ -146,3 +109,42 @@ session_destroy();
 }
 
 ?>
+
+<?php  
+ 	if (isset($_POST['submit']))
+ { 
+  $message = "Are you sure you want to delete the route!!!";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+ }
+ ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url: "fetchrouteadmin.php",
+                method: "POST",
+                data: {query: query},
+                success: function (data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+        $('#search_text').keyup(function () {
+            var search = $(this).val();
+            if (search != '')
+            {
+                load_data(search);
+            } else
+            {
+                load_data();
+            }
+        });
+    });
+</script>

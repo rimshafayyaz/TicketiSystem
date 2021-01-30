@@ -1,16 +1,198 @@
-<?php
+<?php 
+		l2:
+
+ if(isset($_POST["id"]))  
+ {  
+      $output = '';  
+      $conn = mysqli_connect("localhost", "root", "", "myrailway");  
+      $query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+      $result = mysqli_query($conn, $query);  
+      
+      $output .= ' <div class="row">';  
+      while($row = mysqli_fetch_array($result))  
+      {   
+           $output .= ' 
+                    <div class="col-lg-5">
+						<img src="1a.jpg" alt="Train image"  height="400px" width="400px">
+                    </div>	
+					
+		            <div class="col-lg-5">
+						<h1>'.$row["TrainName"].'</h1>
+						<h5>Travel:</h5>
+						<p class="pp">'.$row["FromStation"].' to  '.$row["ToStation"].'</p> 
+						 <h5>Arrival and Departure Time:</h5>
+						<p class="pp">'.$row["ArrivalTime"].' to '.$row["DepartureTime"].'</p>
+						<h5>Business Class Fare:</h5>
+						<p class="pp">'.$row["BusinessClassFare"].' PKR</p>
+						<h5>Standard Class Fare:</h5>
+						<p class="pp">'.$row["StandardClassFare"].' PKR</p>
+						<h5>Economical Class Fare:</h5>
+						<p class="pp">'.$row["EconomicalClassFare"].' PKR</p>
+                    </div>
+				
+				    	
+           ';  
+           $trainname= $row['TrainName'];
+           $fromstation=$row['FromStation'];
+		   $tostation=$row['ToStation'];
+		   $arrivaltime=$row['ArrivalTime'];
+		   $departuretime=$row['DepartureTime'];
+           $totalfare=$row['BusinessClassFare'];
+      } 
+      
+      $output .= ' </div>  ';  
+      echo $output;  
+
+        
+      
+ } 
 session_start();
+
 $conn = mysqli_connect("localhost","root","","myrailway");
 if(!$conn){  
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
       die('Could not connect: '.mysqli_connect_error()); 
+}
 
-    //   $bussavailable = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility");
-  
+if(isset($_POST["id"]))  
+{
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+$sql_result = mysqli_query($conn, $query); 
+$TrainName = mysqli_fetch_assoc($sql_result);
+if(!empty($TrainName)){
+  $_SESSION['train_info'] = $TrainName['TrainName'];
+
+  $_SESSION["TrainName"] = $TrainName["TrainName"];
+
+  $TrainName=$_SESSION["TrainName"];
+
+}
+}
+
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+$sql_result = mysqli_query($conn, $query); 
+$FromStation = mysqli_fetch_assoc($sql_result);
+if(!empty($FromStation)){
+  $_SESSION['fstation_info'] = $FromStation['FromStation'];
+
+  $_SESSION["FromStation"] = $FromStation["FromStation"];
+
+  $FromStation=$_SESSION["FromStation"];
+
+}
+}
+
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+$sql_result = mysqli_query($conn, $query); 
+$ToStation = mysqli_fetch_assoc($sql_result);
+if(!empty($ToStation)){
+  $_SESSION['tstation_info'] = $ToStation['ToStation'];
+
+  $_SESSION["ToStation"] = $ToStation["ToStation"];
+
+  $ToStation=$_SESSION["ToStation"];
+
+}
+}
+
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+$sql_result = mysqli_query($conn, $query); 
+$BusinessClassFare = mysqli_fetch_assoc($sql_result);
+if(!empty($BusinessClassFare)){
+  $_SESSION['BusinessClassFare_info'] = $BusinessClassFare['BusinessClassFare'];
+
+  $_SESSION["BusinessClassFare"] = $BusinessClassFare["BusinessClassFare"];
+
+  $BusinessClassFare=$_SESSION["BusinessClassFare"];
+
+}
+}
+
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+$sql_result = mysqli_query($conn, $query); 
+$StandardClassFare = mysqli_fetch_assoc($sql_result);
+if(!empty($StandardClassFare)){
+  $_SESSION['StandardClassFare'] = $StandardClassFare['StandardClassFare'];
+
+  $_SESSION["StandardClassFare"] = $StandardClassFare["StandardClassFare"];
+
+  $StandardClassFare=$_SESSION["StandardClassFare"];
+
+}
+}
+
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM route WHERE id = '".$_POST["id"]."'";  
+$sql_result = mysqli_query($conn, $query); 
+$EconomicalClassFare = mysqli_fetch_assoc($sql_result);
+if(!empty($EconomicalClassFare)){
+  $_SESSION['EconomicalClassFare'] = $EconomicalClassFare['EconomicalClassFare'];
+
+  $_SESSION["EconomicalClassFare"] = $EconomicalClassFare["EconomicalClassFare"];
+
+  $EconomicalClassFare=$_SESSION["EconomicalClassFare"];
+
+}
+}
+
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM seatavailablility  WHERE TrainName='$TrainName';";  
+$sql_result = mysqli_query($conn, $query); 
+$EconomicalAvailableseats = mysqli_fetch_assoc($sql_result);
+if(!empty($EconomicalAvailableseats)){
+  $_SESSION['EconomicalAvailableseats'] = $EconomicalAvailableseats['EconomicalAvailableseats'];
+
+  $_SESSION["EconomicalAvailableseats"] = $EconomicalAvailableseats["EconomicalAvailableseats"];
+
+  $EconomicalAvailableseats=$_SESSION["EconomicalAvailableseats"];
+
+}
+}
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM seatavailablility  WHERE TrainName='$TrainName';";  
+$sql_result = mysqli_query($conn, $query); 
+$BusinessAvailableseats = mysqli_fetch_assoc($sql_result);
+if(!empty($BusinessAvailableseats)){
+  $_SESSION['BusinessAvailableseats'] = $BusinessAvailableseats['BusinessAvailableseats'];
+
+  $_SESSION["BusinessAvailableseats"] = $BusinessAvailableseats["BusinessAvailableseats"];
+
+  $BusinessAvailableseats=$_SESSION["BusinessAvailableseats"];
+
+}
+}
+for($f=1; $f == 1; $f++)
+{
+$query = "SELECT * FROM seatavailablility  WHERE TrainName='$TrainName';";  
+$sql_result = mysqli_query($conn, $query); 
+$StandardAvailableseats = mysqli_fetch_assoc($sql_result);
+if(!empty($StandardAvailableseats)){
+  $_SESSION['StandardAvailableseats'] = $StandardAvailableseats['StandardAvailableseats'];
+
+  $_SESSION["StandardAvailableseats"] = $StandardAvailableseats["StandardAvailableseats"];
+
+  $StandardAvailableseats=$_SESSION["StandardAvailableseats"];
+
+}
+}
 }
 
 if (isset($_POST['submit']))
 {
+    
 $name=$_POST['name'];
 $age=$_POST['age'];
 $gender=$_POST['gender'];
@@ -18,89 +200,136 @@ $stype=$_POST['stype'];
 $seat=$_POST['seat'];
 $bdate=$_POST['bdate'];
 $tdate=$_POST['tdate'];
+$last_id = 1;
+$TrainName = $_SESSION["TrainName"];
 
-$username=$_POST['username'];
-$id= '10UP';
-$FromStation= 'Gujranwala';
-$ToStation= 'Islamabad';
-// $TrainName=$_POST['TrainName'];
-// $travel=$_POST['travel'];
-$fare='4000';
-$tfare = $fare*$seat;
-// $bresult = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility WHERE TrainNo = '9UP'");
-// $bussavailable = $bresult->fetch()['available_seats'];
-$sql = "INSERT INTO bookings (Username,NameOfPassenger,TrainNo,FromStation,ToStation, Age,Gender,SeatClass,BookingDate,TravelingDate,TotalFare, TotalBookedSeats) VALUES ('$username','$name','$id','$FromStation', '$ToStation','$age', '$gender','$stype','$bdate','$tdate','$tfare','$seat');";
+$username= $_SESSION["Username"];
+
+$FromStation=$_SESSION["FromStation"];
+$ToStation=$_SESSION["ToStation"];
+$BusinessAvailableseats=$_SESSION["BusinessAvailableseats"];
+$StandardAvailableseats=$_SESSION["StandardAvailableseats"];
+$EconomicalAvailableseats=$_SESSION["EconomicalAvailableseats"];
+$seatable = 'Available seats';
+if($stype == 'Business')
+{
+    $fare=$_SESSION["BusinessClassFare"];
+    $seatable = $BusinessAvailableseats;
+}
+elseif($stype == 'Economical')
+{
+    $fare = $_SESSION["EconomicalClassFare"];
+    $seatable = $EconomicalAvailableseats;
+}
+else{
+    $fare = $_SESSION["StandardClassFare"];
+    $seatable = $StandardAvailableseats;
+}
+if($seatable > $seat)
+{
+$sql = "INSERT INTO bookings (Username,NameOfPassenger,TrainName,FromStation,ToStation, Age,Gender,SeatClass, TotalBookedSeats,TotalFare,BookingDate,TravelingDate) VALUES ('$username','$name','$TrainName','$FromStation', '$ToStation','$age', '$gender','$stype',$seat,$fare*$seat,'$bdate','$tdate');";
     if(mysqli_query($conn, $sql))
-{  
-    $message = "You have been successfully registered";
+{ 
+    $last_id = $conn->insert_id;
+    $message = "Thank You! For Booking your Ticket in $TrainName and ur id = $last_id"; 
+    echo "<script type='text/javascript'>alert('$message');</script>";
 }
 else
 {  
-    $message = "query issue"; 
+    $message = "Sorry!!! Your seats cannot be Booked.  Please try again."; 
+    echo "<script type='text/javascript'>alert('$message');</script>";
 } 
-echo "<script type='text/javascript'>alert('$message');</script>";
 
-$bussavailable = mysqli_query($conn,"select BusinessAvailableseats from seatavailablility");
-$ecoavailable = mysqli_query($conn,"select EconomicalAvailableseats from seatavailablility");
-$standavailable = mysqli_query($conn,"select StandardAvailableseats from seatavailablility");
+$a = true;
 if($stype == 'Business')
 {
- if($bussavailable > $seat){
-     $sql1 = "UPDATE seatavailablility SET BusinessAvailableseats = BusinessAvailableseats-'$seat' , BusinessBookedseats=BusinessBookedseats+'$seat' WHERE TrainNo='9UP' AND BusinessAvailableseats>'$seat'";
+    if($BusinessAvailableseats > $seat)
+    {
+     $sql1 = "UPDATE seatavailablility SET BusinessAvailableseats = BusinessAvailableseats-'$seat' , BusinessBookedseats=BusinessBookedseats+'$seat' WHERE TrainName='$TrainName'; ";
 	    if(mysqli_query($conn, $sql1))
-        {  
-            $message = " bussy seat mill gaeee";
+        { 
+            $message = "Your Bussiness Class Seats have been booked";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+             goto l1;
+ 
         }
         else
         {  
-            $message = " busy seat ni hoiiiii"; 
+            $message = "Sorry!!!!! Bussinuss Class seat are not booked"; 
+            echo "<script type='text/javascript'>alert('$message');</script>"; 
+
         }
-
-}else
-{
-    $message = " Bussinuss Seats are not available anymore.";
-}
-
-echo "<script type='text/javascript'>alert('$message');</script>";
+    }else
+    {
+        $message = "Sorry!!!!! Bussinuss Class seat are not available"; 
+            echo "<script type='text/javascript'>alert('$message');</script>"; 
+    }
 
 }
 elseif($stype == 'Economical')
 {
-    $sql1 = "UPDATE seatavailablility SET EconomicalAvailableseats = EconomicalAvailableseats-'$seat' , EconomicalBookedseats=EconomicalBookedseats+'$seat' WHERE TrainNo='9UP'";
-	if(mysqli_query($conn, $sql1))
-{  
-	$message = "ecoo seat mill gaeee";
-}
-else
-{  
-	$message = "ecoo seat ni hoiiiii"; 
-}
+    if($EconomicalAvailableseats > $seat)
+    {
+        $sql1 = "UPDATE seatavailablility SET EconomicalAvailableseats = EconomicalAvailableseats-'$seat' , EconomicalBookedseats=EconomicalBookedseats+'$seat' WHERE  TrainName='$TrainName';";
+        if(mysqli_query($conn, $sql1))
+        {  
+            $message = "Your Economical Class Seats have been booked";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            goto l1;
+        }
+        else
+        {  
+            $message = "Sorry!!!!! Economical Class seat are not booked"; 
+            echo "<script type='text/javascript'>alert('$message');</script>"; 
+        }
+    }else
+    {
+        $message = "Sorry!!!!! Economical Class seat are not available"; 
+            echo "<script type='text/javascript'>alert('$message');</script>"; 
+    }
 
-	echo "<script type='text/javascript'>alert('$message');</script>";
 }
 else
 {
-    $sql1 = "UPDATE seatavailablility SET StandardAvailableseats = StandardAvailableseats-'$seat' , StandardBookedseats=StandardBookedseats+'$seat' WHERE TrainNo='9UP'";
-	if(mysqli_query($conn, $sql1))
-{  
-	$message = "stand seat mill gaeee";
-}
-else
-{  
-	$message = "stand seat ni hoiiiii"; 
-}
+    if($StandardAvailableseats > $seat)
+    {
+        $sql1 = "UPDATE seatavailablility SET StandardAvailableseats = StandardAvailableseats-'$seat' , StandardBookedseats=StandardBookedseats+'$seat' WHERE  TrainName='$TrainName';";
+        if(mysqli_query($conn, $sql1))
+        {     
+            $message = "Your Standard Class Seats have been booked";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            goto l1;
+        }
+        else
+        {  
+            $message = "Sorry!!!!! Standard Class seat are not booked"; 
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+    }else
+    {
+        $message = "Sorry!!!!! Standard Class seat are not available /n Please booking Again."; 
+            echo "<script type='text/javascript'>alert('$message');</script>"; 
+    }
 
-    echo "<script type='text/javascript'>alert('$message');</script>";
-    
 }
-goto l1;
+echo "<script type='text/javascript'>alert('$message');</script>"; 
+
+
 }
 else
 {
-    $message = "if m ni jaa raha"; 
+    $message = "Sorry!!!!! $seat $stype Class seat of $TrainName are not available anymore.  Please try to booking Again with other class or less seats of $stype class."; 
+    echo "<script type='text/javascript'>alert('$message');</script>"; 
 }
+}
+
 
 ?>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -127,101 +356,36 @@ input[type=text],input[type=date], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+.icon {
+  width: 0.5em;
+  height: 0.5em;
+  fill: red;
+  vertical-align: top;
+}
 </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top" style="font-family:Comic Sans MS">
-            <a class="navbar-brand" href="#">Railway Management System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                  <a class="nav-link" href="passenger_home.php">Home <span class="sr-only">(current)</span></a>
-                </li>
-				
-                <li class="nav-item ">
-                  <a class="nav-link" href="book_ticket.php">Book Ticket</a>
-                </li>
-				
-                <li class="nav-item ">
-                  <a class="nav-link " href="traintiming.php" >Train Schedule</a>
-                </li>
-				
-				<li class="nav-item">
-                  <a class="nav-link" href="all booking record.php">Records</a>
-                </li>
-				
-				<li class="nav-item">
-                  <a class="nav-link" href="profile.php">Profile</a>
-                </li>
-				
-				<li class="nav-item">
-                  <a class="nav-link" href="Home.php">Logout</a>
-                </li>
-				
-								<li class="nav-item">
-                  <?php
-                echo '<a class="nav-link text-danger"> <b>'.$_SESSION["Username"].' </b></a>';
-                  ?>
-                </li>
-				
-            </div>
-          </nav>
-          <div >
-            <img class="d-block img-fluid" src="7a.jpg" alt="pizza">
-        </div> 
-		    <hr/>
-		    <h1 class="mainheading">Railway Details</h1>
-            
-            
-			<hr/>
-			<br/>
-			<aside class="mt-0">
-                <h4 style="text-align:center; padding: 0px 45px; ">Book a ride for life from your home without any discomfort</h4>
-            </aside>
        
-            <form action="view_ticket.php" name="view_ticket" method="post"  onsubmit="return validate()">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="5.jpg" alt="Train image"  height="350px" width="460px">
-                </div>
-                <div class="col-lg-6">
-                    <h1  id="TrainName" name="TrainName"><u>Krachi Express</u></h1>
-                    <h3>Train ID:</h3>
-                    <p class="pp" id="id" name="id">10UP</p> 
-                    <!-- <label for="age" id="id" name="id"><b>10UP</b></label> -->
-                    <h3>Type:</h3>
-                    <p class="pp" id="type" name="type" >Middle class</p>
-                    <h3>Travel:</h3>
-                    <p class="pp" id="travel" name="travel">Lahore to Karachi</p> 
-                    <h3>Fare:</h3>
-                    <p class="pp" id="fare" name="fare">Rs-/4000</p>
-                
-                </div>
-            </div>
-        </div>
-        </form>
 <br/>
+<svg id="definition" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="required" viewbox="0 0 128 128"><g><path d="M110.1,16.4L75.8,56.8l0.3,1l50.6-10.2v32.2l-50.9-8.9l-0.3,1l34.7,39.1l-28.3,16.5L63.7,78.2L63,78.5   l-18.5,49L17.2,111l34.1-39.8v-0.6l-50,9.2V47.6l49.3,9.9l0.3-0.6L17.2,16.7L45.5,0.5l17.8,48.7H64L82.1,0.5L110.1,16.4z"></path></g></symbol></defs></svg>
+	  
         <div class="myDiv">
             <h1 class="hh"><b>Add Passenger</b></h1>
             <form action="view_ticket.php" name="view_ticket" method="post"  onsubmit="return validate()">
                 <div class="form-group">
-                  <label for="Name"><b>Name :</b></label>
+                  <label for="Name"><b>Name </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
                   <input  type="text" id="name" name="name" class="form-control" id="name" placeholder="-- Enter Full Name --" >
                 </div>
                 <div class="form-group">
-                  <label for="age"><b>Age :</b></label>
+                  <label for="age"><b>Age </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
                   <input type="number" id="age" name="age" placeholder="-- Enter Age --" class="form-control" min="0">
                   
                 </div>
                 <div class="form-group">
-                    <label for="gender"><b>Gender :</b></label>
+                    <label for="gender"><b>Gender </b><svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 					
-                    <select name="gender" id="gender">
+                    <select class=" form-control" name="gender" id="gender">
 					 <option disabled selected>--Select Gender --</option>
 					  <option value="male">Male</option>
 					  <option value="female">Female</option>
@@ -229,7 +393,7 @@ input[type=text],input[type=date], select {
                 </div>
 				
                 <div class="form-group">
-                  <label for="booking date"><b>Booking Date :</b></label>
+                  <label for="booking date"><b>Booking Date </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 <?php 
 
 $month = date('m');
@@ -242,9 +406,9 @@ $today = $year . '-' . $month . '-' . $day;
                 </div>
 
 				<div class="form-group">
-                    <label for="seatclass"><b>Ticket Class :</b></label>
+                    <label for="seatclass"><b>Ticket Class </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 					
-                    <select name="stype" id="stype">
+                    <select class=" form-control" name="stype" id="stype">
 					<option disabled selected>--Select Class --</option>
 					  <option value="Economical">Economical</option>
 					  <option value="Standard">Standard</option>
@@ -253,23 +417,23 @@ $today = $year . '-' . $month . '-' . $day;
                 </div>
 
                 <div class="form-group">
-                  <label for="trvel date"><b>Traveling Date :</b></label>
-                  <input type="date"id="tdate" name="tdate"  class="form-control" min="0">
+                  <label for="trvel date"><b>Traveling Date </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
+                  <input  type="date"id="tdate" name="tdate"  class="form-control" min="0">
                 </div>
 				
 				<div class="form-group">
-                  <label for="age"><b>No. of Seats :</b></label>
+                  <label for="age"><b>No. of Seats </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
                   <input type="number" id="seat" name="seat" placeholder="-- Total Seats --" class="form-control" min="0">
                 </div>
+ 
 
-                <!-- <button  style=" width:49.5%" TYPE="Submit" value="Submit" name="submit" id="submit"  class="btn btn-success ">  Signup</button> -->
-                <!-- <button  style="margin:5px; width:20% " TYPE="Submit" value="Submit" name="submit" id="submit"  class="btn btn-success "> Donee </button>			 -->
-                <button  style="margin:5px; width:20% "type="submit"  class="btn btn-success"><a style="color:#ffffff; text-decoration:none; " id="ticket" class="lin" data-toggle="Modal" data-target="#Ticketmodal" href="#" aria-disabled="true">Confirm Ticket</a></button>
-              <!-- </form> -->
+                <button  style="margin:5px; width:20% " TYPE="Submit" value="Submit" name="submit" id="submit"  class="btn btn-success "> Confirm Ticket </button>			
+               
+
         </div>
 
 <!--Payment-->
-<!-- <form action="view_ticket.php" name="view_ticket" method="post" style="border:1px solid #ccc;" onsubmit="return validate()">     -->
+
 <div id="TicketModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
@@ -327,8 +491,12 @@ $today = $year . '-' . $month . '-' . $day;
 					
 					<div  class="form-row">
 		                  <button style="margin:5px; width:20%" type="button" class="btn btn-danger "><a> Close</a> </button>
-                           <button  style="margin:5px; width:20% " TYPE="Submit" value="Submit" name="submit" id="submit"  class="btn btn-success "> Donee </button>
-                          <!-- <button  style="margin:5px; width:20% "type="submit"  value="Submit" name="submit" id="submit" class="btn btn-success"> <a style="color:#ffffff; text-decoration:none; "  id="ticke"  class="lin" data-toggle="Modal" data-target="#Ticketreceipt" href="#" aria-disabled="True">Make Payment</a> </button> -->
+                          <div class="modal-footer"  id="clr2">
+                
+				             <input  style="color:#ffffff; text-decoration:none; width:10%;"type="button" class="btn btn-danger " value="Confirm" onclick="inserting();"></input>
+                         </div>
+                           <button  style="margin:5px; width:20% " TYPE="Submit" value="done" name="done" id="done"  class="btn btn-success "> Donee </button>
+                          
                           
 	                </div>
                 </form>
@@ -338,42 +506,44 @@ $today = $year . '-' . $month . '-' . $day;
 </div>
 </form>
 
+
 <!--Ticket Receipt  -->
 <?php
 l1:
 ?>
 <div  id="Ticketreceipt" class="modal fade" role="dialog">
-    <button type="button" class="close" data-dismiss="modal">
-                    &times;
+    
 
-                </button>
     <div class="modal-dialog modal-lg" role="content">
 	    <div   class="modal-content">
 		    <div  id="block1"  >
 				<div class="modal-header" id="clr2">
-					<h4 class="modal-title"> Ticket Receipt </h4>
+					<h4 style="color:black;text-align: center;font-size: 30px;font-weight: bold"> Ticket Receipt </h4>
 					
 				</div>
+                
 				<div class="modal-body" id="clr">
 					<div    class="container" style="background-color: #D6EAF8 ;border-radius: 10px;padding: 40px;">
 						<div class="row">
 							<div class="col-lg-6">
 								<img src="5.jpg" alt="Train image"  height="250px" width="300px">
 							</div>
-							<div class="col-lg-6">
-								<h3>Karachi Express</h3>
+							<div class="col-lg-6" style="color:black;font-size: 25px;font-weight: bold">
+                            <td ><?php echo $TrainName; ?></td>
+                            </div>
+                            <div class="col-lg-6"  style="font-size: 20px" >
 								<h5>Type: </h5>
-								<p class="pp">Middle class</p>
+								<td ><?php echo $stype ;echo '  Class' ?></td>
 								<h5>Travel:</h5>
-								<p class="pp">Lahore to Karachi</p> 
+								<td ><?php echo $FromStation ;echo '  To  '; echo $ToStation?></td>
 								<h5>Fare:</h5>
-								<p class="pp">Rs-/4000</p>
+								<td><?php echo $fare; ?></td>
 							
 							</div>
 						</div>
 						<div style="text-align: right;">
 								<label for="number"><b>Booking ID :</b></label>
-								<td><?php echo '4'; ?></td>
+								<td><?php echo $last_id ?></td>
 						</div>
 						<hr/>
 						<div >
@@ -395,7 +565,7 @@ l1:
                             <td><?php echo $age; ?></td>
                             <td><?php echo $gender; ?></td>
                             <td><?php echo $seat; ?></td>
-                            <td><?php echo $tfare; ?></td>
+                            <td><?php echo $fare*$seat; ?></td>
                             
 							
 						</tr>
@@ -404,7 +574,7 @@ l1:
 					<br/>
                     <div style="text-align: right;">
 								<label for="number"><b>Total Fare : </b></label>
-                                <td><?php echo $tfare; ?></td>
+                                <td><?php echo $fare*$seat; ?></td>
                                 <label for="number"><b> pkr</b></label>
 						</div>					
 					</div>
@@ -412,8 +582,8 @@ l1:
 				</div>
 			</div>
 			<div class="modal-footer"  id="clr2">
-                
-				 <input  style="color:#ffffff; text-decoration:none; width:10%;"type="button" class="btn btn-danger " value="Print" onclick="printPage('block1');"></input>
+            <button   style="background-color:FF0033 ; width:49.5%;height:5%;font-size: 15px;font-weight: bold" TYPE="button" class="btn btn-warning ">  <a  href="passenger_home.php" > Close </a> </button>
+				 <input  style="background-color:00CC00;color:white; text-decoration:none;width:49.5%;height:5%;font-size: 15px;font-weight: bold"type="button" class="btn btn-danger " value="Print" onclick="printPage('block1');"></input>
             </div>
 			
         </div>
@@ -422,8 +592,7 @@ l1:
 </div>
 
     <!-- jQuery and JS bundle w/ Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+   
     <script>
           $('#ticket').click(function(){
                     $('#TicketModal').modal();
@@ -452,6 +621,7 @@ l1:
 	   printWin.focus();
 	   printWin.print();
 	   printWin.close();
+      
 	}
 	</script>
     </body>

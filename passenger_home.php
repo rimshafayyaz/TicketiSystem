@@ -125,7 +125,7 @@
                           <p class="card-text"><h6>Timings:</h6> 8:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 12:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 4:00pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="traintiming.php" class="btn btn-primary">Check Details</a>
                     
                       </div>
                     </div>
@@ -138,7 +138,7 @@
                           <p class="card-text"><h6>Timings:</h6> 6:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 1:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 7:30pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="traintiming.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                       </div>
@@ -151,7 +151,7 @@
                           <p class="card-text"><h6>Timings:</h6> 9:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 11:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 2:25pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="traintiming.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                         </div>
@@ -168,7 +168,7 @@
                           <p class="card-text"><h6>Timings:</h6> 5:50am</p>
                           <p class="card-text"><h6>Timings:</h6> 2:30pm</p>
                           <p class="card-text"><h6>Timings:</h6> 9:00pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="traintiming.php" class="btn btn-primary">Check Details</a>
                     
                       </div>
                     </div>
@@ -181,7 +181,7 @@
                           <p class="card-text"><h6>Timings:</h6> 10:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 4:30pm</p>
                           <p class="card-text"><h6>Timings:</h6> 6:30pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="traintiming.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                       </div>
@@ -194,7 +194,7 @@
                           <p class="card-text"><h6>Timings:</h6> 9:00am</p>
                           <p class="card-text"><h6>Timings:</h6> 11:00pm</p>
                           <p class="card-text"><h6>Timings:</h6> 2:25pm</p>
-                          <a href="#" class="btn btn-primary">Check Details</a>
+                          <a href="traintiming.php" class="btn btn-primary">Check Details</a>
                           
                         </div>
                         </div>
@@ -203,11 +203,7 @@
             </div>
 
           </div>
-		  
-		  
-		  
-		 
-			]
+
 			</div>
 			
 							  </div>

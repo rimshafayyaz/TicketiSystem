@@ -198,7 +198,7 @@ if(isset($_POST['submit']))
 			<div class="myDiv" >
 				<form  class="form-horizontal forminput" action="" method="post">
 				    <div class="form-group">
-					  <label class="col-sm-3 control-label"  for="traintiming"><b>Select From Station:</b></label>
+					  <label class="col-sm-3 control-label"  for="traintiming"><b>Travel From:</b></label>
 					   <div class="text-center" >
 					  <select class="form-control forminp" id="FromStation" name="FromStation">
 						<option disabled selected>-- Select City --</option>
@@ -212,7 +212,7 @@ if(isset($_POST['submit']))
 						?>  
 						</select>
 						</div>
-						<label class="col-sm-3 control-label"  for="traintiming"><b>Select To Name:</b></label>
+						<label class="col-sm-3 control-label"  for="traintiming"><b>Travel To:</b></label>
 					   <div class="text-center" >
 					  <select class="form-control forminp" id="ToStation" name="ToStation">
 						<option disabled selected>-- Select City --</option>
@@ -227,11 +227,7 @@ if(isset($_POST['submit']))
 						</select>
 						
 					</div>
-							<label class="col-sm-3 control-label" for="Date"><b>Date :</b></label>
-							</br>
-							<div class="text-center" >
-							<input class="form-control forminp" type="date" placeholder="Date" min="2018-10-30" max="" required name="t1" >
-							</div>
+							
 							<br></br>
 					</div>
 				
@@ -302,17 +298,7 @@ if(isset($_POST['submit']))
     </footer>
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
-    <script type="text/javascript">
-		 
-		   window.onload=function(){
-		   document.getElementById('asd').style.display="none";
-		   }
-		function asd()
-		{
-			   
-			document.getElementById("asd").style.display="block";
-		}
-    </script>
+
 <script>
  $(document).ready(function(){
 
@@ -321,7 +307,7 @@ if(isset($_POST['submit']))
            if(id != '')  
            {  
                 $.ajax({  
-                     url:"select.php",  
+                     url:"view_ticket.php",  
                      method:"POST",  
                      data:{id:id},  
                      success:function(data){  

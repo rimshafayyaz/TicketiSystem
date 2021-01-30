@@ -84,6 +84,12 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+.icon {
+  width: 0.5em;
+  height: 0.5em;
+  fill: red;
+  vertical-align: top;
+}
 
 
 
@@ -124,7 +130,8 @@ input[type=submit]:hover {
 				
             </div>
           </nav>
-		  
+		<svg id="definition" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="required" viewbox="0 0 128 128"><g><path d="M110.1,16.4L75.8,56.8l0.3,1l50.6-10.2v32.2l-50.9-8.9l-0.3,1l34.7,39.1l-28.3,16.5L63.7,78.2L63,78.5   l-18.5,49L17.2,111l34.1-39.8v-0.6l-50,9.2V47.6l49.3,9.9l0.3-0.6L17.2,16.7L45.5,0.5l17.8,48.7H64L82.1,0.5L110.1,16.4z"></path></g></symbol></defs></svg>
+	  
 	<form action="admin_add_route.php" name="admin_add_route" method="post" style="border:1px solid #ccc ">
         <div class="container">
 			<br/>
@@ -133,10 +140,10 @@ input[type=submit]:hover {
 
 			  <div class="row">
 				<div class="col-25">
-				  <label for="text"><b>Select Train:</b></label>
+				  <label for="text"><b>Select Train</b>  <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <select id="trainname" name="trainname">
+				  <select   class="form-control" id="trainname" name="trainname">
 					<option disabled selected>-- Select Train --</option>
 					<?php
 						$records = mysqli_query($conn, "SELECT TrainName From trains");  // Use select query here 
@@ -152,10 +159,10 @@ input[type=submit]:hover {
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="city"><b>From(Source):</b></label>
+				  <label for="city"><b>From(Source) </b>  <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				    <select id="fromstation" name="fromstation">
+				    <select  class="form-control" id="fromstation" name="fromstation">
 					<option disabled selected>-- Select City --</option>
 					<?php
 						$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
@@ -171,10 +178,10 @@ input[type=submit]:hover {
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="City"><b>To(Destination) :</b></label>
+				  <label for="City"><b>To(Destination) </b>  <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <select id="tostation" name="tostation">
+				  <select  class="form-control" id="tostation" name="tostation">
 					<option disabled selected>-- Select City --</option>
 					<?php
 						$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
@@ -191,55 +198,55 @@ input[type=submit]:hover {
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="number"><b>Business Class Fare :</b></label>
+				  <label for="number"><b>Business Class Fare </b>  <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <input type="number" id="businessclassfare" name="businessclassfare" placeholder="Fare in Ruppee">
+				  <input  class="form-control" type="number" id="businessclassfare" name="businessclassfare" placeholder="-- Fare in Ruppee --">
 				</div>
 			  </div>
 
 			  <div class="row">
 				<div class="col-25">
-				  <label for="number"><b>Economical Class Fare :</b></label>
+				  <label for="number"><b>Economical Class Fare </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <input type="number" id="economicalclassfare" name="economicalclassfare" placeholder="Fare in Ruppee">
+				  <input  class="form-control" type="number" id="economicalclassfare" name="economicalclassfare" placeholder="-- Fare in Ruppee --">
 				</div>
 			  </div>		
 
 			  <div class="row">
 				<div class="col-25">
-				  <label for="number"><b>Standard Class Fare :</b></label>
+				  <label for="number"><b>Standard Class Fare </b>  <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <input type="number" id="standardclassfare" name="standardclassfare" placeholder="Fare in Ruppee">
+				  <input   class="form-control" type="number" id="standardclassfare" name="standardclassfare" placeholder="-- Fare in Ruppee --">
 				</div>
 			  </div>
 
                <div class="row">
 				<div class="col-25">
-				  <label for="text"><b>Arrival Time :</b></label>
+				  <label for="text"><b>Arrival Time </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <input type="time" id="arrivaltime" name="arrivaltime"  required>
+				  <input  class="form-control" type="time" id="arrivaltime" name="arrivaltime"  required>
 				</div>
 			  </div>
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="City"><b>Departure Time :</b></label>
+				  <label for="City"><b>Departure Time </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <input type="time" id="departuretime" name="departuretime"  required>
+				  <input  class="form-control" type="time" id="departuretime" name="departuretime"  required>
 				</div>
 			  </div>
 			  
 			  <div class="row">
 				<div class="col-25">
-				  <label for="text"><b>Distance :</b></label>
+				  <label for="text"><b>Distance </b>  <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
 				</div>
 				<div class="col-75">
-				  <input type="number" id="totaldistance" name="totaldistance" placeholder="Distance in km/hr" required>
+				  <input  class="form-control" type="number" id="totaldistance" name="totaldistance" placeholder="-- Distance in km/hr --" required>
 				</div>
 			  </div>
 			  
