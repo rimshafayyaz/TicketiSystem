@@ -80,7 +80,7 @@ table.center {
 		 <br/>
 		  <h1 class="mainheading">Booking Details</h1>
 	     <hr/><br/>
-		 <div class="container">
+		 <div class="myDiv">
 		 <form  class="form-horizontal forminput" action="" method="post">
 		   
 		  <table class="center" border="9" cellpadding="6" >
@@ -121,7 +121,7 @@ table.center {
 				{
 					while ($row = $result->fetch_assoc())
 					{
-						$BookingID = $row["id"];
+						$BookingID = $row["BookingID"];
 						$Username = $row["Username"];
 						$NameOfPassenger = $row["NameOfPassenger"];
 						$Gender = $row["Gender"];

@@ -205,7 +205,7 @@ if(isset($_POST['submit']))
 
 					  <label class="col-sm-3 control-label"  for="traintiming"><b>Select Train Name:</b></label>
 					   <div   class="text-center">
-					   <select  class="form-control forminp" id="sel1" name="TrainName">
+					   <select  class="form-control forminp" id="sel1" autofocus name="TrainName">
 					    <option value="">-- Select Train --</option>
 					  
 					  <?php

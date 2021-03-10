@@ -375,7 +375,7 @@ input[type=text],input[type=date], select {
             <form action="view_ticket.php" name="view_ticket" method="post"  onsubmit="return validate()">
                 <div class="form-group">
                   <label for="Name"><b>Name </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>
-                  <input  type="text" id="name" name="name" class="form-control" id="name" placeholder="-- Enter Full Name --" >
+                  <input  type="text" id="name" name="name" class="form-control" id="name" autofocus placeholder="-- Enter Full Name --" >
                 </div>
                 <div class="form-group">
                   <label for="age"><b>Age </b> <svg class="icon" focusable="false"><use xlink:href="#required"></use></svg></label>

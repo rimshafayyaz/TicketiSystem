@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2021 at 12:30 PM
+-- Generation Time: Mar 10, 2021 at 03:12 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -71,8 +71,23 @@ CREATE TABLE `bookings` (
 
 INSERT INTO `bookings` (`BookingID`, `Username`, `NameOfPassenger`, `Gender`, `Age`, `TrainName`, `SeatClass`, `BookingDate`, `TotalBookedSeats`, `FromStation`, `ToStation`, `TravelingDate`, `TotalFare`) VALUES
 (2, 'Rimsha25', 'Rimsha', 'female', 20, '10UP', 'Business', '2021-01-09', 4, 'Gujranwala', 'Islamabad', '2021-01-16', 16000),
-(3, '', 'Rimsha', 'female', 20, '10UP', 'Standard', '2021-01-09', 2, 'Gujranwala', 'Islamabad', '2021-01-23', 8000),
-(4, 'noorfayyaz11', 'Mahnoor Fayyaz', 'female', 20, '10UP', 'Business', '2021-01-10', 3, 'Gujranwala', 'Islamabad', '2021-01-19', 12000);
+(4, 'noorfayyaz11', 'Mahnoor Fayyaz', 'female', 20, '10UP', 'Business', '2021-01-10', 3, 'Gujranwala', 'Islamabad', '2021-01-19', 12000),
+(17, 'Ayesha12', 'Ayesha Kanwal', 'female', 20, 'Akbar Express', 'Business', '2021-01-13', 2, 'Lahore Junction', 'Islamabad', '2021-01-15', 3000),
+(20, 'Ayesha12', 'Araiz', 'male', 1, 'Akbar Express', 'Business', '2021-01-13', 3, 'Lahore Junction', 'Islamabad', '2021-01-15', 4500),
+(29, 'Ayesha12', 'Fiza Kanwal', 'female', 35, 'Akbar Express', 'Business', '2021-01-14', 1, 'Lahore Junction', 'Islamabad', '2021-01-15', 1500),
+(113, 'Ayesha12', 'Test', 'female', 21, 'Akbar Express', 'Economical', '2021-01-14', 3, 'Lahore Junction', 'Islamabad', '2021-01-16', 3600),
+(114, 'Ayesha12', 'Test', 'female', 21, 'Akbar Express', 'Economical', '2021-01-14', 3, 'Lahore Junction', 'Islamabad', '2021-01-16', 3600),
+(115, 'Ayesha12', 'Test', 'female', 21, 'Akbar Express', 'Economical', '2021-01-14', 3, 'Lahore Junction', 'Islamabad', '2021-01-16', 3600),
+(116, 'Ayesha12', 'Aisha Kanwal', 'female', 20, 'Akbar Express', 'Standard', '2021-01-14', 4, 'Lahore Junction', 'Islamabad', '2021-01-15', 4000),
+(152, 'Ayesha12', 'janu', 'male', 2, 'Allama Iqbal Express', 'Standard', '2021-01-14', 1, 'Lahore Junction', 'Islamabad', '2021-01-16', 1000),
+(181, 'Ayesha12', 'Usama', 'male', 23, 'Awam Express', 'Business', '2021-01-16', 2, 'Lahore Junction', 'Islamabad', '2021-01-18', 2900),
+(184, 'Ayesha12', 's', 'female', 2, 'Akbar Express', 'Standard', '2021-01-17', 1, 'Lahore Junction', 'Islamabad', '2021-01-21', 1000),
+(185, 'Ayesha12', '', 'female', 0, 'Akbar Express', 'Economical', '2021-01-17', 1, 'Lahore Junction', 'Islamabad', '0000-00-00', 1200),
+(186, 'Ayesha12', 'l', 'female', 0, 'Awam Express', 'Business', '2021-01-17', 2, 'Lahore Junction', 'Islamabad', '0000-00-00', 2900),
+(187, 'Ayesha12', '', 'female', 0, 'Awam Express', 'Business', '2021-01-17', 2, 'Lahore Junction', 'Islamabad', '0000-00-00', 2900),
+(188, 'Rimsha25', 'abc', 'male', 20, 'Akbar Express', 'Standard', '2021-02-19', 1, 'Lahore Junction', 'Islamabad', '2021-02-23', 1000),
+(189, 'Admin11', 'Mahnoor Fayyaz', 'female', 21, 'Akbar Express', 'Economical', '2021-02-19', 1, 'Lahore Junction', 'Islamabad', '2021-02-19', 1200),
+(190, 'Rimsha25', 'Rimsha', 'female', 20, 'Awam Express', 'Business', '2021-03-10', 2, 'Lahore Junction', 'Islamabad', '2021-03-12', 2900);
 
 -- --------------------------------------------------------
 
@@ -96,6 +111,7 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`username`, `name`, `email`, `phoneno`, `address`, `gender`, `age`) VALUES
 ('', '', '', '', '', '', 0),
+('Admin11', 'admin', 'Admin@gmail.com', '03224600404', 'Street No.58, House No.372 Ramgarh Mughalpura Laho', 'Male', 0),
 ('Ayesha12', 'Ayesha Kanwal', 'ayeshakanwal@gmail.com', '03004979242', 'Kanwal Villas,Layyah', 'Female', 20),
 ('Hassan07', 'Hassan Latif', 'hassanlatif@gmail.com', '03224600404', 'UET,Lahore', 'Male', 19),
 ('Mahnoor17', 'Mahnoor Fayyaz', 'mahnoor@gmail.com', '03248406639', 'Street No.58, House No.372 Ramgarh Mughalpura Laho', 'Female', 22),
@@ -128,14 +144,13 @@ CREATE TABLE `route` (
 --
 
 INSERT INTO `route` (`id`, `TrainName`, `FromStation`, `ToStation`, `BusinessClassFare`, `EconomicalClassFare`, `StandardClassFare`, `ArrivalTime`, `DepartureTime`, `TotalDistance`) VALUES
-(1, 'Karachi Express', 'Bahawalpur', 'Multan Cantonment', 950, 900, 75, '20:08:00', '22:19:00', 106),
+(1, 'Karachi Express', 'Bahawalpur', 'Multan Cantonment', 950, 900, 750, '20:08:00', '22:19:00', 106),
 (2, 'Karachi Express', 'Hyderabad Junction', 'Bahawalpur', 2040, 1860, 1520, '10:44:00', '19:53:00', 664),
 (3, 'Karachi Express', 'Karachi Cantonment', 'Hyderabad Junction', 950, 900, 750, '08:00:00', '10:39:00', 169),
-(4, 'Karachi Express', 'Sahiwal', 'Lahore Junction', 950, 900, 75, '02:15:00', '04:26:00', 202),
-(5, 'Karachi Express', 'Multan Cantonment', 'Sahiwal', 950, 900, 75, '22:26:00', '01:59:00', 192),
-(6, 'Multan Express', 'Okara', 'Raiwind Junction', 950, 900, 75, '12:33:00', '14:30:00', 105),
+(4, 'Karachi Express', 'Sahiwal', 'Lahore Junction', 950, 900, 750, '02:15:00', '04:26:00', 202),
+(6, 'Multan Express', 'Okara', 'Raiwind Junction', 950, 900, 750, '12:33:00', '14:30:00', 105),
 (7, 'Multan Express', 'Raiwind Junction', 'Lahore Junction', 530, 420, 280, '14:45:00', '15:32:00', 46),
-(8, 'Multan Express', 'Khanewal Junction', 'Okara', 950, 900, 75, '09:30:00', '12:18:00', 207),
+(8, 'Multan Express', 'Khanewal Junction', 'Okara', 950, 900, 750, '09:30:00', '12:18:00', 207),
 (9, 'Multan Express', 'Multan Cantonment', 'Khanewal Junction', 530, 420, 280, '08:00:00', '09:15:00', 65),
 (10, 'Multan Express', 'Khanewal Junction', 'Okara', 950, 900, 759, '09:30:00', '12:18:00', 207),
 (11, 'Akbar Express', 'Quetta', 'Jacobabad Junction', 950, 900, 750, '08:00:00', '13:15:00', 192),
@@ -159,11 +174,11 @@ INSERT INTO `route` (`id`, `TrainName`, `FromStation`, `ToStation`, `BusinessCla
 (29, 'Islamabad Express', 'Lahore Junction', 'Chaklala', 1050, 950, 830, '08:00:00', '12:31:00', 374),
 (30, 'Islamabad Express', 'Rawalpindi', 'Islamabad', 340, 270, 130, '13:15:00', '13:55:00', 21),
 (31, 'Islamabad Express', 'Chaklala', 'Rawalpindi', 340, 270, 130, '12:31:00', '12:57:00', 12),
-(32, 'Pakistan Express', 'Karachi Cantonment', 'Hyderabad Junction', 950, 900, 75, '08:00:00', '10:40:00', 169),
-(33, 'Pakistan Express', 'Shorkot Cantonment Junction', 'Faisalabad', 950, 900, 75, '00:15:00', '02:21:00', 134),
+(32, 'Pakistan Express', 'Karachi Cantonment', 'Hyderabad Junction', 950, 900, 750, '08:00:00', '10:40:00', 169),
+(33, 'Pakistan Express', 'Shorkot Cantonment Junction', 'Faisalabad', 950, 900, 750, '00:15:00', '02:21:00', 134),
 (34, 'Pakistan Express', 'Hyderabad Junction', 'Rohri Junction', 1050, 950, 830, '10:55:00', '15:54:00', 304),
 (35, 'Pakistan Express', 'Rohri Junction', 'Bahawalpur', 1050, 950, 830, '16:05:00', '20:35:00', 362),
-(36, 'Pakistan Express', 'Bahawalpur', 'Shorkot Cantonment Junction', 950, 900, 75, '20:50:00', '23:59:00', 199),
+(36, 'Pakistan Express', 'Bahawalpur', 'Shorkot Cantonment Junction', 950, 900, 750, '20:50:00', '23:59:00', 199),
 (37, 'Pakistan Express', 'Faisalabad', 'Gujrat', 1050, 950, 830, '02:36:00', '06:24:00', 205),
 (38, 'Allama Iqbal Express', 'Bahawalpur', 'Okara', 1050, 950, 830, '20:50:00', '00:36:00', 321),
 (39, 'Allama Iqbal Express', 'Okara', 'Lahore Junction', 920, 810, 700, '00:50:00', '03:32:00', 134),
@@ -176,7 +191,8 @@ INSERT INTO `route` (`id`, `TrainName`, `FromStation`, `ToStation`, `BusinessCla
 (46, 'Akbar Express', 'Lahore Junction', 'Islamabad', 1500, 1200, 1000, '20:45:00', '01:50:00', 370),
 (47, 'Allama Iqbal Express', 'Lahore Junction', 'Islamabad', 1399, 1150, 900, '13:51:00', '18:53:00', 372),
 (48, 'Awam Express', 'Lahore Junction', 'Islamabad', 1450, 1300, 1200, '01:50:00', '18:50:00', 374),
-(49, 'Badar Express', 'Lahore Junction', 'Islamabad', 1600, 1300, 1100, '15:50:00', '19:00:00', 373);
+(49, 'Badar Express', 'Lahore Junction', 'Islamabad', 1600, 1300, 1100, '15:50:00', '19:00:00', 373),
+(50, 'New Orange Express', 'Lahore Junction', 'Nawabshah', 1000, 800, 700, '11:13:00', '10:12:00', 121);
 
 -- --------------------------------------------------------
 
@@ -186,7 +202,7 @@ INSERT INTO `route` (`id`, `TrainName`, `FromStation`, `ToStation`, `BusinessCla
 
 CREATE TABLE `seatavailablility` (
   `ID` int(11) NOT NULL,
-  `TrainNo` varchar(10) NOT NULL,
+  `TrainName` varchar(30) NOT NULL,
   `BusinessBookedseats` int(11) DEFAULT NULL,
   `BusinessAvailableseats` int(11) DEFAULT NULL,
   `EconomicalBookedseats` int(11) DEFAULT NULL,
@@ -199,15 +215,18 @@ CREATE TABLE `seatavailablility` (
 -- Dumping data for table `seatavailablility`
 --
 
-INSERT INTO `seatavailablility` (`ID`, `TrainNo`, `BusinessBookedseats`, `BusinessAvailableseats`, `EconomicalBookedseats`, `EconomicalAvailableseats`, `StandardBookedseats`, `StandardAvailableseats`) VALUES
-(1, '9UP', 17, 13, 10, 26, 16, 24),
-(2, '13UP', 10, 20, 10, 26, 10, 30),
-(3, '15UP', 10, 20, 10, 26, 10, 30),
-(4, '23UP', 10, 20, 10, 26, 10, 30),
-(5, '45UP', 10, 20, 10, 26, 10, 30),
-(6, '111UP', 10, 20, 10, 26, 10, 30),
-(7, '117UP', 10, 20, 10, 26, 10, 30),
-(8, '147UP', 10, 20, 10, 26, 10, 30);
+INSERT INTO `seatavailablility` (`ID`, `TrainName`, `BusinessBookedseats`, `BusinessAvailableseats`, `EconomicalBookedseats`, `EconomicalAvailableseats`, `StandardBookedseats`, `StandardAvailableseats`) VALUES
+(1, 'Allama Iqbal Express', 37, -7, 12, 24, 25, 15),
+(2, 'Awam Express', 27, 3, 12, 24, 10, 30),
+(3, 'Karachi Express', 10, 20, 10, 26, 10, 30),
+(4, 'Akbar Express', 19, 11, 35, 1, 37, 3),
+(5, 'Pakistan Express', 10, 20, 10, 26, 10, 30),
+(6, 'Badar Express', 11, 19, 10, 26, 32, 8),
+(7, 'Multan Express', 10, 20, 10, 26, 12, 28),
+(8, 'Hassan Express ', 10, 20, 10, 26, 13, 27),
+(9, 'Local Express ', 10, 20, 10, 26, 10, 30),
+(10, 'Islamabad Express ', 10, 20, 10, 26, 10, 30),
+(11, 'Latif Express ', 10, 20, 10, 26, 10, 30);
 
 -- --------------------------------------------------------
 
@@ -280,7 +299,6 @@ CREATE TABLE `trains` (
   `BusinessSeats` int(11) NOT NULL,
   `EconomicalSeats` int(11) NOT NULL,
   `StandardSeats` int(11) NOT NULL,
-  `Img` varchar(200) NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -288,18 +306,20 @@ CREATE TABLE `trains` (
 -- Dumping data for table `trains`
 --
 
-INSERT INTO `trains` (`TrainNo`, `TrainName`, `FromStation`, `ToStation`, `TotalDistance`, `BusinessSeats`, `EconomicalSeats`, `StandardSeats`, `Img`, `id`) VALUES
-('10UP', 'Local Express', 'Gujranwala', 'Islamabad', 222, 50, 50, 50, '1apic.jpg', 1),
-('111UP', 'Badar Express', 'Lahore Junction', 'Faisalabad', 162, 80, 40, 50, '20pic.jpg', 6),
-('117UP', 'Multan Express', 'Multan Cantonment', 'Lahore Junction', 423, 80, 70, 100, '24pic.jpg', 8),
-('13UP', 'Awam Express', 'Karachi Cantonment', 'Peshawar Cantonment', 1749, 70, 100, 90, '5pic.jpg', 4),
-('147UP', 'Islamabad Express', 'Lahore Junction', 'Islamabad', 290, 50, 80, 70, '11pic.jpg', 7),
-('15UP', 'Karachi Express', 'Karachi Cantonment', 'Lahore Junction', 1332, 80, 100, 50, '19pic.jpg', 5),
-('18UP', 'Hassan Express ', 'Okara', 'Faisalabad', 200, 60, 80, 40, '3apic.jpg', 9),
-('210UP', 'Latif Express', 'Gujranwala', 'Kotri Junction', 300, 40, 80, 100, '1cpic.jpg', 2),
-('23UP', 'Akbar Express', 'Quetta', 'Lahore Junction', 1088, 100, 100, 89, '26pic.jpg', 10),
-('45UP', 'Pakistan Express', 'Karachi Cantonment', 'Rawalpindi', 1542, 40, 80, 60, '23pic.jpg', 6),
-('9UP', 'Allama Iqbal Express', 'Karachi Cantonment', 'Lahore Junction', 1292, 100, 80, 100, '1pic.jpg', 3);
+INSERT INTO `trains` (`TrainNo`, `TrainName`, `FromStation`, `ToStation`, `TotalDistance`, `BusinessSeats`, `EconomicalSeats`, `StandardSeats`, `id`) VALUES
+('10UP', 'Local Express', 'Gujranwala', 'Islamabad', 220, 100, 100, 100, 1),
+('210UP', 'Latif Express', 'Gujranwala', 'Kotri Junction', 300, 40, 80, 100, 2),
+('9UP', 'Allama Iqbal Express', 'Karachi Cantonment', 'Lahore Junction', 1292, 100, 80, 100, 3),
+('13UP', 'Awam Express', 'Karachi Cantonment', 'Peshawar Cantonment', 1749, 70, 100, 90, 4),
+('15UP', 'Karachi Express', 'Karachi Cantonment', 'Lahore Junction', 1332, 80, 100, 50, 5),
+('45UP', 'Pakistan Express', 'Karachi Cantonment', 'Rawalpindi', 1542, 40, 80, 60, 6),
+('147UP', 'Islamabad Express', 'Lahore Junction', 'Islamabad', 290, 50, 80, 70, 7),
+('117UP', 'Multan Express', 'Multan Cantonment', 'Lahore Junction', 423, 80, 70, 100, 8),
+('18UP', 'Hassan Express ', 'Okara', 'Faisalabad', 200, 70, 80, 40, 9),
+('23UP', 'Akbar Express', 'Quetta', 'Lahore Junction', 1088, 100, 100, 89, 10),
+('111UP', 'Badar Express', 'Lahore Junction', 'Faisalabad', 162, 80, 40, 50, 11),
+('110UP', 'New Orange Express', 'Lahore Junction', 'Nawabshah', 111, 20, 50, 80, 12),
+('101UP', 'Khan Express', 'Multan Cantonment', 'Hyderabad Junction', 110, 100, 90, 100, 14);
 
 -- --------------------------------------------------------
 
@@ -325,7 +345,10 @@ INSERT INTO `user_login` (`UserID`, `Username`, `Passwords`) VALUES
 (18, 'Mahnoor17', 'mahnoor17'),
 (22, 'Momee07', 'momee07'),
 (23, 'noorfayyaz11', '12345678'),
-(24, '', '');
+(24, '', ''),
+(25, 'Admin11', 'Admin11'),
+(26, '', ''),
+(27, '', '');
 
 --
 -- Indexes for dumped tables
@@ -367,8 +390,7 @@ ALTER TABLE `route`
 -- Indexes for table `seatavailablility`
 --
 ALTER TABLE `seatavailablility`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `TrainNo` (`TrainNo`);
+  ADD KEY `TrainName` (`TrainName`);
 
 --
 -- Indexes for table `station`
@@ -387,7 +409,7 @@ ALTER TABLE `status of booking`
 -- Indexes for table `trains`
 --
 ALTER TABLE `trains`
-  ADD PRIMARY KEY (`TrainNo`,`TrainName`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `TrainName` (`TrainName`),
   ADD KEY `FromStation` (`FromStation`),
   ADD KEY `ToStation` (`ToStation`);
@@ -407,19 +429,13 @@ ALTER TABLE `user_login`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `BookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `BookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `route`
 --
 ALTER TABLE `route`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
---
--- AUTO_INCREMENT for table `seatavailablility`
---
-ALTER TABLE `seatavailablility`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `station`
@@ -428,10 +444,16 @@ ALTER TABLE `station`
   MODIFY `StationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `trains`
+--
+ALTER TABLE `trains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
@@ -456,7 +478,7 @@ ALTER TABLE `route`
 -- Constraints for table `seatavailablility`
 --
 ALTER TABLE `seatavailablility`
-  ADD CONSTRAINT `seatavailablility_ibfk_1` FOREIGN KEY (`TrainNo`) REFERENCES `trains` (`TrainNo`);
+  ADD CONSTRAINT `seatavailablility_ibfk_1` FOREIGN KEY (`TrainName`) REFERENCES `trains` (`TrainName`);
 
 --
 -- Constraints for table `status of booking`

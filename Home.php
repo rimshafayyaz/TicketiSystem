@@ -23,9 +23,32 @@ $user = mysqli_fetch_assoc($sql_result);
 			$message = 'Wrong email or password.';
 		}
 	echo "<script type='text/javascript'>alert('$message');</script>";
+		
+}
 
 
- 
+if (isset($_POST['done']))
+{
+	$conn = mysqli_connect("localhost","root","","myrailway");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+$AdminUsername=$_POST['AdminUsername'];
+$Password=$_POST['Password'];
+$sql = "SELECT * FROM admins WHERE AdminUsername = '$AdminUsername' AND Passwords = '$Password';";
+$sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL query" '.$sql);
+$user = mysqli_fetch_assoc($sql_result);
+		if(!empty($user)){
+			$_SESSION['user_info'] = $user['AdminUsername'];
+			$message='Admin logged in successfully';
+			  
+			header("location:admin_add_train.php");
+		}
+		else{
+			$message = 'Wrong email or password.';
+		}
+	echo "<script type='text/javascript'>alert('$message');</script>";
 		
 }
 ?>
@@ -41,6 +64,7 @@ $user = mysqli_fetch_assoc($sql_result);
       <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
         <link rel="stylesheet" href="styles.css">
 		<SCRIPT src="validationlogin.js"></SCRIPT>
+		<SCRIPT src="validationloginadmin.js"></SCRIPT>
 		<style>
 .wrap{
 	background-color:#FFFFFF;
@@ -88,6 +112,9 @@ $user = mysqli_fetch_assoc($sql_result);
 				<li class="nav-item">
                   <a class="nav-link" href="#process">Contact</a>
                 </li>
+				<li class="nav-item">
+                  <a class="nav-link " id="log_in_admin" data-toggle="Modal" data-target="#loginmodaladmin" href="#" aria-disabled="true">Admin</a>
+                </li>
               </ul>
 
             </div>
@@ -130,6 +157,45 @@ $user = mysqli_fetch_assoc($sql_result);
 <marquee class="marque" bgcolor="#50AAB4 "  scrolldelay="1"><h5>Welcome To Railway Reservation Booking Tickets Book and Enjoy The Journey</h5></marquee>
 
 
+<div id="loginModaladmin" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header" id="clr2">
+                <h4 class="modal-title" style="font-family:Didot, serif; font-size: 30px;" > 
+                    Login
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+
+                </button>
+            </div>
+            <div class="modal-body" id="clr">
+			    	
+				<form id="clr1" action="Home.php"  method="post" name="login" onsubmit="return validateloginadmin()">
+				<div class="mylogin">
+				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
+				<div ><input type="text" id="AdminUsername" size="30" maxlength="30" name="AdminUsername" autofocus placeholder="-- Username Here --" class=" form-control"/></div>
+				<div >
+					<label for="Password" class="col-form-label"><b>Password : </b></label>
+				</div>
+				<div >
+					<input type="password" id="Password" size="30" maxlength="30" name="Password" placeholder="-- Password Here --" class=" form-control"/>
+				</div>
+				
+				<br/>
+				<div class="text-center">
+				<button style=" width:40%" type="button" class="btn btn-danger " class="close" data-dismiss="modal"><a> Close </a> </button>
+				<INPUT style=" width:40%" class="btn btn-success " TYPE="Submit" value="Login" name="done" id="done" class="button">
+				</div>
+				</div>
+				</form>
+					
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="loginModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg" role="content">
         <div class="modal-content">
@@ -147,7 +213,7 @@ $user = mysqli_fetch_assoc($sql_result);
 				<form id="clr1" action="Home.php"  method="post" name="login" onsubmit="return validatelogin()">
 				<div class="mylogin">
 				<div  ><label for="Username" class=" col-form-label"><b>Username :</b></label></div>
-				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" placeholder="-- Username Here --" class=" form-control"/></div>
+				<div ><input type="text" id="Username" size="30" maxlength="30" name="Username" autofocus placeholder="-- Username Here --" class=" form-control"/></div>
 				<div >
 					<label for="Password" class="col-form-label"><b>Password : </b></label>
 				</div>
@@ -168,7 +234,6 @@ $user = mysqli_fetch_assoc($sql_result);
         </div>
     </div>
 </div>
-
   <!--
       End of Modals
   --><about class="aboutus">
@@ -224,6 +289,12 @@ Pakistan Railways provides an important mode of Transportation in the farthest c
             });
 </script>  
 
+<script>
+      $('#log_in_admin').click(function(){
+                $('#loginModaladmin').modal();
+
+            });
+</script>
 
 </body>
 </html>

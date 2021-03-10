@@ -123,13 +123,13 @@ function test_input($data) {
 	return $data;
 }
 $username= $_SESSION["Username"];
-    $statement = $db->prepare("SELECT id,NameOfPassenger,Gender,Age,TrainName,SeatClass,TotalBookedSeats,FromStation,ToStation,TravelingDate,TotalFare FROM bookings WHERE Username = '$username';");
+    $statement = $db->prepare("SELECT BookingID,NameOfPassenger,Gender,Age,TrainName,SeatClass,TotalBookedSeats,FromStation,ToStation,TravelingDate,TotalFare FROM bookings WHERE Username = '$username';");
 $statement->execute(array($username));
 ?>			  
 		  <h1 class="mainheading">All Booking History</h1>
 	      <hr/><br/>
 		  
-		  <table  class="center" border="9" cellpadding="13"  width="90%">
+		  <table  class="center" border="9" cellpadding="10"  width="90%">
         	<tr>
         		<th>   Booking Id   </th>	
         		<th>   Passenger Name   </th>
@@ -150,7 +150,7 @@ $statement->execute(array($username));
 ?>
 					<tr>
 						 
-                                    <td><?php echo $row["id"]; ?></td>
+                                    <td><?php echo $row["BookingID"]; ?></td>
                                     <td><?php echo $row["NameOfPassenger"]; ?></td> 
 									<td><?php echo $row["Gender"]; ?></td>
                                     <td><?php echo $row["Age"]; ?> </td>

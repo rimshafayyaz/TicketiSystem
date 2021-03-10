@@ -200,7 +200,7 @@ if(isset($_POST['submit']))
 				    <div class="form-group">
 					  <label class="col-sm-3 control-label"  for="traintiming"><b>Travel From:</b></label>
 					   <div class="text-center" >
-					  <select class="form-control forminp" id="FromStation" name="FromStation">
+					  <select class="form-control forminp" id="FromStation" name="FromStation" autofocus>
 						<option disabled selected>-- Select City --</option>
 						<?php
 							$records = mysqli_query($conn, "SELECT StationName From station");  // Use select query here 
